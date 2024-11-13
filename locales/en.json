@@ -1,0 +1,43 @@
+{
+  "general": {
+    "welcome": "welcome",
+    "register": "Register",
+    "account": "account",
+    "yourAccount": "your @:general.account",
+    "free": "free",
+    "password": "password",
+    "email": "email",
+    "gmail": "gmail",
+    "example": "examle",
+    "enter": "enter",
+    "country": {
+      "Iran": "iran",
+      "England": "england"
+    },
+    "nationality": {
+      "Iranion": "Iranion",
+      "English": "English"
+    },
+
+    "phrases": {
+      "placeholder": {
+        "email": "E.g. info@example.com",
+        "fullName": "E.g. taylor swift",
+        "password": "******"
+      }
+    }
+  },
+
+  "user": {
+    "name": "name",
+    "fullName": "fullName"
+  },
+  "robot": {
+    "uptime": "uptime",
+    "robot": "robot",
+    "UptimeRobot": "UptimeRobot"
+  },
+  "signup": {
+    "header": "@:general.register your @:general.account"
+  }
+}

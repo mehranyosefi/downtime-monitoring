@@ -1,0 +1,43 @@
+{
+  "general": {
+    "welcome": "خوش آمدید",
+    "register": "ثبت",
+    "account": "حساب",
+    "yourAccount": "حسابتان",
+    "free": "رایگان",
+    "password": "رمز",
+    "email": "ایمیل",
+    "gmail": "gmail",
+    "example": "مثال",
+    "enter": "وارد کنید",
+    "country": {
+      "Iran": "ایران",
+      "England": "انگلستان"
+    },
+    "nationality": {
+      "Iranion": "ایرانی",
+      "English": "انگلیسی"
+    },
+
+    "phrases": {
+      "placeholder": {
+        "email": "مثال: info@example.com",
+        "fullName": "مثال: رضا اصغری",
+        "password": "******"
+      }
+    }
+  },
+
+  "user": {
+    "name": "نام",
+    "fullName": "نام و نام خانوادگی"
+  },
+  "robot": {
+    "uptime": "زمان کار",
+    "robot": "ربات",
+    "UptimeRobot": "ربات زمان کار"
+  },
+  "signup": {
+    "header": "@:general.yourAccount را @:general.register کنید"
+  }
+}
