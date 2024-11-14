@@ -87,18 +87,18 @@ function setLocaleLanguage(locale: LocaleObject) {
       </div>
       <div class="columns-1 w-full md:w-2/3 xl:w-2/5 mx-auto">
         <main class="w-full pt-14 text-white dark:text-balck">
-          <header>
+          <slot name="header">
             <h1
-              v-text="$t('robot.UptimeRobot')"
+              v-text="$t('general.UptimeRobot')"
               class="text-3xl text-center font-bold"
             ></h1>
-          </header>
+          </slot>
           <div
             class="bg-gray-800 dark:bg-gray-200 mt-10 rounded-md shadow-lg py-10 px-14"
           >
-            <NuxtPage />
+            <slot />
           </div>
-          <footer>footer</footer>
+          <slot name="footer"></slot>
         </main>
       </div>
     </div>

@@ -17,11 +17,12 @@ const { locale } = useI18n();
 
 const menu = ref(null);
 const menuContent = ref(null);
+
 //TODO reactive style
 const style = computed(() => {
   const properties = menu.value.getBoundingClientRect();
   const leftFit =
-    locale.value == "fa" ? -properties?.width - 3 : +properties?.width + 3;
+    locale.value == "fa" ? -properties?.width - 12 : +properties?.width + 3;
   menuContent.value?.getBoundingClientRect();
   return {
     width: `${properties?.width + props.mWidth}px`,

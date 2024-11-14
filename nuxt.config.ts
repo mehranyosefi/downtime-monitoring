@@ -2,13 +2,19 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxtjs/i18n"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@pinia/nuxt",
+    "@nuxtjs/i18n",
+    "@primevue/nuxt-module",
+  ],
   css: ["@/assets/css/main.css"],
   i18n: {
     vueI18n: "./i18n.config.ts", // if you are using custom path, default
     locales: [
       {
         code: "en",
+
         iso: "en-US",
         countryName: "England",
         logo: "/img/logo_country/england.svg",
@@ -34,5 +40,8 @@ export default defineNuxtConfig({
       //   // other options ...
       // }
     },
+  },
+  primevue: {
+    // autoImport: false,
   },
 });
