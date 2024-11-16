@@ -7,23 +7,22 @@ const windowProperty = useWindowProperty();
 const menu_language = ref<boolean>(false);
 
 useHead({
-  bodyAttrs: {
-    class: useApp.state.theme === "light" ? "dark" : null,
+  htmlAttrs: {
+    class: [
+      locale.value == "fa" ? "rtl" : "ltr",
+      useApp.state.theme === "light" ? "dark" : "",
+    ],
   },
 });
 
 //functions
 function setLocaleLanguage(locale: LocaleObject) {
   setLocale(locale.code);
-  // getterLocale = locale;
 }
 </script>
 <template>
   <div class="bg-green-900/90 dark:bg-green-100/90 h-screen transition-all">
-    <div
-      class="container mx-auto"
-      :class="locale == 'fa' ? 'fa rtl' : 'en ltr'"
-    >
+    <div class="container mx-auto">
       <div class="absolute flex items-center top-6">
         <section class="languages">
           <base-menu

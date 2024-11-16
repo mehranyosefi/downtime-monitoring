@@ -1,7 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
-  darkMode: "selector",
+  darkMode: 'class',
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+    './app.vue',
+    './node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}'
+  ],
+
   theme: {
     extend: {
       colors: {
@@ -123,5 +132,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: []
 };

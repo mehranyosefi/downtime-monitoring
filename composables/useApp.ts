@@ -30,13 +30,15 @@ export const useAppStore = defineStore("app", () => {
 
   //etc
   if (state.theme != "dark" && import.meta.client) {
-    document.body.classList.add("dark");
+    // document.body.classList.add("dark");
+    document.documentElement.classList.add("dark");
   }
   watch(
     () => state.theme,
     (val) => {
-      if (val !== "dark") document.body.classList.add("dark");
-      else document.body.classList.remove("dark");
+      console.log(val);
+      if (val !== "dark") document.documentElement.classList.add("dark");
+      else document.documentElement.classList.remove("dark");
     }
   );
   // const getterLocale = computed({
