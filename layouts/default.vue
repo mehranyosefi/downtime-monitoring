@@ -6,7 +6,7 @@ useHead({
   htmlAttrs: {
     class: [
       locale.value == "fa" ? "rtl fa" : "ltr en",
-      useApp.state.theme === "light" ? "dark" : "",
+      useApp.state.theme === "light" ? "pDark" : "",
     ],
   },
 });

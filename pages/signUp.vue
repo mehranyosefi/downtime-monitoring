@@ -170,7 +170,7 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
 <style lang="postcss" scoped>
 .p-form {
   .p-inputtext {
-    @apply !bg-gray-100 dark:!bg-gray-900 !border-gray-400 dark:!border-gray-600 !shadow mt-2 !text-black dark:!text-white;
+    @apply mt-2;
   }
 }
 </style>

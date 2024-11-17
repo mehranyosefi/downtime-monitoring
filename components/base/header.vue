@@ -39,6 +39,7 @@ const toggle = (event: Event) => {
   <div class="flex flex-nowrap items-center justify-between pt-12">
     <div class="flex items-center">
       <section class="languages">
+        <PrimeButton>mehran;</PrimeButton>
         <PrimeButton
           class="py-2 !px-2 w-[4.6rem] md:w-44"
           @click="toggle"
@@ -51,7 +52,7 @@ const toggle = (event: Event) => {
             class="mx-1"
             unstyled
           />
-          <span class="hidden md:block text-black dark:text-white">{{
+          <span class="hidden md:block text-whiteAlpha-900">{{
             `${t("general.country." + useApp.getLocaleOject.countryName)}(${
               useApp.getLocaleOject?.language
             })`
@@ -114,21 +115,21 @@ const toggle = (event: Event) => {
         </PrimeToggleSwitch>
       </section>
     </div>
-    <PrimeMegaMenu
+    <!-- <PrimeMegaMenu
       :model="menuItems"
       :pt="{
         root: `!bg-transparent`,
       }"
-    />
+    /> -->
     <div class="bg-slate-100">login</div>
   </div>
 </template>
 
 <style scoped lang="postcss">
-header {
+/* header {
   .p-megamenu {
     @apply border-none hover:!bg-transparent hover:!text-green-500;
     width: calc(70% - 19rem);
   }
-}
+} */
 </style>

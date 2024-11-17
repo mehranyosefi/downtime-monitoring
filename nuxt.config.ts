@@ -54,6 +54,7 @@ export default defineNuxtConfig({
     options: {
       unstyled: false,
       // ripple: true,
+      // theme: false,
       pt: {
         button: {
           // root: ``,

@@ -5,6 +5,7 @@ export const useAppStore = defineStore("app", () => {
   const state = reactive({
     theme: useCookie("them", {
       default: () => "dark",
+      watch: true,
     }),
   });
 
@@ -14,12 +15,12 @@ export const useAppStore = defineStore("app", () => {
   });
   const getThemeState = computed({
     get() {
-      if (state.theme == "dark") return false;
-      else return true;
+      if (state.theme == "dark") return true;
+      return false;
     },
     set(val) {
-      if (val) state.theme = "light";
-      else state.theme = "dark";
+      if (val) state.theme = "dark";
+      else state.theme = "light";
     },
   });
 
@@ -29,14 +30,10 @@ export const useAppStore = defineStore("app", () => {
   }
 
   //etc
-  if (state.theme != "dark" && import.meta.client) {
-    // document.body.classList.add("dark");
-    document.documentElement.classList.add("dark");
-  }
   watch(
     () => state.theme,
     (val) => {
-      if (val !== "dark") document.documentElement.classList.add("dark");
+      if (val == "dark") document.documentElement.classList.add("dark");
       else document.documentElement.classList.remove("dark");
     }
   );
