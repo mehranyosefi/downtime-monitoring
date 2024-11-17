@@ -1,9 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import Aura from "@primevue/themes/aura";
 
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+  app: {
+    head: {
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+    },
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
@@ -45,15 +50,13 @@ export default defineNuxtConfig({
   },
   primevue: {
     usePrimeVue: true,
+    importTheme: { from: "@/themes/mytheme.js" },
     options: {
       unstyled: false,
       // ripple: true,
-      theme: {
-        preset: Aura,
-      },
       pt: {
         button: {
-          // root: "bg-transparent",
+          // root: ``,
         },
       },
     },

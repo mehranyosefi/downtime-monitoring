@@ -4,6 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer tailwind-base, primevue, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
@@ -13,9 +24,16 @@
 .fade-leave-to {
   opacity: 0;
 }
-
 @layer utilities {
   .rtl {
     direction: rtl;
   }
+}
+
+section.languages {
+  @apply w-fit text-white dark:text-black;
+}
+.p-button {
+  @apply dark:!bg-gray-800/95 !bg-gray-100 flex items-center px-1 !rounded !shadow-lg hover:!bg-gray-100/75
+  dark:hover:!bg-gray-700/75 text-base !border-gray-300 dark:!border-gray-800;
 }

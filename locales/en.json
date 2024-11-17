@@ -3,6 +3,7 @@
     "welcome": "welcome",
     "register": "Register",
     "login": "login",
+    "signUp": "signUp",
     "account": "account",
     "yourAccount": "your @:general.account",
     "free": "Free",
@@ -35,9 +36,24 @@
   },
   "phrases": {
     "placeholder": {
-      "email": "E.g. info@example.com",
+      "email": "E.g. info{'@'}example.com",
       "fullName": "E.g. taylor swift",
       "password": "******"
+    },
+    "seo": {
+      "signUp": {
+        "description": "SignUp page of UptimeRobot",
+        "keywords": "signUp, UptimeRobot"
+      },
+      "login": {
+        "description": "login page of UptimeRobot",
+        "keywords": "login, UptimeRobot"
+      },
+      "index": {
+        "title": "Free Website",
+        "description": "Start monitoring in 30 seconds. get notified by email, SMS and more",
+        "keywords": "uptime, uptime monitor, uptime robot"
+      }
     }
   },
   "user": {
@@ -52,6 +68,21 @@
     "footer": {
       "line1": " @:general.dont.have @:general.an @:general.account @:general.yet",
       "line2": "@:general.create your  @:general.free @:general.account @:general.now"
+    }
+  },
+  "errors": {
+    "email":{
+      "required": "email is required"
+    },
+    "fullName":{
+      "required": "fullName is required",
+      "min": "fullName must be at least { number } characters",
+      "max": "fullName must be a maximum { number } characters"
+    },
+    "password":{
+      "required": "password is required",
+      "min": "password must be at least { number } characters",
+      "max": "password must be a maximum { number } characters"
     }
   }
 }

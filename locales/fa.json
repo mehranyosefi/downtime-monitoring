@@ -3,6 +3,7 @@
     "welcome": "خوش آمدید",
     "register": "ثبت",
     "login": "ورود",
+    "signUp": "ثبت نام",
     "account": "حساب",
     "yourAccount": "حسابتان",
     "free": "رایگان",
@@ -41,9 +42,24 @@
   },
   "phrases": {
     "placeholder": {
-      "email": "مثال: info@example.com",
+      "email": "مثال: info{'@'}example.com",
       "fullName": "مثال: رضا اصغری",
       "password": "******"
+    },
+    "seo": {
+      "signUp": {
+        "description": "صفحه ثبت نام ربات زمان کار",
+        "keywords": "ثبت نام, ربات زمان کار"
+      },
+      "login": {
+        "description": "صفحه ورود ربات زمان کار",
+        "keywords": "ورود, ربات زمان کار"
+      },
+      "index": {
+        "title": "وبسایت رایگان",
+        "description": "شروع نظارت در کمترین زمان. دریافت اعلان های مشکلات سایت خود از طریق پیام و ایمیل",
+        "keywords": "زمان کار, نظارت زمان کار, ربات زمان کار"
+      }
     }
   },
   "signup": {
@@ -54,6 +70,21 @@
     "footer": {
       "line1": "@:general.yet @:general.account @:general.dont.have",
       "line2": "@:general.now @:general.yourFreeAccount @:general.create"
+    }
+  },
+  "errors": {
+    "email":{
+      "required": "ایمیل الزامی است"
+    },
+    "fullName":{
+      "required": "نام و نام خانوادگی الزامی است",
+      "min": "نام و نام خانوادگی باید حداقل {number} کاراکتر باشد",
+      "max": "نام و نام خانوادگی باید حداکثر {number} کاراکتر باشد"
+    },
+    "password":{
+      "required": "رمزعبور الزامی است",
+      "min": "رمزعبور باید حداقل {number} کاراکتر باشد",
+      "max": "رمزعبور باید حداکثر {number} کاراکتر باشد"
     }
   }
 }

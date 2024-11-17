@@ -36,19 +36,9 @@ export const useAppStore = defineStore("app", () => {
   watch(
     () => state.theme,
     (val) => {
-      console.log(val);
       if (val !== "dark") document.documentElement.classList.add("dark");
       else document.documentElement.classList.remove("dark");
     }
   );
-  // const getterLocale = computed({
-  //   get() {
-  //     return state.locale_state!;
-  //   },
-  //   set(val) {
-  //     state.locale_state = val;
-  //   },
-  // });
-  // const getterLocale = computed(()=> )
   return { getLocaleOject, state, getThemeState, update_theme };
 });

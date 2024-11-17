@@ -1,9 +1,21 @@
 <script lang="ts" setup>
-// const number: number = 0;
+const { locale, t } = useI18n();
+definePageMeta({
+  layout: false,
+});
+useHead({
+  title: t("phrases.seo.index.title"),
+  meta: [
+    { name: "description", content: t("phrases.seo.signUp.description") },
+    { name: "keywords", content: t("phrases.seo.signUp.keywords") },
+  ],
+});
 </script>
 
 <template>
-  <div>my name is mehran</div>
+  <div>
+    <NuxtLayout name="default">s </NuxtLayout>
+  </div>
 </template>
 
 <style lang="postcss" scoped>
