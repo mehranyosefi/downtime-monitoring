@@ -13,7 +13,7 @@ export const useAppStore = defineStore("app", () => {
   const getLocaleOject = computed(() => {
     return locales.value.find((item) => item.code === locale.value)!;
   });
-  const getThemeState = computed({
+  const isDarkTheme = computed({
     get() {
       if (state.theme == "dark") return true;
       return false;
@@ -37,5 +37,5 @@ export const useAppStore = defineStore("app", () => {
       else document.documentElement.classList.remove("dark");
     }
   );
-  return { getLocaleOject, state, getThemeState, update_theme };
+  return { getLocaleOject, state, isDarkTheme, update_theme };
 });

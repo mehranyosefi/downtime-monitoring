@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@primevue/nuxt-module",
   ],
-  css: ["@/assets/styles/main.css"],
+  css: ["@/assets/styles/main.css", "@/assets/styles/main.scss"],
   i18n: {
     vueI18n: "./i18n.config.ts", // if you are using custom path, default
     locales: [
@@ -53,19 +53,18 @@ export default defineNuxtConfig({
     importTheme: { from: "@/themes/mytheme.js" },
     options: {
       unstyled: false,
-      // ripple: true,
-      // theme: false,
-      pt: {
-        button: {
-          // root: ``,
-        },
-      },
     },
     // cssLayerOrder: 'tailwind-base,primevue, tailwind-utilities',
     components: {
       // include: "*",
       // exclude: ["Galleria", "Carousel", "Chart", "Editor"],
       prefix: "Prime",
+    },
+  },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
     },
   },
 });

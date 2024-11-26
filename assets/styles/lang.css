@@ -1,11 +1,11 @@
-@import "../fonts/iransans.css";
+@import "../fonts/iransansx.css";
 @import "../fonts/times.css";
 
 [class^="fa"],
 [class*=" fa"] * {
-  font-family: "Iran Sans X FaNum" !important;
+  font-family: "Iran Sans X FaNum";
 }
 
 .en * {
-  font-family: "Times New Roman" !important;
+  font-family: "Times Crimson";
 }

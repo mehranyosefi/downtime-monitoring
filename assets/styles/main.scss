@@ -1,0 +1,42 @@
+$xsmall: 420px;
+$small: 640px;
+$medium: 768px;
+$large: 1024px;
+$xLarge: 1280px;
+$xxLarge: 1536px;
+
+html {
+    font-size: .7rem;
+}
+
+
+@media (min-width: #{$xsmall}){
+    html {
+        font-size: .75rem;
+    }
+}
+@media (min-width: #{$small}){
+    html {
+        font-size: .8rem;
+    }
+}
+@media (min-width: #{$medium}){
+    html {
+        font-size: .85rem;
+    }
+}
+@media (min-width: #{$large}){
+    html {
+        font-size: .9rem;
+    }
+}
+@media (min-width: #{$xLarge}){
+    html {
+        font-size: .95rem;
+    }
+}
+@media (min-width: #{$xxLarge}){
+    html {
+        font-size: 1rem;
+    }
+}

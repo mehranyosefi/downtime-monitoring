@@ -1,34 +1,43 @@
 <script lang="ts" setup>
+import { headerMegaMenuItems } from "~/types/menu";
+import { headerMegaMenuFooterItems } from "~/types/menu";
+
 const { locale, t } = useI18n();
 const useApp = useAppStore();
+const localePath = useLocalePath();
 useHead({
   titleTemplate: `${t("general.UptimeRobot")} - %s`,
   htmlAttrs: {
     class: [
       locale.value == "fa" ? "rtl fa" : "ltr en",
-      useApp.state.theme === "light" ? "pDark" : "",
+      useApp.state.theme === "dark" ? "dark" : "",
     ],
   },
 });
+const sideNav = useTemplateRef("sideNav");
+
+//functions
 </script>
 <template>
-  <div
-    class="bg-gray-100/90 dark:bg-gray-900/90 h-screen transition-all overflow-y-auto"
-  >
-    <div class="container mx-auto w-11/12">
-      <header class="sticky top-0">
-        <base-header />
-        <slot name="header" />
-      </header>
-      <main class="w-full pt-14 text-black dark:text-white">
-        <div class="bg-slate-200">
-          <slot />
-        </div>
-      </main>
-      <footer>
-        <slot name="footer"></slot>
-      </footer>
-    </div>
+  <div>
+    <base-header
+      sign-section
+      menu-section
+      logo
+      @show-sideNav="sideNav?.toggle_sideNav"
+      :side-nav-active="sideNav?.sideNavActive"
+    />
+    <main>
+      <slot />
+      <BaseSideNavMenu
+        :items="headerMegaMenuItems"
+        :subItems="headerMegaMenuFooterItems"
+        ref="sideNav"
+      />
+    </main>
+    <footer>
+      <slot name="footer"></slot>
+    </footer>
   </div>
 </template>
 

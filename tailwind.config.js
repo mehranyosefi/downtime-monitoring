@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   // darkMode: ['selector', '[data-mode="pDark"]'],
-  darkMode: 'class',
+  darkMode: "class",
   content: [
-    './components/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}',
-    './app.vue',
-    './node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}'
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
+    "./app.vue",
+    "./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}",
+    "./error.vue",
   ],
 
   theme: {
@@ -30,7 +31,7 @@ export default {
           800: "rgba(255, 255, 255, 0.80)",
           900: "rgba(255, 255, 255, 0.92)",
         },
-        balckAlpha: {
+        blackAlpha: {
           50: "rgba(0, 0, 0, 0.04)",
           100: "rgba(0, 0, 0, 0.06)",
           200: "rgba(0, 0, 0, 0.08)",
@@ -55,6 +56,20 @@ export default {
           900: "#E6E6FA",
         },
         gray: {
+          10: "whitesmoke",
+          50: "#E6EAEB",
+          100: "#EDF2F7",
+          200: "#E2E8F0",
+          300: "#CBD5E0",
+          400: "#A0AEC0",
+          500: "#72839E",
+          600: "#4A5568",
+          700: "#2D3340",
+          800: "#1C2434",
+          900: "#131A25",
+        },
+        zinc: {
+          10: "whitesmoke",
           50: "#E6EAEB",
           100: "#EDF2F7",
           200: "#E2E8F0",
@@ -130,8 +145,10 @@ export default {
       content: {
         sun: "url('/img/sun.svg')",
         moon: "url('/img/moon.svg')",
+        darkIndex: "url('/img/darkIndex.svg')",
+        lightIndex: "url('/img/lightIndex.svg')",
       },
     },
   },
-  plugins: []
+  plugins: [],
 };

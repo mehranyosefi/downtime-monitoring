@@ -1,24 +1,27 @@
 <script setup lang="ts">
-const { locale, t } = useI18n();
 const localePath = useLocalePath();
+const { locale, t } = useI18n();
 
 definePageMeta({
   layout: false,
 });
 useHead({
-  title: t("general.login"),
+  title: t("general.signUp"),
   meta: [
-    { name: "description", content: t("phrases.seo.login.description") },
-    { name: "keywords", content: t("phrases.seo.login.keywords") },
+    { name: "description", content: t("phrases.seo.signUp.description") },
+    { name: "keywords", content: t("phrases.seo.signUp.keywords") },
   ],
 });
+
 //data
 
 const initialValues = reactive<{
   email: string;
+  fullName: string;
   password: string;
 }>({
   email: "",
+  fullName: "",
   password: "",
 });
 
@@ -32,6 +35,18 @@ const resolver = ({ values }: Record<string, any>) => {
     });
   }
 
+  if (!values.fullName) {
+    errors.fullName.push({
+      type: "required",
+      message: t("errors.fullName.required"),
+    });
+  }
+  if (values.fullName?.length < 6) {
+    errors.fullName.push({
+      type: "required",
+      message: t("errors.fullName.min", { number: 6 }),
+    });
+  }
   if (!values.password) {
     errors.password.push({
       type: "required",
@@ -67,8 +82,23 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
       <PrimeCard class="mt-10">
         <template #title class="text-center">
           <h2
-            v-text="$t('general.welcome')"
-            class="text-center text-xl font-semibold text-green-500 dark:text-primary-500"
+            v-if="locale == 'fa'"
+            class="text-center text-xl font-semibold"
+            v-html="
+              `${$t('general.yourAccount')} را
+              <span class='text-green-500 dark:text-primary-500'>${$t(
+                'general.register'
+              )}</span> کنید`
+            "
+          ></h2>
+          <h2
+            v-else
+            class="text-center text-xl font-semibold"
+            v-html="
+              `<span class='text-green-500 dark:text-primary-500'>${$t(
+                'general.register'
+              )}</span> ${$t('general.yourAccount')}`
+            "
           ></h2>
         </template>
         <template #content>
@@ -77,18 +107,16 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
             :initialValues
             :resolver
             @submit="onFormSubmit"
-            class="flex flex-col gap-4"
+            class="flex flex-col"
           >
             <div class="flex flex-col gap-1">
               <label for="email" v-text="t('general.email')"></label>
               <PrimeInputText
-                :pt="{
-                  root: 'mt-2',
-                }"
                 name="email"
                 type="email"
                 :placeholder="t('phrases.placeholder.email')"
                 fluid
+                autocomplete="on"
               />
               <PrimeMessage
                 v-if="$form.email?.invalid"
@@ -102,18 +130,39 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
                 >{{ $form.email.error?.message }}</PrimeMessage
               >
               <label
+                for="fullName"
+                v-text="t('user.fullName')"
+                class="mt-5"
+              ></label>
+              <PrimeInputText
+                name="fullName"
+                type="text"
+                :placeholder="t('phrases.placeholder.fullName')"
+                fluid
+                autocomplete="on"
+              />
+              <PrimeMessage
+                v-if="$form.fullName?.invalid"
+                class="mr-1"
+                severity="error"
+                size="small"
+                variant="simple"
+                :pt="{
+                  text: '!text-xs',
+                }"
+                >{{ $form.fullName.error?.message }}</PrimeMessage
+              >
+              <label
                 for="password"
                 v-text="t('general.password')"
                 class="mt-5"
               ></label>
               <PrimeInputText
-                :pt="{
-                  root: 'mt-2',
-                }"
                 name="password"
                 type="password"
                 :placeholder="t('phrases.placeholder.password')"
                 fluid
+                autocomplete="on"
               />
               <PrimeMessage
                 v-if="$form.password?.invalid"
@@ -129,9 +178,9 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
             </div>
             <PrimeButton
               class="mt-6"
-              type="submit"
               severity="success"
-              :label="t('general.login')"
+              type="submit"
+              :label="t('general.register')"
             />
           </PrimeForm>
         </template>
@@ -139,15 +188,12 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
 
       <template #footer>
         <footer>
-          <div class="text-center mt-7">
-            <span class="text-sm text-gray-600 dark:text-gray-300">
-              {{ `${$t("signIn.footer.line1")}${locale == "fa" ? "؟" : "?"}` }}
-            </span>
+          <div>
             <nuxt-link
-              :to="localePath('register')"
-              class="block w-fit mx-auto mt-2 underline text-sm text-gray-950 dark:text-gray-100"
+              :to="localePath('login')"
+              class="block w-fit mx-auto mt-5 underline text-gray-950 dark:text-gray-100 text-sm"
             >
-              {{ $t("signIn.footer.line2") }}
+              {{ t("signup.footer") }}{{ locale == "fa" ? "؟" : "?" }}
             </nuxt-link>
           </div>
         </footer>
@@ -156,4 +202,10 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
   </div>
 </template>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+.p-form {
+  .p-inputtext {
+    @apply mt-2;
+  }
+}
+</style>

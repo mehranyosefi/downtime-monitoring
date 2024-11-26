@@ -2,8 +2,10 @@
   "general": {
     "welcome": "welcome",
     "register": "Register",
-    "login": "login",
+    "login": "Login",
     "signUp": "signUp",
+    "log_in": "Log In",
+    "sign_out": "Register for Free",
     "account": "account",
     "yourAccount": "your @:general.account",
     "free": "Free",
@@ -31,8 +33,26 @@
     "uptime": "uptime",
     "robot": "robot",
     "UptimeRobot": "UptimeRobot",
-    "create": "create",
-    "now": "now"
+    "monitoring": "monitoring",
+    "create": "Create",
+    "now": "now",
+    "for": "for",
+    "every": "every",
+    "team": "team",
+    "service": "service",
+    "totally": "totally",
+    "get": "get",
+    "in": "in",
+    "one": "one",
+    "place": "place",
+    "monitored": "monitored",
+    "monitors": "monitores",
+    "teams": "teams"
+  },
+
+  "user": {
+    "name": "name",
+    "fullName": "fullName"
   },
   "phrases": {
     "placeholder": {
@@ -54,11 +74,10 @@
         "description": "Start monitoring in 30 seconds. get notified by email, SMS and more",
         "keywords": "uptime, uptime monitor, uptime robot"
       }
+    },
+    "etc": {
+      "inOnePlace": "@:general.in @:general.one @:general.place"
     }
-  },
-  "user": {
-    "name": "name",
-    "fullName": "fullName"
   },
   "signup": {
     "header": "@:general.register your @:general.account",
@@ -69,6 +88,30 @@
       "line1": " @:general.dont.have @:general.an @:general.account @:general.yet",
       "line2": "@:general.create your  @:general.free @:general.account @:general.now"
     }
+  },
+  "monitoring": {
+    "monitoring": "Monitoring",
+    "website": "Website monitoring",
+    "port": "Port monitoring",
+    "keyword": "Keyword monitoring"
+  },
+  "integrations": "Integraions",
+  "statusPage": "Status Page",
+  "pricing": "Pricing",
+  "teams": {
+    "devops": "DevOps",
+    "developers": "Developers",
+    "marketers": "Marketers",
+    "support": "Support",
+    "businessOwners": "Business Owners"
+  },
+  "index": {
+    "serviceTitle": {
+      "one": "The leading"
+    },
+    "getTitle": "Get 50 monitors with 5-minutes checks",
+    "startMonitoring": "Start monitoring in 30 seconds",
+    "careAbout": "All you really care about"
   },
   "errors": {
     "email":{

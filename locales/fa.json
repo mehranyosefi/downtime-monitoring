@@ -4,6 +4,8 @@
     "register": "ثبت",
     "login": "ورود",
     "signUp": "ثبت نام",
+    "log_in": "ورود",
+    "sign_out": "ثبت نام",
     "account": "حساب",
     "yourAccount": "حسابتان",
     "free": "رایگان",
@@ -32,8 +34,21 @@
     "uptime": "زمان کار",
     "robot": "ربات",
     "UptimeRobot": "ربات زمان کار",
+    "monitoring": "نظارت",
     "create": "ایجاد کنید",
-    "now": "اکنون"
+    "now": "اکنون",
+    "for": "برای",
+    "every": "هر",
+    "team": "تیم",
+    "service": "سرویس",
+    "totally": "کاملا",
+    "get": "دریافت کنید",
+    "in": "در",
+    "one": "یک",
+    "place": "مکان",
+    "monitored": "نظارت می شود",
+    "monitors": "بازدید کننده ها",
+    "teams": "گروه ها"
   },
 
   "user": {
@@ -60,6 +75,9 @@
         "description": "شروع نظارت در کمترین زمان. دریافت اعلان های مشکلات سایت خود از طریق پیام و ایمیل",
         "keywords": "زمان کار, نظارت زمان کار, ربات زمان کار"
       }
+    },
+    "etc": {
+      "inOnePlace": "@:general.in @:general.one @:general.place"
     }
   },
   "signup": {
@@ -71,6 +89,32 @@
       "line1": "@:general.yet @:general.account @:general.dont.have",
       "line2": "@:general.now @:general.yourFreeAccount @:general.create"
     }
+  },
+  "monitoring": {
+    "monitoring": "نظارت",
+    "website": "نظارت وبسایت",
+    "port": "نظارت پورت",
+    "keyword": "نظارت کلمه کلیدی"
+  },
+  "integrations": "یکپارچه سازی",
+  "statusPage": "صفحه وضعیت",
+  "pricing": "قیمت گذاری",
+  "teams": {
+    "devops": "توسعه عملیات",
+    "developers": "توسعه دهندگان",
+    "marketers": "بازاریابان",
+    "support": "پشتیبان",
+    "businessOwners": "صاحبان مشاغل"
+  },
+ 
+  "index": {
+    "serviceTitle": {
+      "one": "پیشروترین @:general.service",
+      "two": "@:general.monitoring بر @:general.uptime"
+    },
+    "getTitle": "50 مانیتور با چک کردن های پنج دقیقه ای",
+    "startMonitoring": "نظارت را در 30 ثانیه شروع کنید",
+    "careAbout": "همه چیز هایی که واقعا به آن اهمیت می دهید"
   },
   "errors": {
     "email":{

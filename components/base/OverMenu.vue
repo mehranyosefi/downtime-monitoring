@@ -38,7 +38,7 @@ const style = computed(() => {
 } */
 .menu {
   @apply absolute bg-gray-800 dark:bg-gray-200 outline-none shadow-lg overflow-y-auto p-0 m-0 rounded-md
-  text-white dark:text-balck;
+  text-gray-100 dark:text-balck;
   max-width: 465px;
   max-height: calc(50vh - 76px);
   z-index: 1000;

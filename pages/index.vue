@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 const { locale, t } = useI18n();
+const localePath = useLocalePath();
+import { headerMegaMenuItems } from "~/types/menu";
+
 definePageMeta({
   layout: false,
 });
@@ -10,16 +13,115 @@ useHead({
     { name: "keywords", content: t("phrases.seo.signUp.keywords") },
   ],
 });
+const useApp = useAppStore();
 </script>
 
 <template>
   <div>
-    <NuxtLayout name="default">s </NuxtLayout>
+    <NuxtLayout name="default">
+      <div class="container mx-auto px-10">
+        <div class="grid grid-row-2 lg:grid-cols-2 pt-20">
+          <div class="w-fit mx-auto">
+            <h4 v-if="locale == 'en'" class="text-6xl font-semibold">
+              {{ `${t("index.serviceTitle.one")}` }} <br />
+              <span class="text-green-500 dark:text-primary-500">
+                {{ `${t("general.uptime")} ${t("general.monitoring")}` }}
+              </span>
+              service.
+            </h4>
+            <h4 v-else class="text-6xl font-semibold leading-relaxed">
+              {{ `${t("index.serviceTitle.one")}` }} <br />
+              <span class="text-green-500 dark:text-primary-500">
+                {{ `${t("index.serviceTitle.two")}` }}
+              </span>
+            </h4>
+            <p class="my-8 text-xl font-semibold">
+              {{ `${t("index.getTitle")}` }}
+              <span class="text-green-500 dark:text-primary-500"
+                >{{ `${t("general.totally")} ` }}
+                <span v-text="t('general.free')" class="uppercase"></span></span
+              >.
+            </p>
+            <PrimeButton
+              severity="success"
+              :pt="{
+                root: '!px-20 !py-4 !mx-auto',
+              }"
+            >
+              <NuxtLink
+                :to="`${localePath('index')}#`"
+                class="font-semibold"
+                v-text="t('index.startMonitoring')"
+              ></NuxtLink>
+            </PrimeButton>
+          </div>
+
+          <div class="mt-10 lg:mt-0 w-fit mx-auto">
+            <i
+              class="w-[26rem] md:w-[30rem]"
+              :class="{
+                'content-darkIndex': useApp.isDarkTheme,
+                'content-lightIndex': !useApp.isDarkTheme,
+              }"
+            ></i>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-gray-800 dark:bg-gray-100 mt-56 text-gray-100 dark:text-gray-950 transition-colors"
+      >
+        <div class="container mx-auto px-10 pb-20">
+          <h4 class="w-fit mx-auto text-4xl font-semibold pt-16">
+            {{ t("index.careAbout") }} <br />
+            <span v-if="locale == 'fa'" class="leading-normal">
+              {{ t("phrases.etc.inOnePlace") }}
+              <span
+                class="text-green-500 dark:text-primary-500"
+                v-text="t('general.monitored')"
+              ></span
+              >.
+            </span>
+            <span v-else>
+              <span
+                class="text-green-500 dark:text-primary-500"
+                v-text="t('general.monitored')"
+              ></span>
+              {{ t("phrases.etc.inOnePlace") }}.
+            </span>
+          </h4>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mt-14"
+          >
+            <PrimeCard
+              v-for="(i, key) in headerMegaMenuItems[0].items"
+              :key="key"
+              class="shadow-md bg-white p-2"
+            >
+              <template #title>
+                <svg
+                  width="5rem"
+                  height="5rem"
+                  class="text-green-500 dark:text-primary-500"
+                >
+                  <use :href="i.icon" width="5rem" height="5rem"></use>
+                </svg>
+                <h5 v-text="t(i.label)" class="font-bold text-2xl mt-2"></h5>
+              </template>
+              <template #content>
+                <p v-text="i.content" class="text-lg"></p>
+                <PrimeButton
+                  severity="success"
+                  class="mt-2"
+                  :label="t(i.label)"
+                >
+                </PrimeButton>
+              </template>
+            </PrimeCard>
+          </div>
+        </div>
+      </div>
+    </NuxtLayout>
   </div>
 </template>
 
-<style lang="postcss" scoped>
-div {
-  @apply text-indigo-400;
-}
-</style>
+<style lang="postcss" scoped></style>

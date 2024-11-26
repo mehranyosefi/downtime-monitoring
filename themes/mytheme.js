@@ -1,9 +1,33 @@
-import { definePreset } from "@primevue/themes";
+import { css, definePreset } from "@primevue/themes";
 import Aura from "@primevue/themes/aura";
-// bg-gray-100/90 dark:bg-gray-900/90
 const MyPreset = definePreset(Aura, {
-  primary: {},
+  primary: {
+    50: "#EBF8FF",
+    100: "#BEE3F8",
+    200: "#90CDF4",
+    300: "#63B3ED",
+    400: "#473FE0",
+    500: "#2A22C7",
+    600: "#1F18A3",
+    700: "#191485",
+    800: "#19147A",
+    900: "#E6E6FA",
+  },
   semantic: {
+    white: "#ffffff",
+    black: "#111111",
+    primary: {
+      50: "#EBF8FF",
+      100: "#BEE3F8",
+      200: "#90CDF4",
+      300: "#63B3ED",
+      400: "#473FE0",
+      500: "#2A22C7",
+      600: "#1F18A3",
+      700: "#191485",
+      800: "#19147A",
+      900: "#E6E6FA",
+    },
     whiteAlpha: {
       50: "rgba(255, 255, 255, 0.04)",
       100: "rgba(255, 255, 255, 0.06)",
@@ -16,7 +40,7 @@ const MyPreset = definePreset(Aura, {
       800: "rgba(255, 255, 255, 0.80)",
       900: "rgba(255, 255, 255, 0.92)",
     },
-    balckAlpha: {
+    blackAlpha: {
       50: "rgba(0, 0, 0, 0.04)",
       100: "rgba(0, 0, 0, 0.06)",
       200: "rgba(0, 0, 0, 0.08)",
@@ -41,6 +65,20 @@ const MyPreset = definePreset(Aura, {
       900: "#E6E6FA",
     },
     gray: {
+      10: "whitesmoke",
+      50: "#E6EAEB",
+      100: "#EDF2F7",
+      200: "#E2E8F0",
+      300: "#CBD5E0",
+      400: "#A0AEC0",
+      500: "#72839E",
+      600: "#4A5568",
+      700: "#2D3340",
+      800: "#1C2434",
+      900: "#131A25",
+    },
+    zinc: {
+      10: "whitesmoke",
       50: "#E6EAEB",
       100: "#EDF2F7",
       200: "#E2E8F0",
@@ -76,18 +114,6 @@ const MyPreset = definePreset(Aura, {
       800: "#1C6636",
       900: "#113D20",
     },
-    primary: {
-      50: "#EBF8FF",
-      100: "#BEE3F8",
-      200: "#90CDF4",
-      300: "#63B3ED",
-      400: "#473FE0",
-      500: "#2A22C7",
-      600: "#1F18A3",
-      700: "#191485",
-      800: "#19147A",
-      900: "#E6E6FA",
-    },
     yellow: {
       50: "#FFFFF0",
       100: "#FEFCBF",
@@ -101,88 +127,198 @@ const MyPreset = definePreset(Aura, {
       900: "#5F370E",
     },
     myButton: {
-      paddingX: ".5rem",
+      paddingX: "1rem",
       paddingY: ".5rem",
     },
-    colorScheme: {
-      light: {
-        //
-      },
-      // dark: {
-      //     whiteAlpha:{
-      //         100: '{ blackAlpha.100 }',
-      //         200: '{ blackAlpha.200 }',
-      //         300: '{ blackAlpha.300 }',
-      //         400: '{ blackAlpha.400 }',
-      //         500: '{ blackAlpha.500 }',
-      //         600: '{ blackAlpha.600 }',
-      //         700: '{ blackAlpha.700 }',
-      //         800: '{ blackAlpha.800 }',
-      //         900: 'black',
-      //     },
-      //     blackAlpha:{
-      //         100: '{ whiteAlpha.100 }',
-      //         200: '{ whiteAlpha.200 }',
-      //         300: '{ whiteAlpha.300 }',
-      //         400: '{ whiteAlpha.400 }',
-      //         500: '{ whiteAlpha.500 }',
-      //         600: '{ whiteAlpha.600 }',
-      //         700: '{ whiteAlpha.700 }',
-      //         800: '{ whiteAlpha.800 }',
-      //         900: '{ whiteAlpha.900 }',
-      //     },
-      // }
-    },
+    borderRadius: "40px",
+    borderColor: "{gray.200}",
+    hoverBorderColor: "{gray.300}",
+    darkBorderColor: "{gray.700}",
+    darkHoverBorderColor: "{gray.600}",
+    //   focusRing: {
+    //     width: '2px',
+    //     style: 'dashed',
+    //     color: '{primary.color}',
+    //     offset: '1px'
+    // },
+    //   formField: {
+    //     hoverBorderColor: '{primary.color}'
+    // },
   },
   components: {
     button: {
       paddingX: "{myButton.paddingX}",
       paddingY: "{myButton.paddingY}",
-      primary: {
-        color: "{blue.500}",
-        background: "{gray.600}",
-      },
+      borderRadius: "{borderRadius}",
+      transitionDuration: "150ms",
       colorScheme: {
         light: {
-          // root: {
-
-          // },
-          primary: {
-            background: "{ gray.200 }",
-            hoverBackground: "{ green.500 }",
-            hoverColor: " { whiteAlpha.900 }",
-            borderColor: " { gray.300 }",
-            hoverBorderColor: " { green.600 }",
+          secondary: {
+            background: "{white}",
+            activeBackground: "{whiteAlpha.600}",
+            hoverBackground: "{white}",
+            borderColor: "{borderColor}",
+            hoverBorderColor: "{hoverBorderColor}",
+          },
+          success: {
+            color: "{white}",
           },
         },
         dark: {
-          primary: {
-            background: "white",
+          secondary: {
+            background: "{gray.800}",
+            activeBackground: "{gray.700}",
+            hoverBackground: "{gray.800}",
+            borderColor: "{darkBorderColor}",
+            hoverBorderColor: "{darkHoverBorderColor}",
+          },
+          outlinedSuccess: {
+            borderColor: "{primary.500}",
+            color: "{white}",
+          },
+          success: {
+            background: "{primary.500}",
+            activeBackground: "{primary.700}",
+            borderColor: "{primary.600}",
+            activeBorderColor: "{primary.700}",
+            hoverBackground: "{primary.600}",
+            hoverBorderColor: "{primary.700}",
+            color: "{white}",
+            activeColor: "{white}",
+            hoverColor: "{white}",
           },
         },
       },
     },
-    // toggleswitch: {
-    //     extend: {
-    //         root: {
-    //             myDisabledOpacity: '0.7'
-    //         },
-    //         handle: {
-    //             myCheckedDisabledBackground: '{primary.color}'
-    //         }
-    //     }
-    // },
-    css: ({ dt }) => `
-            .p-toggleswitch.p-disabled .p-toggleswitch-slider {
-                opacity: ${dt("toggleswitch.my.disabled.opacity")};
-            }
+    menu: {
+      borderRadius: "{borderRadius}",
+      listPadding: "0",
+      shadow: "none",
+      background: "transparent",
+      borderColor: "transparent",
+      itemFocusBackground: "transparent",
+      colorScheme: {
+        light: {
+          // extend: {
+          //   root: '!bg-gray-200 !border-none'
+          // }
+          // background: "transparent",
+          // borderColor: "transparent",
+        },
+        dark: {
+          background: "transparent",
+          borderColor: "transparent",
+        },
+      },
+    },
+    toggleswitch: {
+      colorScheme: {
+        light: {
+          background: "{white}",
+          handleBackground: "{gray.200}",
+          hoverBackground: "{white}",
+          borderColor: "{borderColor}",
+          hoverBorderColor: "{hoverBorderColor}",
+        },
+        dark: {
+          checkedBackground: "{gray.800}",
+          handleCheckedBackground: "{gray.400}",
+          handleCheckedHoverBackground: "{gray.200}",
+          checkedHoverBackground: "{gray.800}",
+          checkedBorderColor: "{darkBorderColor}",
+          checkedHoverBorderColor: "{darkHoverBorderColor}",
+          disabledBackground: "{gray.900}",
+        },
+      },
+      css: ({ dt }) => `
+      `,
+    },
+    card: {
+      bodyGap: "10px",
+      colorScheme: {
+        light: {
+          background: "{white}",
+        },
 
-            .p-toggleswitch.p-disabled .p-toggleswitch-handle {
-                background: ${dt(
-                  "toggleswitch.my.checked.disabled.background"
-                )};
-            }
-            `,
+        dark: {
+          background: "{gray.800}",
+        },
+      },
+    },
+    inputtext: {
+      colorScheme: {
+        light: {
+          background: "{ whiteAlpha.800 }",
+          filledBackground: "red",
+          filledHoverBackground: "primary",
+          borderColor: "{ gray.300 }",
+          hoverBorderColor: "{ gray.500 }",
+          focusBorderColor: "{ gray.400 }",
+          color: "{black}",
+          borderRadius: "{borderRadius}",
+        },
+        dark: {
+          background: "{ gray.800 }",
+          filledBackground: "",
+          filledHoverBackground: "",
+          borderColor: "{ gray.700 }",
+          hoverBorderColor: "{ gray.500 }",
+          focusBorderColor: "{ gray.600 }",
+          color: "{white}",
+          borderRadius: "{borderRadius}",
+        },
+      },
+    },
+    // megamenu: {
+    //   colorScheme: {
+    //     transition: {
+    //       duration: 0.7,
+    //     },
+    //     light: {
+    //       background: "transparent",
+
+    //       borderColor: "transparent",
+    //       item: {
+    //         color: "{black}",
+    //         activeColor: "{green.500}",
+    //         activeBackground: "transparent",
+    //         focusBackground: "transparent",
+    //         focusColor: "{green.500}",
+    //       },
+    //       overlay: {
+    //         background: "{white}",
+    //       },
+    //     },
+    //     dark: {
+    //       background: "transparent",
+
+    //       borderColor: "transparent",
+    //       item: {
+    //         color: "{white}",
+    //         activeColor: "{primary.500}",
+    //         activeBackground: "transparent",
+    //         focusBackground: "transparent",
+    //         focusColor: "{primary.500}",
+    //       },
+    //       overlay: {
+    //         background: "{gray.800}",
+    //       },
+    //     },
+    //   },
+    // },
+    menubar: {
+      background: "transparent",
+      hoverBackground: "transparent",
+      borderColor: "none",
+      item: {
+        focusBackground: "none",
+        activeBackground: "none",
+      },
+      colorScheme: {
+        light: {},
+        dark: {},
+      },
+    },
   },
 });
 
@@ -191,6 +327,6 @@ export default {
   options: {
     prefix: "p",
     darkModeSelector: ".dark",
-    cssLayer: false,
+    // cssLayer: false,
   },
 };

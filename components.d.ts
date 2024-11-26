@@ -7,20 +7,20 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    MyButton: typeof import('primevue/button')['default']
-    PrimeAutoComplete: typeof import('primevue/autocomplete')['default']
     PrimeButton: typeof import('primevue/button')['default']
-    PrimeDatePicker: typeof import('primevue/datepicker')['default']
+    PrimeCard: typeof import('primevue/card')['default']
+    PrimeDivider: typeof import('primevue/divider')['default']
     PrimeForm: typeof import('@primevue/forms/form')['default']
     PrimeImage: typeof import('primevue/image')['default']
     PrimeInputText: typeof import('primevue/inputtext')['default']
-    PrimeMegaMenu: typeof import('primevue/megamenu')['default']
     PrimeMenu: typeof import('primevue/menu')['default']
+    PrimeMenubar: typeof import('primevue/menubar')['default']
     PrimeMessage: typeof import('primevue/message')['default']
-    PrimePanel: typeof import('primevue/panel')['default']
-    PrimeSelect: typeof import('primevue/select')['default']
     PrimeToggleSwitch: typeof import('primevue/toggleswitch')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+  }
+  export interface ComponentCustomProperties {
+    Ripple: typeof import('primevue/ripple')['default']
   }
 }
