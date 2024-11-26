@@ -55,7 +55,7 @@ const triggerItemSelect = (
       </li>
     </ul>
     <Transition name="drop-drawer">
-      <div class="megamenu--submenu">
+      <div v-if="activeSubMenu" class="megamenu--submenu">
         <ul class="columns-3">
           <li v-for="(item, key) in selectedItem.items" :key="key">
             <NuxtLink
