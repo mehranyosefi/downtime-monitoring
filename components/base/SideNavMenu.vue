@@ -9,6 +9,7 @@ const props = defineProps<{
 
 const { t, locale } = useI18n();
 const localepath = useLocalePath();
+const route = useRoute();
 const sidenav = useTemplateRef("sidenav");
 const sideNavActive = ref<boolean>(false);
 
@@ -22,6 +23,9 @@ function toggle_sideNav() {
     sidenav.value!.style.width = "100%";
     document.documentElement.classList.add("unscrollable");
   }
+}
+if (import.meta.client) {
+  document.documentElement.classList.remove("unscrollable");
 }
 
 defineExpose({
