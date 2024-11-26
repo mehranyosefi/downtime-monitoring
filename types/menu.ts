@@ -55,9 +55,9 @@ export const headerMegaMenuItems: MegaMenuItemInterface[] = [
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quo reprehenderit accusantium voluptatem",
     },
   ]),
-  new MegaMenuItem("integrations", "integrations"),
-  new MegaMenuItem("statusPage", "status-page"),
-  new MegaMenuItem("pricing", "pricing"),
+  new MegaMenuItem("integrations", "#integrations"),
+  new MegaMenuItem("statusPage", "#status-page"),
+  new MegaMenuItem("pricing", "#pricing"),
 ];
 export const headerMegaMenuFooterItems: MegaMenuItemInterface[] = [
   new MegaMenuItem("teams", undefined, [
@@ -66,23 +66,23 @@ export const headerMegaMenuFooterItems: MegaMenuItemInterface[] = [
       // command: () => {
       //   router.push("/introduction");
       // },
-      path: "DevOps",
+      path: "#devops",
     },
     {
       label: "teams.developers",
-      path: "developer",
+      path: "#developer",
     },
     {
       label: "teams.marketers",
-      path: "marketers",
+      path: "#marketers",
     },
     {
       label: "teams.support",
-      path: "support",
+      path: "#support",
     },
     {
       label: "teams.businessOwners",
-      path: "business-owners",
+      path: "#business-owners",
     },
   ]),
 ];

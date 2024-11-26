@@ -143,6 +143,7 @@ function set_shadow() {
     </div>
     <ClientOnly>
       <PrimeButton
+        v-if="signSection"
         class="inline-block lg:!hidden"
         :pt="{
           root: '!bg-transparent !hover:bg-transparent !border-none !rounded-none !h-[2rem] !w-[3rem] !p-0 mx-10',
