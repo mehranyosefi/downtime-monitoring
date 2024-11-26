@@ -55,11 +55,11 @@ const triggerItemSelect = (
       </li>
     </ul>
     <Transition name="drop-drawer">
-      <div v-if="activeSubMenu" class="megamenu--submenu">
+      <div class="megamenu--submenu">
         <ul class="columns-3">
           <li v-for="(item, key) in selectedItem.items" :key="key">
             <NuxtLink
-              :to="localepath(item.path!)"
+              :to="item.path!"
               class="flex p-2 hover:bg-green-100/70 dark:hover:bg-primary-200/50"
             >
               <div>
@@ -101,7 +101,7 @@ const triggerItemSelect = (
           <template #item="{ item, props, hasSubmenu }">
             <nuxt-link
               v-if="item.path"
-              :to="localepath(item.path)"
+              :to="item.path"
               class="flex items-center hover:bg-white dark:bg-gray-800 hover:text-green-500 dark:hover:text-primary-400"
             >
               <span v-if="item.icon" :class="item.icon" />
