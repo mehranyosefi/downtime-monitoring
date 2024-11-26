@@ -43,7 +43,7 @@
 :root {
   --var-body-bg: var(--p-gray-100);
   --var-component-bg: var(--p-white-alpha-900);
-  --var-text-color: var(--p-gray-900) !important;
+  --var-text-color: var(--p-gray-900);
   /* --card-bg: var(--p-gray-0);
   --card-border: var(--p-gray-200); */
 }
@@ -52,7 +52,7 @@
 :root[class^="dark "] * {
   --var-body-bg: var(--p-gray-900);
   --var-component-bg: var(--p-gray-900);
-  --var-text-color: var(--p-gray-100) !important;
+  --var-text-color: var(--p-gray-100);
 }
 
 body {

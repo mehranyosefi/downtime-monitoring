@@ -191,7 +191,7 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
           <div>
             <nuxt-link
               :to="localePath('login')"
-              class="block w-fit mx-auto mt-5 underline text-gray-950 dark:text-gray-100 text-sm"
+              class="block w-fit mx-auto mt-5 underline text-gray-900 dark:text-gray-100 text-sm"
             >
               {{ t("signup.footer") }}{{ locale == "fa" ? "؟" : "?" }}
             </nuxt-link>

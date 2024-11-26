@@ -47,8 +47,8 @@ function set_shadow() {
 <template>
   <header
     ref="header"
-    class="sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 mt-0 lg:mt-10 z-40 flex items-center max-lg:shadow-xl"
-    :class="{ 'min-h-32': signSection }"
+    class="sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 mt-0 lg:mt-10 z-40 flex items-center"
+    :class="{ 'min-h-32 max-lg:shadow-xl': signSection }"
   >
     <div class="container mx-auto px-10 flex items-center justify-between">
       <div
@@ -129,10 +129,10 @@ function set_shadow() {
           <NuxtLink
             :to="localePath('login')"
             v-text="t('general.log_in')"
-            class="hidden xl:block font-semibold text-gray-950 hover:!text-green-500 dark:!text-gray-100 mx-6 dark:hover:!text-primary-500"
+            class="hidden xl:block font-semibold text-gray-900 hover:!text-green-500 dark:!text-gray-100 mx-6 dark:hover:!text-primary-500"
           ></NuxtLink>
         </PrimeButton>
-        <PrimeButton severity="success">
+        <PrimeButton severity="success" :pt="{ root: '!px-8' }">
           <NuxtLink
             :to="localePath('register')"
             v-text="t('general.sign_out')"
@@ -153,7 +153,7 @@ function set_shadow() {
         <svg
           width="3rem"
           height="3rem"
-          class="text-gray-950 dark:text-gray-100 hover:text-green-500 dark:hover:text-primary-500 cursor-pointer transition-all"
+          class="text-gray-900 dark:text-gray-100 hover:text-green-500 dark:hover:text-primary-500 cursor-pointer transition-all"
         >
           <Transition name="fade">
             <use

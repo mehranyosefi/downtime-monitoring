@@ -3,7 +3,9 @@ import en from "@/locales/en.json";
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  locale: useRuntimeConfig().public.APP_LOCALE,
+  // locale: useRuntimeConfig().public.NUXT_APP_LOCALE,
+  locale: "fa",
+  fallbackLocale: "fa",
   messages: {
     fa: fa,
     en: en,

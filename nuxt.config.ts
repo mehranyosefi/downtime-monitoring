@@ -21,7 +21,6 @@ export default defineNuxtConfig({
     locales: [
       {
         code: "en",
-
         iso: "en-US",
         countryName: "England",
         logo: "/img/logo_country/england.svg",
@@ -33,19 +32,19 @@ export default defineNuxtConfig({
         logo: "/img/logo_country/iran.svg",
       },
     ],
-    defaultLocale: process.env.APP_LOCALE,
+    // baseUrl: 'https://my-nuxt-app.com'
+    // rootRedirect: {
+    //   statusCode: 301,
+    //   path: "/fa",
+    // },
   },
   runtimeConfig: {
     public: {
-      APP_LOCALE: process.env.APP_LOCALE,
-      // i18n: {
-      //   baseUrl: 'https://example.com',
-      //   experimental: {
-      //     jsTsFormatResource: true,
-      //   },
-      //   locales: {},
-      //   // other options ...
-      // }
+      NUXT_APP_LOCALE: process.env.NUXT_APP_LOCALE,
+      i18n: {
+        defaultLocale: process.env.NUXT_APP_LOCALE || "fa",
+        defaultLocaleRouteNameSuffix: process.env.NUXT_APP_LOCALE || "fa",
+      },
     },
   },
   primevue: {

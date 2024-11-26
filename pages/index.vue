@@ -68,7 +68,7 @@ const useApp = useAppStore();
         </div>
       </div>
       <div
-        class="bg-gray-800 dark:bg-gray-100 mt-56 text-gray-100 dark:text-gray-950 transition-colors"
+        class="bg-gray-800 dark:bg-gray-100 mt-56 text-gray-100 dark:text-gray-900 transition-colors"
       >
         <div class="container mx-auto px-10 pb-20">
           <h4 class="w-fit mx-auto text-4xl font-semibold pt-16">

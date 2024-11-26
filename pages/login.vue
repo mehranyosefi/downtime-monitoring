@@ -145,7 +145,7 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
             </span>
             <nuxt-link
               :to="localePath('register')"
-              class="block w-fit mx-auto mt-2 underline text-sm text-gray-950 dark:text-gray-100"
+              class="block w-fit mx-auto mt-2 underline text-sm text-gray-900 dark:text-gray-100"
             >
               {{ $t("signIn.footer.line2") }}
             </nuxt-link>

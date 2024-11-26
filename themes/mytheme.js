@@ -161,7 +161,7 @@ const MyPreset = definePreset(Aura, {
             hoverBorderColor: "{hoverBorderColor}",
           },
           success: {
-            color: "{white}",
+            color: "{gray.100}",
           },
         },
         dark: {
@@ -174,7 +174,7 @@ const MyPreset = definePreset(Aura, {
           },
           outlinedSuccess: {
             borderColor: "{primary.500}",
-            color: "{white}",
+            color: "{gray.100}",
           },
           success: {
             background: "{primary.500}",
@@ -183,9 +183,9 @@ const MyPreset = definePreset(Aura, {
             activeBorderColor: "{primary.700}",
             hoverBackground: "{primary.600}",
             hoverBorderColor: "{primary.700}",
-            color: "{white}",
-            activeColor: "{white}",
-            hoverColor: "{white}",
+            color: "{gray.100}",
+            activeColor: "{gray.100}",
+            hoverColor: "{gray.100}",
           },
         },
       },
@@ -199,6 +199,13 @@ const MyPreset = definePreset(Aura, {
       itemFocusBackground: "transparent",
       colorScheme: {
         light: {
+          color: "{gray.900}",
+          item: {
+            color: "{gray.900}",
+          },
+          submenuLabel: {
+            color: "{gray.900}",
+          },
           // extend: {
           //   root: '!bg-gray-200 !border-none'
           // }
@@ -206,6 +213,13 @@ const MyPreset = definePreset(Aura, {
           // borderColor: "transparent",
         },
         dark: {
+          color: "{gray.100}",
+          item: {
+            color: "gray.100",
+          },
+          submenuLabel: {
+            color: "gray.100",
+          },
           background: "transparent",
           borderColor: "transparent",
         },
@@ -216,7 +230,7 @@ const MyPreset = definePreset(Aura, {
         light: {
           background: "{white}",
           handleBackground: "{gray.200}",
-          hoverBackground: "{white}",
+          hoverBackground: "{gray.100}",
           borderColor: "{borderColor}",
           hoverBorderColor: "{hoverBorderColor}",
         },
@@ -254,7 +268,7 @@ const MyPreset = definePreset(Aura, {
           borderColor: "{ gray.300 }",
           hoverBorderColor: "{ gray.500 }",
           focusBorderColor: "{ gray.400 }",
-          color: "{black}",
+          color: "{gray.900}",
           borderRadius: "{borderRadius}",
         },
         dark: {
@@ -264,48 +278,11 @@ const MyPreset = definePreset(Aura, {
           borderColor: "{ gray.700 }",
           hoverBorderColor: "{ gray.500 }",
           focusBorderColor: "{ gray.600 }",
-          color: "{white}",
+          color: "{gray.100}",
           borderRadius: "{borderRadius}",
         },
       },
     },
-    // megamenu: {
-    //   colorScheme: {
-    //     transition: {
-    //       duration: 0.7,
-    //     },
-    //     light: {
-    //       background: "transparent",
-
-    //       borderColor: "transparent",
-    //       item: {
-    //         color: "{black}",
-    //         activeColor: "{green.500}",
-    //         activeBackground: "transparent",
-    //         focusBackground: "transparent",
-    //         focusColor: "{green.500}",
-    //       },
-    //       overlay: {
-    //         background: "{white}",
-    //       },
-    //     },
-    //     dark: {
-    //       background: "transparent",
-
-    //       borderColor: "transparent",
-    //       item: {
-    //         color: "{white}",
-    //         activeColor: "{primary.500}",
-    //         activeBackground: "transparent",
-    //         focusBackground: "transparent",
-    //         focusColor: "{primary.500}",
-    //       },
-    //       overlay: {
-    //         background: "{gray.800}",
-    //       },
-    //     },
-    //   },
-    // },
     menubar: {
       background: "transparent",
       hoverBackground: "transparent",
