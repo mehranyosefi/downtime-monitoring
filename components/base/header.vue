@@ -132,11 +132,11 @@ function set_shadow() {
             class="hidden xl:block font-semibold text-gray-900 hover:!text-green-500 dark:!text-gray-100 mx-6 dark:hover:!text-primary-500"
           ></NuxtLink>
         </PrimeButton>
-        <PrimeButton severity="success" :pt="{ root: '!px-8' }">
+        <PrimeButton severity="success" :pt="{ root: '!p-0' }">
           <NuxtLink
             :to="localePath('register')"
             v-text="t('general.sign_out')"
-            class="font-semibold"
+            class="font-semibold px-8 py-2"
           ></NuxtLink>
         </PrimeButton>
       </section>
