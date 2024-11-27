@@ -41,7 +41,7 @@ export default defineNuxtConfig({
         logo: "/img/logo_country/england.svg",
       },
     ],
-    defaultLocale: process.env.NUXT_APP_LOCALE || "fa",
+    defaultLocale: process.env.NUXT_APP_LOCALE || "en",
     // defaultLocale: "en",
     // baseUrl: 'https://my-nuxt-app.com'
     // rootRedirect: {
