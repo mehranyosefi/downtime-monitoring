@@ -40,11 +40,11 @@ defineExpose({
     class="sidenav"
     :class="{ 'left-0': locale == 'en', 'right-0': locale == 'fa' }"
   >
-    <div class="px-4 pb-28">
+    <div class="px-24 pt-16 pb-28">
       <PrimeMenu
         :model="[items[0]]"
         :pt="{
-          root: '!border-none !rounded-none !p-10',
+          root: '!border-none !rounded-none',
           submenuLabel: '!p-0 mb-2 font-bold text-2xl',
           item: '!px-2 text-xl py-1 my-2',
           itemContent: 'hover:!text-green-500 dark:hover:!text-primary-500',
@@ -67,11 +67,11 @@ defineExpose({
           </NuxtLink>
         </template>
       </PrimeMenu>
-      <PrimeDivider />
+      <PrimeDivider class="divider" />
       <PrimeMenu
         :model="[subItems[0]]"
         :pt="{
-          root: '!text-gray-100 !border-none !rounded-none !p-10',
+          root: '!text-gray-100 !border-none !rounded-none',
           submenuLabel: '!p-0 mb-2 font-bold text-2xl',
           item: '!px-2 text-xl py-1 my-2',
           itemContent: 'hover:!text-green-500 dark:hover:!text-primary-500',
@@ -87,11 +87,11 @@ defineExpose({
           </NuxtLink>
         </template>
       </PrimeMenu>
-      <PrimeDivider />
+      <PrimeDivider class="divider" />
       <PrimeMenu
         :model="items.slice(1)"
         :pt="{
-          root: '!text-gray-100 !border-none !rounded-none !p-5',
+          root: '!text-gray-100 !border-none !rounded-none',
           item: 'text-2xl my-3 font-bold',
           itemContent: 'hover:!text-green-500 dark:hover:!text-primary-500',
           end: 'text-gray-900 dark:!text-gray-100 hover:!text-green-500 dark:hover:!text-primary-500 !transition-colors !duration-75',
@@ -99,16 +99,16 @@ defineExpose({
       >
         <template #item="{ item, props }">
           <NuxtLink :to="item.path">
-            <span v-text="t(item.label as string)" class="px-4"></span>
+            <span v-text="t(item.label as string)"></span>
           </NuxtLink>
         </template>
         <template #end>
           <NuxtLink :to="localepath('login')" class="text-2xl my-3 font-bold">
-            <span v-text="t('general.login')" class="px-4"></span>
+            <span v-text="t('general.login')"></span>
           </NuxtLink>
         </template>
       </PrimeMenu>
-      <PrimeDivider />
+      <PrimeDivider class="divider" />
       <PrimeButton
         severity="success"
         :pt="{
@@ -128,5 +128,19 @@ defineExpose({
 <style lang="postcss" scoped>
 .sidenav {
   @apply h-full w-0 fixed z-[1] top-[8rem] overflow-x-hidden overflow-y-auto transition-all bg-gray-200 dark:bg-gray-800 shadow-md;
+}
+
+.divider {
+  @apply my-10;
+  &::before {
+    border-block-start-color: var(--p-gray-400);
+  }
+}
+.dark {
+  .divider {
+    &::before {
+      border-block-start-color: var(--p-gray-500);
+    }
+  }
 }
 </style>
