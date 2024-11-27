@@ -29,30 +29,30 @@ export default defineNuxtConfig({
     vueI18n: "./i18n.config.ts", // if you are using custom path, default
     locales: [
       {
-        code: "en",
-        iso: "en-US",
-        countryName: "England",
-        logo: "/img/logo_country/england.svg",
-      },
-      {
         code: "fa",
         iso: "fa-IR",
         countryName: "Iran",
         logo: "/img/logo_country/iran.svg",
       },
+      {
+        code: "en",
+        iso: "en-US",
+        countryName: "England",
+        logo: "/img/logo_country/england.svg",
+      },
     ],
     // baseUrl: 'https://my-nuxt-app.com'
-    // rootRedirect: {
-    //   statusCode: 301,
-    //   path: "/fa",
-    // },
+    rootRedirect: {
+      statusCode: 301,
+      path: "/fa",
+    },
+    // detectBrowserLanguage: false,
   },
   runtimeConfig: {
     public: {
       NUXT_APP_LOCALE: process.env.NUXT_APP_LOCALE,
       i18n: {
         defaultLocale: process.env.NUXT_APP_LOCALE || "fa",
-        defaultLocaleRouteNameSuffix: process.env.NUXT_APP_LOCALE || "fa",
       },
     },
   },
