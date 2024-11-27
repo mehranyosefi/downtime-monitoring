@@ -41,19 +41,21 @@ export default defineNuxtConfig({
         logo: "/img/logo_country/england.svg",
       },
     ],
+    defaultLocale: process.env.NUXT_APP_LOCALE || "fa",
+    // defaultLocale: "en",
     // baseUrl: 'https://my-nuxt-app.com'
-    rootRedirect: {
-      statusCode: 301,
-      path: "/fa",
-    },
+    // rootRedirect: {
+    //   statusCode: 301,
+    //   path: "/fa",
+    // },
     // detectBrowserLanguage: false,
   },
   runtimeConfig: {
     public: {
       NUXT_APP_LOCALE: process.env.NUXT_APP_LOCALE,
-      i18n: {
-        defaultLocale: process.env.NUXT_APP_LOCALE || "fa",
-      },
+      // i18n: {
+      //   defaultLocale: process.env.NUXT_APP_LOCALE || "en",
+      // },
     },
   },
   primevue: {
