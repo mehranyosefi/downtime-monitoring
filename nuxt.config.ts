@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/i18n",
     "@primevue/nuxt-module",
+    "@nuxt/test-utils/module",
   ],
   css: ["@/assets/styles/main.css", "@/assets/styles/main.scss"],
   i18n: {

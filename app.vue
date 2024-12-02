@@ -8,10 +8,12 @@ const loadingColor = computed(() => {
 });
 </script>
 <template>
-  <NuxtLoadingIndicator
-    :color="loadingColor"
-    class="!opacity-100"
-    :height="2.5"
-  />
-  <NuxtPage />
+  <div>
+    <NuxtLoadingIndicator
+      :color="loadingColor"
+      class="!opacity-100"
+      :height="2.5"
+    />
+    <NuxtPage />
+  </div>
 </template>

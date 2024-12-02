@@ -18,8 +18,6 @@ const props = withDefaults(
 );
 
 const useApp = useAppStore();
-const user = userStore();
-const route = useRoute();
 const menu_language = ref();
 const { locale, locales, setLocale, t } = useI18n();
 const localePath = useLocalePath();
@@ -47,7 +45,7 @@ function set_shadow() {
 <template>
   <header
     ref="header"
-    class="sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 mt-0 lg:mt-10 z-40 flex items-center"
+    class="header"
     :class="{ 'min-h-32 max-lg:shadow-xl': signSection }"
   >
     <div class="container mx-auto px-10 flex items-center justify-between">
@@ -176,6 +174,9 @@ function set_shadow() {
 </template>
 
 <style lang="postcss">
+.header {
+  @apply sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 mt-0 lg:mt-10 z-40 flex items-center;
+}
 /* #overlay_language_menu {
   min-width: 0;
 } */

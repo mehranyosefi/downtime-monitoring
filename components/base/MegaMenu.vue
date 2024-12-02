@@ -16,10 +16,10 @@ const selectedItem = reactive<MegaMenuItemInterface>({
 });
 
 ///////////////////
-const triggerItemSelect = (
+function triggerItemSelect(
   item: MegaMenuItemInterface,
   hover: string | null = null
-) => {
+) {
   if (item.items) {
     if (activeSubMenu.value && hover == null) activeSubMenu.value = false;
     else {
@@ -28,7 +28,7 @@ const triggerItemSelect = (
       activeSubMenu.value = true;
     }
   } else activeSubMenu.value = false;
-};
+}
 </script>
 
 <template>
@@ -39,7 +39,7 @@ const triggerItemSelect = (
   >
     <ul class="p-0 m-0 flex">
       <li v-for="(item, index) in items" :key="index">
-        <slot :name="item">
+        <slot :name="item.label">
           <PrimeButton
             class="megamenu--button"
             :as="item.path ? 'router-link' : 'button'"
