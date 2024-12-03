@@ -32,8 +32,10 @@ const toggle = (event: Event) => {
 //   document.onscroll = (event) => set_shadow();
 // }
 onMounted(() => {
-  const elm = document.querySelector(".root-element-page") as HTMLElement;
-  elm.addEventListener("scroll", set_shadow);
+  if (props.signSection) {
+    const elm = document.querySelector(".root-element-page") as HTMLElement;
+    elm.addEventListener("scroll", set_shadow);
+  }
 });
 
 function set_shadow() {
