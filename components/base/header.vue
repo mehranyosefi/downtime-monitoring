@@ -28,9 +28,13 @@ const toggle = (event: Event) => {
   menu_language.value.toggle(event);
 };
 
-if (import.meta.client) {
-  document.onscroll = (event) => set_shadow();
-}
+// if (import.meta.client) {
+//   document.onscroll = (event) => set_shadow();
+// }
+onMounted(() => {
+  const elm = document.querySelector(".root-element-page") as HTMLElement;
+  elm.addEventListener("scroll", set_shadow);
+});
 
 function set_shadow() {
   const top = header.value!.getBoundingClientRect().top;

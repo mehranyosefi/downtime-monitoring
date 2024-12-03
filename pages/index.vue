@@ -14,12 +14,23 @@ useHead({
   ],
 });
 const useApp = useAppStore();
+const itemsActiveOnScroll = ref<boolean>(false);
+
+onMounted(() => {
+  const elm = document.querySelector(".root-element-page") as HTMLElement;
+  useInfiniteScrolling(elm, () => {
+    itemsActiveOnScroll.value = true;
+  });
+});
 </script>
 
 <template>
   <div>
     <NuxtLayout name="default">
-      <div class="container mx-auto px-10">
+      <div
+        class="container h-screen overflow-y-auto mx-auto px-10"
+        id="container"
+      >
         <div class="grid grid-row-2 lg:grid-cols-2 pt-20">
           <div class="w-fit mx-auto">
             <h4 v-if="locale == 'en'" class="text-6xl font-semibold">
@@ -91,6 +102,7 @@ const useApp = useAppStore();
           </h4>
           <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mt-14"
+            v-if="itemsActiveOnScroll"
           >
             <PrimeCard
               v-for="(i, key) in headerMegaMenuItems[0].items"

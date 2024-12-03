@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@primevue/nuxt-module",
     "@nuxt/test-utils/module",
+    "nuxt-lazy-hydrate",
   ],
   css: ["@/assets/styles/main.css", "@/assets/styles/main.scss"],
   i18n: {

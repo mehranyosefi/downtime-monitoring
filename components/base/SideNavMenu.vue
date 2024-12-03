@@ -78,7 +78,7 @@ defineExpose({
           itemIcon: '',
         }"
       >
-        <template #submenulabel="{ item }">
+        <template #submenulabel>
           <h4 v-text="t('general.teams')"></h4>
         </template>
         <template #item="{ item, props }">

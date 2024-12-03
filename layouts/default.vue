@@ -19,7 +19,7 @@ const sideNav = useTemplateRef("sideNav");
 //functions
 </script>
 <template>
-  <div>
+  <div class="root-element-page h-screen overflow-y-auto">
     <base-header
       sign-section
       menu-section
@@ -29,11 +29,13 @@ const sideNav = useTemplateRef("sideNav");
     />
     <main>
       <slot />
-      <BaseSideNavMenu
-        :items="headerMegaMenuItems"
-        :subItems="headerMegaMenuFooterItems"
-        ref="sideNav"
-      />
+      <NuxtLazyHydrate :on-interaction="['click', 'touchstart']">
+        <BaseSideNavMenu
+          :items="headerMegaMenuItems"
+          :subItems="headerMegaMenuFooterItems"
+          ref="sideNav"
+        />
+      </NuxtLazyHydrate>
     </main>
     <footer>
       <slot name="footer"></slot>

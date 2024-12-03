@@ -30,6 +30,9 @@
   .rtl {
     direction: rtl;
   }
+  .unscrollable {
+    @apply overflow-y-clip touch-none;
+  }
 }
 
 /* section.languages {
@@ -44,8 +47,25 @@
   --var-body-bg: var(--p-gray-100);
   --var-component-bg: var(--p-white-alpha-900);
   --var-text-color: var(--p-gray-900);
-  /* --card-bg: var(--p-gray-0);
-  --card-border: var(--p-gray-200); */
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-300;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded transition-all;
+  }
+
+  /* Handle on hover */
+  /* ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  } */
 }
 
 :root[class*=" dark"] *,
@@ -53,15 +73,21 @@
   --var-body-bg: var(--p-gray-900);
   --var-component-bg: var(--p-gray-900);
   --var-text-color: var(--p-gray-100);
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-600;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-800;
+  }
 }
 
 body {
   background-color: var(--var-body-bg);
   color: var(--var-text-color);
 }
-.unscrollable {
-  @apply overflow-y-clip touch-none;
-}
+
 /* .unscrollable body::-webkit-scrollbar {
   @apply opacity-0;
 } */
