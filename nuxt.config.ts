@@ -50,7 +50,7 @@ export default defineNuxtConfig({
     //   statusCode: 301,
     //   path: "/fa",
     // },
-    // detectBrowserLanguage: false,
+    detectBrowserLanguage: false,
   },
   runtimeConfig: {
     public: {

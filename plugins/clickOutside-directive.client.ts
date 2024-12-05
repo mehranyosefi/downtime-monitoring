@@ -4,7 +4,7 @@ interface clickableElement extends HTMLElement {
 
 export default defineNuxtPlugin(({ vueApp }) => {
   const ClickOutsideDirective = {
-    created(el: HTMLElement, binding: { value: (arg0: Event) => void }) {
+    created(el: HTMLElement, binding: { value: (arg: Event) => void }) {
       (el as clickableElement).__clickOutsideHandler__ = (event: Event) => {
         if (!(el == event.target || el.contains(event.target as Node | null))) {
           binding.value(event);

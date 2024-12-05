@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 const { locale, t } = useI18n();
 const localePath = useLocalePath();
+import type { Reactive } from "vue";
 import { headerMegaMenuItems } from "~/types/menu";
+import { infiniteScrolling } from "~/utility";
 
 definePageMeta({
   layout: false,
@@ -14,13 +16,20 @@ useHead({
   ],
 });
 const useApp = useAppStore();
-const itemsActiveOnScroll = ref<boolean>(false);
-
+const { isOnMobile } = useWindowProperty();
+const templateSections = ref<{ [key: string]: boolean }>({
+  cardItems: false,
+  trust: false,
+});
 onMounted(() => {
-  const elm = document.querySelector(".root-element-page") as HTMLElement;
-  useInfiniteScrolling(elm, () => {
-    itemsActiveOnScroll.value = true;
-  });
+  infiniteScrolling(
+    ".root-element-page",
+    templateSections.value,
+    (items: { [key: string]: boolean }) => {
+      templateSections.value = items;
+    }
+  );
+  // sections.value = reactiveSection;
 });
 </script>
 
@@ -82,7 +91,7 @@ onMounted(() => {
         class="bg-gray-800 dark:bg-gray-100 mt-56 text-gray-100 dark:text-gray-900 transition-colors"
       >
         <div class="container mx-auto px-10 pb-20">
-          <h4 class="w-fit mx-auto text-4xl font-semibold pt-16">
+          <h4 class="w-fit mx-auto text-4xl font-semibold pt-28 md:pt-16 h-20">
             {{ t("index.careAbout") }} <br />
             <span v-if="locale == 'fa'" class="leading-normal">
               {{ t("phrases.etc.inOnePlace") }}
@@ -101,13 +110,21 @@ onMounted(() => {
             </span>
           </h4>
           <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mt-14"
-            v-if="itemsActiveOnScroll"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 pt-56 md-pt-20"
+            v-if="templateSections.cardItems"
+            v-animate
           >
             <PrimeCard
               v-for="(i, key) in headerMegaMenuItems[0].items"
               :key="key"
-              class="shadow-md bg-white p-2"
+              class="shadow-md bg-white p-2 animate"
+              :style="{
+                ...(isOnMobile && {
+                  ...(key === 0 && { 'animation-duration': '.2s' }),
+                  ...(key === 1 && { 'animation-duration': '1.2s' }),
+                  ...(key === 2 && { 'animation-duration': '1.7s' }),
+                }),
+              }"
             >
               <template #title>
                 <svg
@@ -130,6 +147,7 @@ onMounted(() => {
               </template>
             </PrimeCard>
           </div>
+          <div class="h-[50vh]" v-if="templateSections.trust"></div>
         </div>
       </div>
     </NuxtLayout>

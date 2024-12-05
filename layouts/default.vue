@@ -19,7 +19,7 @@ const sideNav = useTemplateRef("sideNav");
 //functions
 </script>
 <template>
-  <div class="root-element-page h-screen overflow-y-auto">
+  <div class="root-element-page h-screen overflow-y-auto overflow-x-hidden">
     <base-header
       sign-section
       menu-section
