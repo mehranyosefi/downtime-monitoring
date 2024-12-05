@@ -147,7 +147,7 @@ onMounted(() => {
               </template>
             </PrimeCard>
           </div>
-          <div class="h-[50vh]" v-if="templateSections.trust"></div>
+          <div class="h-[10vh]" v-if="templateSections.trust"></div>
         </div>
       </div>
     </NuxtLayout>
