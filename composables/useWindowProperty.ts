@@ -9,5 +9,9 @@ export const useWindowProperty = () => {
     if (windowWidth.value > 768) return false;
     return true;
   });
-  return { windowWidth, isOnMobile };
+  const isOnTablet = computed(() => {
+    if (windowWidth.value > 1024) return false;
+    return true;
+  });
+  return { windowWidth, isOnMobile, isOnTablet };
 };

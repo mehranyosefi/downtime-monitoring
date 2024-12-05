@@ -12,7 +12,7 @@ export function infiniteScrolling(
       let size = el.scrollTop / (el.scrollHeight - Number(el.style.height));
       document.documentElement.style.setProperty(
         "--scroll",
-        Math.min(size * 2.1, 1.5).toString()
+        Math.min(size * 1, 1).toString()
       );
       if (el.scrollTop + el.clientHeight >= el.scrollHeight - 10) {
         const keys: string[] = Object.keys(sections);

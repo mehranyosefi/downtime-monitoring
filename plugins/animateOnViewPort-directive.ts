@@ -25,6 +25,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       };
       const options: IntersectionObserverInit = {
         root: binding?.arg ? document.querySelector(binding.arg) : null,
+        threshold: [0.01, 0.1, 0.5, 1],
+        rootMargin: "0px",
       };
       const io = new IntersectionObserver(callback, options);
       io.observe(el);

@@ -16,7 +16,7 @@ useHead({
   ],
 });
 const useApp = useAppStore();
-const { isOnMobile } = useWindowProperty();
+const { isOnTablet } = useWindowProperty();
 const templateSections = ref<{ [key: string]: boolean }>({
   cardItems: false,
   trust: false,
@@ -36,12 +36,9 @@ onMounted(() => {
 <template>
   <div>
     <NuxtLayout name="default">
-      <div
-        class="container h-screen overflow-y-auto mx-auto px-10"
-        id="container"
-      >
-        <div class="grid grid-row-2 lg:grid-cols-2 pt-20">
-          <div class="w-fit mx-auto">
+      <div class="container mx-auto px-10" id="container">
+        <div class="grid grid-row-2 lg:grid-cols-2 lg:h-[calc(100vh-89px)]">
+          <div class="w-fit m-auto mt-20">
             <h4 v-if="locale == 'en'" class="text-6xl font-semibold">
               {{ `${t("index.serviceTitle.one")}` }} <br />
               <span class="text-green-500 dark:text-primary-500">
@@ -76,7 +73,7 @@ onMounted(() => {
             </PrimeButton>
           </div>
 
-          <div class="mt-10 lg:mt-0 w-fit mx-auto">
+          <div class="w-fit m-auto mt-20">
             <i
               class="w-[26rem] md:w-[30rem]"
               :class="{
@@ -88,9 +85,9 @@ onMounted(() => {
         </div>
       </div>
       <div
-        class="bg-gray-800 dark:bg-gray-100 mt-56 text-gray-100 dark:text-gray-900 transition-colors"
+        class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900 transition-colors"
       >
-        <div class="container mx-auto px-10 pb-20">
+        <div class="container mx-auto px-10">
           <h4 class="w-fit mx-auto text-4xl font-semibold pt-28 md:pt-16 h-20">
             {{ t("index.careAbout") }} <br />
             <span v-if="locale == 'fa'" class="leading-normal">
@@ -110,42 +107,44 @@ onMounted(() => {
             </span>
           </h4>
           <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 pt-56 md-pt-20"
+            class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-28"
             v-if="templateSections.cardItems"
-            v-animate
           >
-            <PrimeCard
+            <div
               v-for="(i, key) in headerMegaMenuItems[0].items"
               :key="key"
-              class="shadow-md bg-white p-2 animate"
               :style="{
-                ...(isOnMobile && {
-                  ...(key === 0 && { 'animation-duration': '.2s' }),
-                  ...(key === 1 && { 'animation-duration': '1.2s' }),
-                  ...(key === 2 && { 'animation-duration': '1.7s' }),
+                ...(isOnTablet && {
+                  ...(key === 0 && { 'animation-duration': '.3s' }),
+                  ...(key === 1 && { 'animation-duration': '.5s' }),
+                  ...(key === 2 && { 'animation-duration': '.7s' }),
                 }),
               }"
+              class="pt-16 md:pt-10 lg:pt-16"
+              v-animate
             >
-              <template #title>
-                <svg
-                  width="5rem"
-                  height="5rem"
-                  class="text-green-500 dark:text-primary-500"
-                >
-                  <use :href="i.icon" width="5rem" height="5rem"></use>
-                </svg>
-                <h5 v-text="t(i.label)" class="font-bold text-2xl mt-2"></h5>
-              </template>
-              <template #content>
-                <p v-text="i.content" class="text-lg"></p>
-                <PrimeButton
-                  severity="success"
-                  class="mt-2"
-                  :label="t(i.label)"
-                >
-                </PrimeButton>
-              </template>
-            </PrimeCard>
+              <PrimeCard class="shadow-md bg-white p-2">
+                <template #title>
+                  <svg
+                    width="5rem"
+                    height="5rem"
+                    class="text-green-500 dark:text-primary-500"
+                  >
+                    <use :href="i.icon" width="5rem" height="5rem"></use>
+                  </svg>
+                  <h5 v-text="t(i.label)" class="font-bold text-2xl mt-2"></h5>
+                </template>
+                <template #content>
+                  <p v-text="i.content" class="text-lg"></p>
+                  <PrimeButton
+                    severity="success"
+                    class="mt-2"
+                    :label="t(i.label)"
+                  >
+                  </PrimeButton>
+                </template>
+              </PrimeCard>
+            </div>
           </div>
           <div class="h-[10vh]" v-if="templateSections.trust"></div>
         </div>

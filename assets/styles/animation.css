@@ -29,34 +29,22 @@
   -webkit-animation-delay: calc(var(--scroll) * -1s) !important;
   -webkit-animation-iteration-count: 1 !important;
   -webkit-animation-fill-mode: both !important;
-  animation: scrollAnimate 1s linear;
+  animation: scrollAnimate 0.4s linear;
 }
+
+/* media screen */
+/* @media screen and (max-width: 768px) {
+  .animate {
+    animation: scrollAnimateMobile 1s linear;
+  }
+} */
 
 /* keyframes */
-
 @keyframes scrollAnimate {
-    0%{
-        
-        transform: scale(0);
-    }
-    100%{
-
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-
-
-@media screen and (max-width: 768px) {
-    @keyframes scrollAnimate {
-        0%{
-            
-            transform: scale(0);
-        }
-        70%{
-    
-            transform: scale(1);
-        }
-    }
-}
-
-
