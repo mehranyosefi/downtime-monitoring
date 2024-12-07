@@ -27,7 +27,7 @@ const sideNav = useTemplateRef("sideNav");
       @show-sideNav="sideNav?.toggle_sideNav"
       :side-nav-active="sideNav?.sideNavActive"
     />
-    <main class="overflow-x-hidden">
+    <main class="overflow-hidden">
       <slot />
       <NuxtLazyHydrate :on-interaction="['click', 'touchstart']">
         <BaseSideNavMenu
