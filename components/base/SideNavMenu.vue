@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import "primeicons/primeicons.css";
-import type { MegaMenuItemInterface } from "~/types/menu";
+import type { MegaMenuInterface } from "~/types/menu";
 
 const props = defineProps<{
-  items: MegaMenuItemInterface[];
-  subItems?: MegaMenuItemInterface[];
+  items: MegaMenuInterface[];
+  subItems?: MegaMenuInterface[];
 }>();
 
 const { t, locale } = useI18n();

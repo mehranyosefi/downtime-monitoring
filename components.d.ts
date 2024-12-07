@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     PrimeButton: typeof import('primevue/button')['default']
+    Primecard: typeof import('primevue/card')['default']
     PrimeCard: typeof import('primevue/card')['default']
     PrimeDivider: typeof import('primevue/divider')['default']
     PrimeForm: typeof import('@primevue/forms/form')['default']
@@ -19,5 +20,8 @@ declare module 'vue' {
     PrimeToggleSwitch: typeof import('primevue/toggleswitch')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+  }
+  export interface ComponentCustomProperties {
+    AnimateOnScroll: typeof import('primevue/animateonscroll')['default']
   }
 }

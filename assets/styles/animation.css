@@ -29,7 +29,7 @@
   -webkit-animation-delay: calc(var(--scroll) * -1s) !important;
   -webkit-animation-iteration-count: 1 !important;
   -webkit-animation-fill-mode: both !important;
-  animation: scrollAnimate 0.4s linear;
+  animation: scrollAnimate 0.33s linear;
 }
 
 /* media screen */

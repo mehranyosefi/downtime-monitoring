@@ -1,7 +1,7 @@
 import { mountSuspended } from "@nuxt/test-utils/runtime";
 import { test, it, describe, expect } from "vitest";
 import { BaseMegaMenu } from "#components";
-import { headerMegaMenuItems } from "~/types/menu";
+import { headerMegaMenu } from "~/types/menu";
 import { createI18n } from "vue-i18n";
 // import { useI18n } from "vue-i18n";
 // import { mount } from "@vue/test-utils";
@@ -44,7 +44,7 @@ describe("megamenu test", async () => {
     // }));
     const wrapper = await mountSuspended(BaseMegaMenu, {
       props: {
-        items: headerMegaMenuItems,
+        items: headerMegaMenu,
         subItems: headerMegaMenuFooterItems,
       },
       global: {
@@ -61,7 +61,7 @@ describe("megamenu test", async () => {
   test("the subMenu works on click event correctly", async () => {
     const wrapped = await mountSuspended(BaseMegaMenu, {
       props: {
-        items: headerMegaMenuItems,
+        items: headerMegaMenu,
         subItems: headerMegaMenuFooterItems,
       },
       global: {
@@ -76,7 +76,7 @@ describe("megamenu test", async () => {
   test("the subMenu works on click hover correctly", async () => {
     const wrapped = await mountSuspended(BaseMegaMenu, {
       props: {
-        items: headerMegaMenuItems,
+        items: headerMegaMenu,
         subItems: headerMegaMenuFooterItems,
       },
       global: {

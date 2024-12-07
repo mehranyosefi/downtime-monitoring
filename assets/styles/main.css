@@ -34,6 +34,36 @@
   .unscrollable {
     @apply overflow-y-clip touch-none;
   }
+  .text-multiline-ellips-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    @apply overflow-hidden text-ellipsis;
+  }
+  .text-multiline-ellips-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    @apply overflow-hidden text-ellipsis;
+  }
+  .text-multiline-ellips-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    @apply overflow-hidden text-ellipsis;
+  }
+  .text-multiline-ellips-5 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    @apply overflow-hidden text-ellipsis;
+  }
+  .text-multiline-ellips-6 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    @apply overflow-hidden text-ellipsis;
+  }
 }
 html {
   @apply overflow-hidden;
@@ -74,4 +104,5 @@ html {
 body {
   background-color: var(--var-body-bg);
   color: var(--var-text-color);
+  @apply transition-colors;
 }

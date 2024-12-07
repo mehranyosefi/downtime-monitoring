@@ -47,7 +47,10 @@
     "place": "place",
     "monitored": "monitored",
     "monitors": "monitores",
-    "teams": "teams"
+    "teams": "teams",
+    "why": "Why",
+    "users": "users",
+    "trusts": "trusts"
   },
 
   "user": {
@@ -111,7 +114,14 @@
     },
     "getTitle": "Get 50 monitors with 5-minutes checks",
     "startMonitoring": "Start monitoring in 30 seconds",
-    "careAbout": "All you really care about"
+    "careAbout": "All you really care about",
+    "trustItems": {
+      "reliable": {
+        "userName": "Basem",
+        "title": "Reliable service",
+        "link": "Captera.com"
+      }
+    }
   },
   "errors": {
     "email":{

@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 const { locale, t } = useI18n();
 const localePath = useLocalePath();
-import type { Reactive } from "vue";
-import { headerMegaMenuItems } from "~/types/menu";
+import { headerMegaMenu } from "~/types/menu";
 import { infiniteScrolling } from "~/utility";
 
 definePageMeta({
@@ -31,13 +30,32 @@ onMounted(() => {
   );
   // sections.value = reactiveSection;
 });
+const animateComputed = (key: number) => {
+  return key === 0
+    ? "slide-left"
+    : key === 1
+    ? isOnTablet.value
+      ? "slide-right"
+      : "slide-bottom"
+    : key === 2
+    ? isOnTablet.value
+      ? "slide-left"
+      : "slide-right"
+    : "";
+};
+
+const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
+  server: false,
+});
 </script>
 
 <template>
-  <div>
+  <div class="transition-colors">
     <NuxtLayout name="default">
       <div class="container mx-auto px-10" id="container">
-        <div class="grid grid-row-2 lg:grid-cols-2 lg:h-[calc(100vh-89px)]">
+        <div
+          class="grid grid-row-2 lg:grid-cols-2 min-h-[calc(100vh-89px)] content-center"
+        >
           <div class="w-fit m-auto mt-20">
             <h4 v-if="locale == 'en'" class="text-6xl font-semibold">
               {{ `${t("index.serviceTitle.one")}` }} <br />
@@ -85,68 +103,131 @@ onMounted(() => {
         </div>
       </div>
       <div
-        class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900 transition-colors"
+        class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900 transition-colors pb-48"
       >
         <div class="container mx-auto px-10">
-          <h4 class="w-fit mx-auto text-4xl font-semibold pt-28 md:pt-16 h-20">
-            {{ t("index.careAbout") }} <br />
-            <span v-if="locale == 'fa'" class="leading-normal">
-              {{ t("phrases.etc.inOnePlace") }}
+          <div>
+            <h4 class="text-4xl font-semibold text-center pt-16">
+              {{ t("index.careAbout") }} <br />
+              <span v-if="locale == 'fa'" class="leading-normal">
+                {{ t("phrases.etc.inOnePlace") }}
+                <span
+                  class="text-green-500 dark:text-primary-500"
+                  v-text="t('general.monitored')"
+                ></span
+                >.
+              </span>
+              <span v-else>
+                <span
+                  class="text-green-500 dark:text-primary-500"
+                  v-text="t('general.monitored')"
+                ></span>
+                {{ t("phrases.etc.inOnePlace") }}.
+              </span>
+            </h4>
+          </div>
+          <div
+            v-if="templateSections.cardItems"
+            class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-14"
+          >
+            <PrimeCard
+              v-for="(i, key) in headerMegaMenu[0].items"
+              :key="key"
+              class="shadow-md p-2"
+              :pt="{
+                root: 'scale-0',
+              }"
+              v-animation-on-scroll
+            >
+              <template #title>
+                <svg
+                  width="5rem"
+                  height="5rem"
+                  class="text-green-500 dark:text-primary-500"
+                >
+                  <use :href="i.icon" width="5rem" height="5rem"></use>
+                </svg>
+                <h5 v-text="t(i.label)" class="font-bold text-2xl mt-2"></h5>
+              </template>
+              <template #content>
+                <p v-text="i.content" class="text-lg"></p>
+                <PrimeButton
+                  severity="success"
+                  class="mt-2"
+                  :label="t(i.label)"
+                >
+                </PrimeButton>
+              </template>
+            </PrimeCard>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-10 py-72" v-if="templateSections.trust">
+        <div class="mt-16">
+          <h4 class="text-4xl font-semibold text-center">
+            <span v-if="locale === 'en'">
+              {{ `${t("general.why")} ${t("general.users")}` }}
               <span
                 class="text-green-500 dark:text-primary-500"
-                v-text="t('general.monitored')"
-              ></span
-              >.
+                v-text="t('general.trusts')"
+              ></span>
+              {{ t("general.UptimeRobot") }}
             </span>
             <span v-else>
-              <span
-                class="text-green-500 dark:text-primary-500"
-                v-text="t('general.monitored')"
-              ></span>
-              {{ t("phrases.etc.inOnePlace") }}.
+              {{
+                `${t("general.why")} ${t("general.users")} به ${t(
+                  "general.UptimeRobot"
+                )}`
+              }}
+              <span class="text-green-500" v-text="t('general.trust')"></span>
             </span>
           </h4>
-          <div
-            class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-28"
-            v-if="templateSections.cardItems"
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-14">
+          <Primecard
+            v-for="(trust, key) in trustItems"
+            :key="key"
+            :pt="{
+              root: 'lg:min-h-[440px]',
+            }"
+            class="shadow-md p-2"
+            v-animation-on-scroll="animateComputed(key)"
           >
-            <div
-              v-for="(i, key) in headerMegaMenuItems[0].items"
-              :key="key"
-              :style="{
-                ...(isOnTablet && {
-                  ...(key === 0 && { 'animation-duration': '.3s' }),
-                  ...(key === 1 && { 'animation-duration': '.5s' }),
-                  ...(key === 2 && { 'animation-duration': '.7s' }),
-                }),
-              }"
-              class="pt-16 md:pt-10 lg:pt-16"
-              v-animate
-            >
-              <PrimeCard class="shadow-md bg-white p-2">
-                <template #title>
-                  <svg
-                    width="5rem"
-                    height="5rem"
-                    class="text-green-500 dark:text-primary-500"
-                  >
-                    <use :href="i.icon" width="5rem" height="5rem"></use>
-                  </svg>
-                  <h5 v-text="t(i.label)" class="font-bold text-2xl mt-2"></h5>
-                </template>
-                <template #content>
-                  <p v-text="i.content" class="text-lg"></p>
-                  <PrimeButton
-                    severity="success"
-                    class="mt-2"
-                    :label="t(i.label)"
-                  >
-                  </PrimeButton>
-                </template>
-              </PrimeCard>
-            </div>
-          </div>
-          <div class="h-[10vh]" v-if="templateSections.trust"></div>
+            <template #title>
+              <div class="text-gray-400" v-text="trust.userName"></div>
+              <div class="flex flex-nowrap mb-6 mr-2">
+                <svg
+                  class="text-orange-600"
+                  width="2rem"
+                  height="2rem"
+                  v-for="i in 5"
+                  :key="i"
+                  viewBox="4 0 24 24"
+                >
+                  <use href="/public/img/icons.svg#star"></use>
+                </svg>
+              </div>
+              <h5 class="font-extrabold text-3xl" v-text="trust.title"></h5>
+            </template>
+            <template #content>
+              <p
+                class="text-2xl text-multiline-ellips-6"
+                v-text="trust.content"
+              ></p>
+              <div class="text-gray-400 mt-2 text-lg">
+                <span>{{
+                  locale === "en" ? "Peviewed on " : "مشاهده شده در "
+                }}</span>
+                <nuxt-link
+                  target="_blank"
+                  class="text-green-500 dark:text-primary-400 font-bold"
+                  :to="`https://${trust.link}`"
+                  >{{ trust.link }}
+                </nuxt-link>
+              </div>
+            </template>
+          </Primecard>
         </div>
       </div>
     </NuxtLayout>

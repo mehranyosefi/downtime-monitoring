@@ -1,5 +1,5 @@
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.directive("animate", {
+  nuxtApp.vueApp.directive("animation-on-viewport", {
     mounted(
       el: HTMLElement,
       binding: { value: string; arg?: string | undefined }

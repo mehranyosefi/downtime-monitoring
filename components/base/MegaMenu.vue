@@ -1,23 +1,23 @@
 <script lang="ts" setup>
 import "primeicons/primeicons.css";
-import type { MegaMenuItemInterface } from "~/types/menu";
+import type { MegaMenuInterface } from "~/types/menu";
 
 const props = defineProps<{
-  items: MegaMenuItemInterface[];
-  subItems?: MegaMenuItemInterface[];
+  items: MegaMenuInterface[];
+  subItems?: MegaMenuInterface[];
 }>();
 
 const { t, locale } = useI18n();
 const localepath = useLocalePath();
 const activeSubMenu = ref<boolean>(false);
 
-const selectedItem = reactive<MegaMenuItemInterface>({
+const selectedItem = reactive<MegaMenuInterface>({
   label: "",
 });
 
 ///////////////////
 function triggerItemSelect(
-  item: MegaMenuItemInterface,
+  item: MegaMenuInterface,
   hover: string | null = null
 ) {
   if (item.items) {
@@ -125,7 +125,7 @@ function triggerItemSelect(
   @apply p-4 relative;
   &--button {
     @apply !border-none !bg-transparent hover:!bg-transparent flex justify-center items-center gap-0
-        !text-gray-900 dark:!text-gray-100 hover:!text-green-500 dark:hover:!text-primary-500 !p-0 mx-4 !text-lg !font-bold !transition-none;
+        !text-gray-900 dark:!text-gray-100 hover:!text-green-500 dark:hover:!text-primary-500 !p-0 mx-4 !text-lg !font-bold;
   }
   &--submenu {
     @apply absolute w-full top-14 bg-white dark:bg-gray-800 right-0 left-0 rounded-md p-3;

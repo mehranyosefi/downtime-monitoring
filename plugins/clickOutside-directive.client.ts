@@ -16,7 +16,7 @@ export default defineNuxtPlugin(({ vueApp }) => {
       );
       // binding.value()
     },
-    onUnmounted(el: clickableElement) {
+    unmounted(el: clickableElement) {
       document.body.removeEventListener(
         "click",
         (el as clickableElement).__clickOutsideHandler__

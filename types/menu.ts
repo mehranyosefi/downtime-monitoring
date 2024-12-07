@@ -3,7 +3,7 @@ export interface KeyValuePairs<key, value> {
   value: value;
 }
 
-export interface MegaMenuItemInterface {
+export interface MegaMenuInterface {
   label: string;
   path?: string;
   items?: {
@@ -14,7 +14,7 @@ export interface MegaMenuItemInterface {
   }[];
 }
 
-export class MegaMenuItem implements MegaMenuItemInterface {
+export class MegaMenu implements MegaMenuInterface {
   label: string;
   path?: string;
   items?: { label: string; icon?: string; path?: string; content?: string }[];
@@ -31,8 +31,22 @@ export class MegaMenuItem implements MegaMenuItemInterface {
   }
 }
 
-export const headerMegaMenuItems: MegaMenuItemInterface[] = [
-  new MegaMenuItem("monitoring.monitoring", undefined, [
+export class Trust {
+  userName: string;
+  title: string;
+  content: string;
+  link: string;
+
+  constructor(userName: string, title: string, content: string, link: string) {
+    this.userName = userName;
+    this.title = title;
+    this.content = content;
+    this.link = link;
+  }
+}
+
+export const headerMegaMenu: MegaMenuInterface[] = [
+  new MegaMenu("monitoring.monitoring", undefined, [
     {
       label: "monitoring.website",
       icon: "/img/icons.svg#website-monitoring",
@@ -55,12 +69,12 @@ export const headerMegaMenuItems: MegaMenuItemInterface[] = [
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quo reprehenderit accusantium voluptatem",
     },
   ]),
-  new MegaMenuItem("integrations", "#integrations"),
-  new MegaMenuItem("statusPage", "#status-page"),
-  new MegaMenuItem("pricing", "#pricing"),
+  new MegaMenu("integrations", "#integrations"),
+  new MegaMenu("statusPage", "#status-page"),
+  new MegaMenu("pricing", "#pricing"),
 ];
-export const headerMegaMenuFooterItems: MegaMenuItemInterface[] = [
-  new MegaMenuItem("teams", undefined, [
+export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
+  new MegaMenu("teams", undefined, [
     {
       label: "teams.devops",
       // command: () => {

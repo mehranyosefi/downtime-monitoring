@@ -23,4 +23,5 @@
     <symbol viewBox="0 0 48 48" id="port-monitoring"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" stroke-linejoin="round" rx="3"></rect><path stroke-linejoin="round" d="M19 27h10v6H19zm-5-8h20v8H14z"></path><path d="M33 19v-4m-6 4v-4m-6 4v-4m-6 4v-4"></path></g></symbol>
     <symbol viewBox="0 0 24 24" id="menu"><path fill="currentColor" d="M4 17.27v-1h16v1zm0-4.77v-1h16v1zm0-4.77v-1h16v1z"></path></symbol>
     <symbol viewBox="0 0 24 24" id="close"><path fill="currentColor" d="m6.4 18.308l-.708-.708l5.6-5.6l-5.6-5.6l.708-.708l5.6 5.6l5.6-5.6l.708.708l-5.6 5.6l5.6 5.6l-.708.708l-5.6-5.6z"></path></symbol>
+    <symbol viewBox="0 0 24 24" id="star"><path fill="currentColor" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08z"></path></symbol>
 </svg>

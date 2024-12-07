@@ -56,7 +56,6 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
     //   summary: "Form is submitted.",
     //   life: 3000,
     // });
-    console.log("IsValid");
   } else console.log("InValid");
 };
 </script>

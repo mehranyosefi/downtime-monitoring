@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { headerMegaMenuItems } from "~/types/menu";
-import { headerMegaMenuFooterItems } from "~/types/menu";
+import { headerMegaMenu } from "~/types/menu";
+import { headerMegaMenuTeamItems } from "~/types/menu";
 
 const { locale, t } = useI18n();
 const useApp = useAppStore();
@@ -31,8 +31,8 @@ const sideNav = useTemplateRef("sideNav");
       <slot />
       <NuxtLazyHydrate :on-interaction="['click', 'touchstart']">
         <BaseSideNavMenu
-          :items="headerMegaMenuItems"
-          :subItems="headerMegaMenuFooterItems"
+          :items="headerMegaMenu"
+          :subItems="headerMegaMenuTeamItems"
           ref="sideNav"
         />
       </NuxtLazyHydrate>

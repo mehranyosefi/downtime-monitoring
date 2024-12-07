@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { headerMegaMenuItems } from "~/types/menu";
-import { headerMegaMenuFooterItems } from "~/types/menu";
+import { headerMegaMenu } from "~/types/menu";
+import { headerMegaMenuTeamItems } from "~/types/menu";
 
 const props = withDefaults(
   defineProps<{
@@ -123,8 +123,8 @@ function set_shadow() {
       <BaseMegaMenu
         v-if="menuSection"
         :active="headerMenuActive"
-        :items="headerMegaMenuItems"
-        :subItems="headerMegaMenuFooterItems"
+        :items="headerMegaMenu"
+        :subItems="headerMegaMenuTeamItems"
         class="hidden lg:block lg:w-[50%] xl:w-[55%] mx-auto"
       >
       </BaseMegaMenu>
