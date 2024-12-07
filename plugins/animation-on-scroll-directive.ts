@@ -54,9 +54,5 @@ export default defineNuxtPlugin((nuxtApp) => {
         false
       );
     },
-    // getSSRProps(binding, vnode) {
-    //   // you can provide SSR-specific props here
-    //   return {};
-    // },
   });
 });

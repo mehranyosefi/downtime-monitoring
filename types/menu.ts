@@ -11,18 +11,31 @@ export interface MegaMenuInterface {
     icon?: string;
     path?: string;
     content?: string;
+    faContent?: string;
   }[];
 }
 
 export class MegaMenu implements MegaMenuInterface {
   label: string;
   path?: string;
-  items?: { label: string; icon?: string; path?: string; content?: string }[];
+  items?: {
+    label: string;
+    icon?: string;
+    path?: string;
+    content?: string;
+    faContent?: string;
+  }[];
   constructor(
     label: string,
     path?: string,
     items:
-      | { label: string; icon?: string; path?: string; content?: string }[]
+      | {
+          label: string;
+          icon?: string;
+          path?: string;
+          content?: string;
+          faContent?: string;
+        }[]
       | undefined = undefined
   ) {
     this.label = label;
@@ -52,21 +65,27 @@ export const headerMegaMenu: MegaMenuInterface[] = [
       icon: "/img/icons.svg#website-monitoring",
       path: "#website-monitoring",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quo reprehenderit accusantium voluptatem",
+        "Be the first to know that your website is down! Reliable monitoring warns you before any significant trouble and saves you money.",
+      faContent:
+        "اولین کسی باشید که می دانید وب سایت شما از کار افتاده است! نظارت قابل اعتماد قبل از هر مشکل مهمی به شما هشدار می دهد و باعث صرفه جویی در هزینه شما می شود.",
     },
     {
       label: "monitoring.port",
       icon: "/img/icons.svg#port-monitoring",
       path: "#port-monitoring",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quo reprehenderit accusantium voluptatem",
+        "Is the email service still UP? How about the critical database server? Let's check! Monitor any specific service running on any port.",
+      faContent:
+        "آیا سرویس ایمیل هنوز فعال است؟ سرور پایگاه داده بحرانی چطور؟ بیایید بررسی کنیم! نظارت بر هر سرویس خاصی که در هر پورتی اجرا می شود.",
     },
     {
       label: "monitoring.keyword",
       icon: "/img/icons.svg#keyword-monitoring",
       path: "#keyword-monitoring",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quo reprehenderit accusantium voluptatem",
+        "Use keyword monitoring to check presence or absence of specific text in the request's response body (typically HTML or JSON).",
+      faContent:
+        "از نظارت بر کلمه کلیدی برای بررسی وجود یا عدم وجود متن خاص در بدنه پاسخ درخواست (معمولاً HTML یا JSON) استفاده کنید.",
     },
   ]),
   new MegaMenu("integrations", "#integrations"),

@@ -30,18 +30,48 @@ onMounted(() => {
   );
   // sections.value = reactiveSection;
 });
-const animateComputed = (key: number) => {
-  return key === 0
-    ? "slide-left"
-    : key === 1
-    ? isOnTablet.value
-      ? "slide-right"
-      : "slide-bottom"
-    : key === 2
-    ? isOnTablet.value
-      ? "slide-left"
-      : "slide-right"
-    : "";
+// const animateComputed = (key: number) => {
+//   return key === 0
+//     ? locale.value === "fa"
+//       ? "slide-right"
+//       : "slide-left"
+//     : key === 1
+//     ? isOnTablet.value
+//       ? locale.value === "fa"
+//         ? "slide-left"
+//         : "slide-right"
+//       : "slide-bottom"
+//     : key === 2
+//     ? isOnTablet.value
+//       ? locale.value === "fa"
+//         ? "slide-right"
+//         : "slide-left"
+//       : "slide-left"
+//     : "";
+// };
+const animationNameCompute = (key: number) => {
+  if (key === 0) {
+    if (locale.value === "en") {
+      return "slide-left";
+    }
+    return "slide-right";
+  } else if (key === 1) {
+    if (locale.value === "en") {
+      if (isOnTablet.value) return "slide-right";
+      return "slide-bottom";
+    } else {
+      if (isOnTablet.value) return "slide-left";
+      return "slide-bottom";
+    }
+  } else {
+    if (locale.value === "en") {
+      if (isOnTablet.value) return "slide-left";
+      return "slide-right";
+    } else {
+      if (isOnTablet.value) return "slide-right";
+      return "slide-left";
+    }
+  }
 };
 
 const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
@@ -150,10 +180,13 @@ const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
                 <h5 v-text="t(i.label)" class="font-bold text-2xl mt-2"></h5>
               </template>
               <template #content>
-                <p v-text="i.content" class="text-lg"></p>
+                <p
+                  v-text="locale === 'en' ? i.content : i.faContent"
+                  class="text-lg text-multiline-ellips-3"
+                ></p>
                 <PrimeButton
                   severity="success"
-                  class="mt-2"
+                  class="mt-5"
                   :label="t(i.label)"
                 >
                 </PrimeButton>
@@ -163,7 +196,7 @@ const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
         </div>
       </div>
 
-      <div class="container mx-auto px-10 py-72" v-if="templateSections.trust">
+      <div class="container mx-auto px-10 pb-72" v-if="templateSections.trust">
         <div class="mt-16">
           <h4 class="text-4xl font-semibold text-center">
             <span v-if="locale === 'en'">
@@ -180,7 +213,7 @@ const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
                   "general.UptimeRobot"
                 )}`
               }}
-              <span class="text-green-500" v-text="t('general.trust')"></span>
+              <span class="text-green-500" v-text="t('general.trusts')"></span>
             </span>
           </h4>
         </div>
@@ -188,31 +221,28 @@ const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
           <Primecard
             v-for="(trust, key) in trustItems"
             :key="key"
-            :pt="{
-              root: 'lg:min-h-[440px]',
-            }"
             class="shadow-md p-2"
-            v-animation-on-scroll="animateComputed(key)"
+            v-animation-on-scroll="animationNameCompute(key)"
           >
             <template #title>
               <div class="text-gray-400" v-text="trust.userName"></div>
-              <div class="flex flex-nowrap mb-6 mr-2">
+              <div class="flex flex-nowrap mb-6">
                 <svg
                   class="text-orange-600"
                   width="2rem"
                   height="2rem"
                   v-for="i in 5"
                   :key="i"
-                  viewBox="4 0 24 24"
+                  :viewBox="locale == 'en' ? '4 0 24 24' : '-4 0 24 24'"
                 >
                   <use href="/public/img/icons.svg#star"></use>
                 </svg>
               </div>
-              <h5 class="font-extrabold text-3xl" v-text="trust.title"></h5>
+              <h5 class="font-extrabold text-2xl" v-text="trust.title"></h5>
             </template>
             <template #content>
               <p
-                class="text-2xl text-multiline-ellips-6"
+                class="text-lg text-multiline-ellips-4"
                 v-text="trust.content"
               ></p>
               <div class="text-gray-400 mt-2 text-lg">
