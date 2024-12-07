@@ -179,7 +179,7 @@ const animationNameCompute = (key: number) => {
         </div>
       </div>
 
-      <div class="container mx-auto px-10 pb-80" v-if="templateSections.trust">
+      <div class="container mx-auto px-10 pb-96" v-if="templateSections.trust">
         <div class="mt-16">
           <h4 class="text-4xl font-semibold text-center">
             <span v-if="locale === 'en'">
