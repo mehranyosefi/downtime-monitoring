@@ -119,3 +119,51 @@ export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
     },
   ]),
 ];
+
+export const trustItems = [
+  {
+    userName: "Basem",
+    title: "Reliable service",
+    content:
+      "It was a wonderful experience and I would highly recommend it. UptimeRobot has exceeded my expectations with its efficient monitoring and notification system. Thanks to their service, I've been able to stay on top of any downtime issues and ensure maximum uptime for my online presence, highly recommended!",
+    link: "Capterra.com",
+  },
+  {
+    userName: "Michael N., Director of Media Relations",
+    title: "UptimeRobot Works Great!",
+    content:
+      "Our Native Amerrican news magazine/public service website is www.nativeamericatoday.com. Our former developer did a horrible job, which continually allowed bots to attack the site -- we went over our server's resource limits multiple times and crashed",
+    link: "G2.com",
+  },
+  {
+    userName: "Michael Palmer",
+    title: "Piece of Mind Monitoring",
+    content:
+      "I have recently moved monitoring to UptimeRobot for some critical links and external facing services within our organization. Internal monitoring programs are great until the internet is down and you don't know because you can't get the alerts out",
+    link: "Trustpilot.com",
+  },
+];
+
+export const faTrustItems = [
+  {
+    userName: "باسم",
+    title: "خدمات قابل اعتماد",
+    content:
+      "تجربه فوق العاده ای بود و من آن را به شدت توصیه می کنم. ربات زمان کار با سیستم نظارت و اطلاع رسانی کارآمد خود از انتظارات من فراتر رفته است. به لطف خدمات آنها، من توانسته ام از مشکلات مربوط به خرابی مراقبت کنم و حداکثر زمان را برای حضور آنلاین خود تضمین کنم، به شدت توصیه می شود!",
+    link: "Capterra.com",
+  },
+  {
+    userName: "مایکل",
+    title: "ربات زمان کار عالی کار می کند!",
+    content:
+      "توسعه دهنده سابق ما کار وحشتناکی انجام داد، که به طور مداوم به ربات ها اجازه حمله به سایت را می داد -- ما چندین بار از محدودیت های منابع سرور خود عبور کردیم و از کار افتادیم",
+    link: "G2.com",
+  },
+  {
+    userName: "مایکل پالمر",
+    title: "نظارت تکه ای از ذهن",
+    content:
+      "من اخیراً نظارت را برای برخی پیوندهای مهم و سرویس های خارجی در سازمان خود به ربات زمان کار منتقل کرده ام. برنامه های نظارت داخلی عالی هستند تا زمانی که اینترنت قطع شود و شما نمی دانید زیرا نمی توانید هشدارها را دریافت کنید",
+    link: "Trustpilot.com",
+  },
+];

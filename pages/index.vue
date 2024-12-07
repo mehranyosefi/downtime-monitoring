@@ -3,6 +3,8 @@ const { locale, t } = useI18n();
 const localePath = useLocalePath();
 import { headerMegaMenu } from "~/types/menu";
 import { infiniteScrolling } from "~/utility";
+import { trustItems } from "~/types/menu";
+import { faTrustItems } from "~/types/menu";
 
 definePageMeta({
   layout: false,
@@ -28,27 +30,8 @@ onMounted(() => {
       templateSections.value = items;
     }
   );
-  // sections.value = reactiveSection;
 });
-// const animateComputed = (key: number) => {
-//   return key === 0
-//     ? locale.value === "fa"
-//       ? "slide-right"
-//       : "slide-left"
-//     : key === 1
-//     ? isOnTablet.value
-//       ? locale.value === "fa"
-//         ? "slide-left"
-//         : "slide-right"
-//       : "slide-bottom"
-//     : key === 2
-//     ? isOnTablet.value
-//       ? locale.value === "fa"
-//         ? "slide-right"
-//         : "slide-left"
-//       : "slide-left"
-//     : "";
-// };
+
 const animationNameCompute = (key: number) => {
   if (key === 0) {
     if (locale.value === "en") {
@@ -74,9 +57,9 @@ const animationNameCompute = (key: number) => {
   }
 };
 
-const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
-  server: false,
-});
+// const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
+//   server: false,
+// });
 </script>
 
 <template>
@@ -219,7 +202,7 @@ const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-14">
           <Primecard
-            v-for="(trust, key) in trustItems"
+            v-for="(trust, key) in locale === 'en' ? trustItems : faTrustItems"
             :key="key"
             class="shadow-md p-2"
             v-animation-on-scroll="animationNameCompute(key)"
