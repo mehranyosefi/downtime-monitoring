@@ -47,7 +47,8 @@ defineExpose({
           root: '!border-none !rounded-none',
           submenuLabel: '!p-0 mb-2 font-bold text-2xl',
           item: '!px-2 text-xl py-1 my-2',
-          itemContent: 'hover:!text-green-500 dark:hover:!text-primary-500',
+          itemContent:
+            'hover:!text-green-500 dark:hover:!text-primary-500 w-fit !leading-4',
           itemIcon: '!text-green-500 dark:!text-primary-500',
         }"
       >
@@ -74,7 +75,8 @@ defineExpose({
           root: '!text-gray-100 !border-none !rounded-none',
           submenuLabel: '!p-0 mb-2 font-bold text-2xl',
           item: '!px-2 text-xl py-1 my-2',
-          itemContent: 'hover:!text-green-500 dark:hover:!text-primary-500',
+          itemContent:
+            'hover:!text-green-500 dark:hover:!text-primary-500  w-fit !leading-4',
           itemIcon: '',
         }"
       >
@@ -93,8 +95,9 @@ defineExpose({
         :pt="{
           root: '!text-gray-100 !border-none !rounded-none',
           item: 'text-2xl my-3 font-bold',
-          itemContent: 'hover:!text-green-500 dark:hover:!text-primary-500',
-          end: 'text-gray-900 dark:!text-gray-100 hover:!text-green-500 dark:hover:!text-primary-500 !transition-colors !duration-75',
+          itemContent:
+            'hover:!text-green-500 dark:hover:!text-primary-500 w-fit !leading-6',
+          end: 'text-gray-900 dark:!text-gray-100 hover:!text-green-500 dark:hover:!text-primary-500 !transition-colors !duration-75 w-fit !h-[20px] !leading-6',
         }"
       >
         <template #item="{ item, props }">
@@ -103,7 +106,10 @@ defineExpose({
           </NuxtLink>
         </template>
         <template #end>
-          <NuxtLink :to="localepath('login')" class="text-2xl my-3 font-bold">
+          <NuxtLink
+            :to="localepath('login')"
+            class="text-2xl my-3 font-bold w-fit"
+          >
             <span v-text="t('general.login')"></span>
           </NuxtLink>
         </template>

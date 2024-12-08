@@ -64,7 +64,7 @@ const animationNameCompute = (key: number) => {
 
 <template>
   <div class="transition-colors">
-    <NuxtLayout name="default" :templateSections="templateSections">
+    <NuxtLayout name="default">
       <div class="container mx-auto px-10" id="container">
         <div
           class="grid grid-row-2 lg:grid-cols-2 min-h-[calc(100vh-89px)] content-center"
@@ -243,7 +243,6 @@ const animationNameCompute = (key: number) => {
         </div>
         <div class="opacity-0 max-lg:h-[15vh]">text message</div>
       </div>
-      <span class="under-main opacity-0 invisible">w</span>
     </NuxtLayout>
   </div>
 </template>

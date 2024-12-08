@@ -3,14 +3,8 @@ import { headerMegaMenu } from "~/types/menu";
 import { headerMegaMenuTeamItems } from "~/types/menu";
 import { resources } from "~/types/menu";
 
-const props = defineProps<{
-  templateSections: { [key: string]: boolean };
-}>();
-
 const { locale, t } = useI18n();
 const useApp = useAppStore();
-const localePath = useLocalePath();
-const root = useTemplateRef("root");
 const overflowAuto = ref<boolean>(false);
 
 useHead({
@@ -23,30 +17,10 @@ useHead({
   },
 });
 const sideNav = useTemplateRef("sideNav");
-
-onMounted(() => {
-  const io = new IntersectionObserver(
-    (entries, observer) => {
-      if (entries[0].isIntersecting && props.templateSections.trust) {
-        overflowAuto.value = true;
-      } else overflowAuto.value = false;
-    },
-    {
-      root: document.querySelector("main.main"),
-      rootMargin: "0px",
-    }
-  );
-  io.observe(document.querySelector("span.under-main")!);
-});
-
 //functions
 </script>
 <template>
-  <div
-    class="root-element-page overflow-x-hidden overflow-y-hidden h-screen"
-    ref="root"
-    :class="{ '!overflow-y-auto': overflowAuto }"
-  >
+  <div class="root-element-page overflow-x-hidden overflow-y-auto h-screen">
     <slot name="header">
       <base-header
         sign-section
@@ -87,7 +61,7 @@ onMounted(() => {
                 v-text="t('footer.description')"
               ></p>
               <div class="flex items-center mt-4">
-                <NuxtLink to="#faceb.1ook" class="mr-1">
+                <NuxtLink to="#facebook" class="mr-1">
                   <svg
                     width="2.1rem"
                     height="2.1rem"
@@ -144,7 +118,7 @@ onMounted(() => {
                 </NuxtLink>
               </div>
             </div>
-            <PrimeDivider :pt="{ root: 'md:hidden' }" />
+            <PrimeDivider :pt="{ root: 'md:!hidden' }" />
             <PrimeMenu
               :model="[headerMegaMenu[0]]"
               :pt="{
@@ -152,8 +126,8 @@ onMounted(() => {
                 submenuLabel: '!p-0 mb-2 font-bold text-2xl',
                 item: 'text-xl py-1 my-2',
                 itemContent:
-                  'hover:!text-green-500 dark:hover:!text-primary-500',
-                itemLink: '!px-0',
+                  'hover:!text-green-500 dark:hover:!text-primary-500 w-fit !h-[20px] !leading-4',
+
                 itemIcon: '!hidden',
               }"
               :class="[locale === 'en' ? '!ml-20' : '!mr-20']"
@@ -170,7 +144,7 @@ onMounted(() => {
                 </NuxtLink>
               </template>
             </PrimeMenu>
-            <PrimeDivider :pt="{ root: 'md:hidden' }" />
+            <PrimeDivider :pt="{ root: 'md:!hidden' }" />
             <PrimeMenu
               :model="[headerMegaMenuTeamItems[0]]"
               :pt="{
@@ -178,8 +152,7 @@ onMounted(() => {
                 submenuLabel: '!p-0 mb-2 font-bold text-2xl',
                 item: 'text-xl py-1 my-2',
                 itemContent:
-                  'hover:!text-green-500 dark:hover:!text-primary-500',
-                itemLink: '!px-0',
+                  'hover:!text-green-500 dark:hover:!text-primary-500 w-fit !h-[20px] !leading-4',
                 itemIcon: '!hidden',
               }"
               :class="[locale === 'en' ? '!ml-20' : '!mr-20']"
@@ -196,7 +169,7 @@ onMounted(() => {
                 </NuxtLink>
               </template>
             </PrimeMenu>
-            <PrimeDivider :pt="{ root: 'md:hidden' }" />
+            <PrimeDivider :pt="{ root: 'md:!hidden' }" />
             <PrimeMenu
               :model="[resources[0]]"
               :pt="{
@@ -204,8 +177,7 @@ onMounted(() => {
                 submenuLabel: '!p-0 mb-2 font-bold text-2xl',
                 item: 'text-xl py-1 my-2',
                 itemContent:
-                  'hover:!text-green-500 dark:hover:!text-primary-500',
-                itemLink: '!px-0',
+                  'hover:!text-green-500 dark:hover:!text-primary-500 w-fit !h-[20px] !leading-4',
                 itemIcon: '!hidden',
               }"
               :class="[locale === 'en' ? '!ml-20' : '!mr-20']"
