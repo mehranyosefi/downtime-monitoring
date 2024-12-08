@@ -54,7 +54,7 @@ function set_shadow() {
     class="header"
     :class="{ 'min-h-32 max-lg:shadow-xl': signSection }"
   >
-    <div class="container mx-auto px-10 flex items-center justify-between">
+    <div class="container mx-auto px-10 flex items-center xl:justify-between">
       <div
         class="flex flex-nowrap items-center justify-between pt-1 mx-5 md:mx-0"
       >
@@ -125,7 +125,7 @@ function set_shadow() {
         :active="headerMenuActive"
         :items="headerMegaMenu"
         :subItems="headerMegaMenuTeamItems"
-        class="hidden lg:block lg:w-[50%] xl:w-[55%] mx-auto"
+        class="hidden lg:block lg:w-[50%] xl:w-[52%] mx-auto"
       >
       </BaseMegaMenu>
       <section v-if="signSection" class="sign hidden sm:block">

@@ -2,7 +2,7 @@
 const { locale, t } = useI18n();
 const localePath = useLocalePath();
 import { headerMegaMenu } from "~/types/menu";
-import { infiniteScrolling } from "~/utility";
+import { finiteScrolling } from "~/utility";
 import { trustItems } from "~/types/menu";
 import { faTrustItems } from "~/types/menu";
 
@@ -23,8 +23,8 @@ const templateSections = ref<{ [key: string]: boolean }>({
   trust: false,
 });
 onMounted(() => {
-  infiniteScrolling(
-    ".root-element-page",
+  finiteScrolling(
+    ".main",
     templateSections.value,
     (items: { [key: string]: boolean }) => {
       templateSections.value = items;
@@ -64,7 +64,7 @@ const animationNameCompute = (key: number) => {
 
 <template>
   <div class="transition-colors">
-    <NuxtLayout name="default">
+    <NuxtLayout name="default" :templateSections="templateSections">
       <div class="container mx-auto px-10" id="container">
         <div
           class="grid grid-row-2 lg:grid-cols-2 min-h-[calc(100vh-89px)] content-center"
@@ -106,7 +106,7 @@ const animationNameCompute = (key: number) => {
 
           <div class="w-fit m-auto mt-20">
             <i
-              class="w-[26rem] md:w-[30rem]"
+              class="w-[26rem] md:w-[30rem] max-lg:mb-14"
               :class="{
                 'content-darkIndex': useApp.isDarkTheme,
                 'content-lightIndex': !useApp.isDarkTheme,
@@ -178,8 +178,7 @@ const animationNameCompute = (key: number) => {
           </div>
         </div>
       </div>
-
-      <div class="container mx-auto px-10 pb-96" v-if="templateSections.trust">
+      <div class="container mx-auto px-10 pb-64" v-if="templateSections.trust">
         <div class="mt-16">
           <h4 class="text-4xl font-semibold text-center">
             <span v-if="locale === 'en'">
@@ -242,7 +241,9 @@ const animationNameCompute = (key: number) => {
             </template>
           </Primecard>
         </div>
+        <div class="opacity-0 max-lg:h-[15vh]">text message</div>
       </div>
+      <span class="under-main opacity-0 invisible">w</span>
     </NuxtLayout>
   </div>
 </template>

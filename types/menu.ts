@@ -167,3 +167,24 @@ export const faTrustItems = [
     link: "Trustpilot.com",
   },
 ];
+
+export const resources: MegaMenuInterface[] = [
+  new MegaMenu("general.resources", undefined, [
+    {
+      label: "integrations",
+      path: "#integrations",
+    },
+    {
+      label: "general.helpcenter",
+      path: "#helpcenter",
+    },
+    {
+      label: "general.locations&IPs",
+      path: "#location&IPs",
+    },
+    {
+      label: "general.knowledgehub",
+      path: "#knowledgehub",
+    },
+  ]),
+];

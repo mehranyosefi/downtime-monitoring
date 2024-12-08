@@ -50,7 +50,13 @@
     "teams": "teams",
     "why": "Why",
     "users": "users",
-    "trusts": "trusts"
+    "trusts": "trusts",
+    "resources": "resources",
+    "helpcenter": "Help center",
+    "locations": "Locations",
+    "IPs": "IPs",
+    "knowledgehub": "Knowledge hub",
+    "locations&IPs": "@:general.locations & @:general.IPs"
   },
 
   "user": {
@@ -122,6 +128,10 @@
         "link": "Captera.com"
       }
     }
+  },
+  "footer": {
+    "donwntimehappens": "Downtime happens. Get notified!",
+    "description": "Join more than 2,100,000 happy users! UptimeRobot is one of the most popular website monitoring services in the world."
   },
   "errors": {
     "email":{

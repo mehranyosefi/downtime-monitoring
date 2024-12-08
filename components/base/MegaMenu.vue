@@ -85,7 +85,7 @@ function triggerItemSelect(
         <PrimeMenubar
           :model="subItems[0].items"
           :pt="{
-            rootList: '!mr-5 text-sm justify-between w-[calc(100%-9rem)]',
+            rootList: '!mr-5 text-sm xl:justify-between w-[calc(100%-9rem)]',
             item: 'mx-2',
           }"
         >

@@ -1,4 +1,4 @@
-export function infiniteScrolling(
+export function finiteScrolling(
   id: string,
   sections: { [key: string]: boolean },
   callBack: (items: { [key: string]: boolean }) => void

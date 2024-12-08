@@ -68,6 +68,9 @@
 html {
   @apply overflow-hidden;
 }
+.main::-webkit-scrollbar {
+  width: 3px !important;
+}
 
 :root {
   --var-body-bg: var(--p-gray-100);
