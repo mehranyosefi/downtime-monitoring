@@ -17,11 +17,52 @@ useHead({
   ],
 });
 const useApp = useAppStore();
-const { isOnTablet } = useWindowProperty();
+const { isOnTablet, isOnMobile } = useWindowProperty();
 const templateSections = ref<{ [key: string]: boolean }>({
   cardItems: false,
   trust: false,
 });
+const products = reactive([
+  {
+    img: "/img/godaddy-logo.svg",
+  },
+  {
+    img: "/img/nasa.svg",
+  },
+  {
+    img: "/img/moodys-logo.svg",
+  },
+  {
+    img: "/img/ibm-logo.svg",
+  },
+  {
+    img: "/img/expedia-logo.svg",
+  },
+]);
+
+const responsiveOptions = ref([
+  {
+    breakpoint: "1280px",
+    numVisible: 5,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "1024px",
+    numVisible: 5,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "768px",
+    numVisible: 3,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "640px",
+    numVisible: 2,
+    numScroll: 1,
+  },
+]);
+
 onMounted(() => {
   finiteScrolling(
     ".main",
@@ -178,7 +219,7 @@ const animationNameCompute = (key: number) => {
           </div>
         </div>
       </div>
-      <div class="container mx-auto px-10 pb-64" v-if="templateSections.trust">
+      <div class="container mx-auto px-10 pb-44" v-if="templateSections.trust">
         <div class="mt-16">
           <h4 class="text-4xl font-semibold text-center">
             <span v-if="locale === 'en'">
@@ -241,7 +282,33 @@ const animationNameCompute = (key: number) => {
             </template>
           </Primecard>
         </div>
-        <div class="opacity-0 max-lg:h-[15vh]">text message</div>
+        <PrimeCarousel
+          :value="products"
+          :page="0"
+          :numVisible="5"
+          :numScroll="1"
+          :responsiveOptions="responsiveOptions"
+          :autoplayInterval="isOnMobile ? 3000 : 0"
+          :showNavigators="false"
+          :showIndicators="false"
+          circular
+          :pt="{
+            root: 'mt-52',
+            item: 'flex items-center justify-center',
+          }"
+          :dir="locale === 'en' ? 'ltr' : 'rtl'"
+        >
+          <template #item="slotProps">
+            <div>
+              <img
+                width="120px"
+                height="120px"
+                :src="slotProps.data.img"
+                alt=""
+              />
+            </div>
+          </template>
+        </PrimeCarousel>
       </div>
     </NuxtLayout>
   </div>

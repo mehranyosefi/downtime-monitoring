@@ -44,7 +44,7 @@ const sideNav = useTemplateRef("sideNav");
     </main>
     <slot name="footer">
       <!-- TODO hidration mismatch -->
-      <footer class="transition-colors pt-28 h-[calc(100vh-89px)]">
+      <footer class="transition-colors pb-32 h-[calc(100vh-89px)]">
         <div class="container mx-auto px-10">
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-10">
             <div
