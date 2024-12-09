@@ -30,7 +30,7 @@ const sideNav = useTemplateRef("sideNav");
         :side-nav-active="sideNav?.sideNavActive"
       />
     </slot>
-    <main class="main overflow-xhidden overflow-y-auto h-[120vh] pb-24">
+    <main class="main overflow-xhidden overflow-y-auto h-[120vh]">
       <div class="overflow-hidden">
         <slot />
         <NuxtLazyHydrate :on-interaction="['click', 'touchstart']">
@@ -44,7 +44,7 @@ const sideNav = useTemplateRef("sideNav");
     </main>
     <slot name="footer">
       <!-- TODO hidration mismatch -->
-      <footer class="transition-colors pb-32 h-[calc(100vh-89px)]">
+      <footer class="transition-colors h-[40vh] pt-16">
         <div class="container mx-auto px-10">
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-10">
             <div

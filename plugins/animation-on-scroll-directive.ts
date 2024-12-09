@@ -23,10 +23,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             binding.value === "slide-right"
           ) {
             const ratio =
-              (properties.top -
-                container.offsetHeight +
-                middleHeight +
-                properties.height / 5) /
+              (properties.top - container.offsetHeight + middleHeight) /
               (Number(properties.height) + middleHeight);
             let size;
             if (binding.value === "slide-left")
@@ -39,10 +36,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             binding.value === "slide-top"
           ) {
             const ratio =
-              (properties.top -
-                container.offsetHeight +
-                middleHeight +
-                properties.height / 5) /
+              (properties.top - container.offsetHeight + middleHeight) /
               (Number(properties.height) + middleHeight);
             let size;
             if (binding.value === "slide-bottom")

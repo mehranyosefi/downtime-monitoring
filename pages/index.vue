@@ -21,6 +21,7 @@ const { isOnTablet, isOnMobile } = useWindowProperty();
 const templateSections = ref<{ [key: string]: boolean }>({
   cardItems: false,
   trust: false,
+  carousel: false,
 });
 const products = reactive([
   {
@@ -104,9 +105,9 @@ const animationNameCompute = (key: number) => {
 </script>
 
 <template>
-  <div class="transition-colors">
-    <NuxtLayout name="default">
-      <div class="container mx-auto px-10" id="container">
+  <NuxtLayout name="default">
+    <div class="transition-colors">
+      <div class="container mx-auto px-10 pb-14" id="container">
         <div
           class="grid grid-row-2 lg:grid-cols-2 min-h-[calc(100vh-89px)] content-center"
         >
@@ -147,7 +148,7 @@ const animationNameCompute = (key: number) => {
 
           <div class="w-fit m-auto mt-20">
             <i
-              class="w-[26rem] md:w-[30rem] max-lg:mb-14"
+              class="w-[26rem] md:w-[30rem]"
               :class="{
                 'content-darkIndex': useApp.isDarkTheme,
                 'content-lightIndex': !useApp.isDarkTheme,
@@ -157,11 +158,11 @@ const animationNameCompute = (key: number) => {
         </div>
       </div>
       <div
-        class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900 transition-colors pb-48"
+        class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900 transition-colors"
       >
-        <div class="container mx-auto px-10">
+        <div class="container mx-auto px-10 py-32">
           <div>
-            <h4 class="text-4xl font-semibold text-center pt-16">
+            <h4 class="text-4xl font-semibold text-center">
               {{ t("index.careAbout") }} <br />
               <span v-if="locale == 'fa'" class="leading-normal">
                 {{ t("phrases.etc.inOnePlace") }}
@@ -182,7 +183,7 @@ const animationNameCompute = (key: number) => {
           </div>
           <div
             v-if="templateSections.cardItems"
-            class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-14"
+            class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-32"
           >
             <PrimeCard
               v-for="(i, key) in headerMegaMenu[0].items"
@@ -219,8 +220,8 @@ const animationNameCompute = (key: number) => {
           </div>
         </div>
       </div>
-      <div class="container mx-auto px-10 pb-44" v-if="templateSections.trust">
-        <div class="mt-16">
+      <div class="container mx-auto px-10 py-32" v-if="templateSections.trust">
+        <div>
           <h4 class="text-4xl font-semibold text-center">
             <span v-if="locale === 'en'">
               {{ `${t("general.why")} ${t("general.users")}` }}
@@ -240,7 +241,7 @@ const animationNameCompute = (key: number) => {
             </span>
           </h4>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-14">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-32">
           <Primecard
             v-for="(trust, key) in locale === 'en' ? trustItems : faTrustItems"
             :key="key"
@@ -282,36 +283,42 @@ const animationNameCompute = (key: number) => {
             </template>
           </Primecard>
         </div>
-        <PrimeCarousel
-          :value="products"
-          :page="0"
-          :numVisible="5"
-          :numScroll="1"
-          :responsiveOptions="responsiveOptions"
-          :autoplayInterval="isOnMobile ? 3000 : 0"
-          :showNavigators="false"
-          :showIndicators="false"
-          circular
-          :pt="{
-            root: 'mt-52',
-            item: 'flex items-center justify-center',
-          }"
-          :dir="locale === 'en' ? 'ltr' : 'rtl'"
-        >
-          <template #item="slotProps">
-            <div>
-              <img
-                width="120px"
-                height="120px"
-                :src="slotProps.data.img"
-                alt=""
-              />
-            </div>
-          </template>
-        </PrimeCarousel>
       </div>
-    </NuxtLayout>
-  </div>
+      <div
+        v-if="templateSections.carousel"
+        class="text-gray-100 dark:text-gray-900 pt-32 pb-64"
+      >
+        <div class="container mx-auto px-10 pb-14">
+          <PrimeCarousel
+            :value="products"
+            :page="0"
+            :numVisible="5"
+            :numScroll="1"
+            :responsiveOptions="responsiveOptions"
+            :autoplayInterval="3000"
+            :showNavigators="false"
+            :showIndicators="false"
+            :circular="isOnMobile"
+            :pt="{
+              item: 'flex items-center justify-center',
+            }"
+            :dir="locale === 'en' ? 'ltr' : 'rtl'"
+          >
+            <template #item="slotProps">
+              <div>
+                <img
+                  width="120px"
+                  height="120px"
+                  :src="slotProps.data.img"
+                  alt=""
+                />
+              </div>
+            </template>
+          </PrimeCarousel>
+        </div>
+      </div>
+    </div>
+  </NuxtLayout>
 </template>
 
 <style lang="postcss" scoped></style>
