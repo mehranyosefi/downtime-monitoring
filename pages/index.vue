@@ -106,7 +106,7 @@ const animationNameCompute = (key: number) => {
 
 <template>
   <NuxtLayout name="default">
-    <div class="transition-colors">
+    <div class="transition-colors pb-32">
       <div class="container mx-auto px-10 pb-14" id="container">
         <div
           class="grid grid-row-2 lg:grid-cols-2 min-h-[calc(100vh-89px)] content-center"
@@ -286,7 +286,7 @@ const animationNameCompute = (key: number) => {
       </div>
       <div
         v-if="templateSections.carousel"
-        class="text-gray-100 dark:text-gray-900 pt-32 pb-64"
+        class="dark:bg-gray-100 text-gray-100 dark:text-gray-900 py-32"
       >
         <div class="container mx-auto px-10 pb-14">
           <PrimeCarousel
