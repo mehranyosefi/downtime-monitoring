@@ -18,19 +18,19 @@ export default {
     const icons = [
       {
         href: "#facebook",
-        svgId: "_nuxt/public/img/icons.svg#facebook",
+        svgId: "/img/icons.svg#facebook",
       },
       {
         href: "#twitter",
-        svgId: "_nuxt/public/img/icons.svg#twitter",
+        svgId: "/img/icons.svg#twitter",
       },
       {
         href: "#linkedin",
-        svgId: "_nuxt/public/img/icons.svg#linkedin",
+        svgId: "/img/icons.svg#linkedin",
       },
       {
         href: "#telegram",
-        svgId: "_nuxt/public/img/icons.svg#telegram",
+        svgId: "/img/icons.svg#telegram",
       },
     ];
     return () => [

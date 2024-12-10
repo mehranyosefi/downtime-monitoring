@@ -259,7 +259,7 @@ const animationNameCompute = (key: number) => {
                   :key="i"
                   :viewBox="locale == 'en' ? '4 0 24 24' : '-4 0 24 24'"
                 >
-                  <use href="/public/img/icons.svg#star"></use>
+                  <use href="/img/icons.svg#star"></use>
                 </svg>
               </div>
               <h5 class="font-extrabold text-2xl" v-text="trust.title"></h5>
