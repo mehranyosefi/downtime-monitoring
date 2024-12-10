@@ -93,7 +93,7 @@ export const headerMegaMenu: MegaMenuInterface[] = [
   new MegaMenu("pricing", "#pricing"),
 ];
 export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
-  new MegaMenu("teams", undefined, [
+  new MegaMenu("general.teams", undefined, [
     {
       label: "teams.devops",
       // command: () => {

@@ -5,7 +5,7 @@ import { headerMegaMenu } from "~/types/menu";
 import { createI18n } from "vue-i18n";
 // import { useI18n } from "vue-i18n";
 // import { mount } from "@vue/test-utils";
-import { headerMegaMenuFooterItems } from "~/types/menu";
+import { headerMegaMenuTeamItems } from "~/types/menu";
 import fa from "~/locales/fa.json";
 import en from "~/locales/en.json";
 import { setup } from "@nuxt/test-utils";
@@ -45,7 +45,7 @@ describe("megamenu test", async () => {
     const wrapper = await mountSuspended(BaseMegaMenu, {
       props: {
         items: headerMegaMenu,
-        subItems: headerMegaMenuFooterItems,
+        subItems: headerMegaMenuTeamItems,
       },
       global: {
         plugins: [i18n],
@@ -62,7 +62,7 @@ describe("megamenu test", async () => {
     const wrapped = await mountSuspended(BaseMegaMenu, {
       props: {
         items: headerMegaMenu,
-        subItems: headerMegaMenuFooterItems,
+        subItems: headerMegaMenuTeamItems,
       },
       global: {
         plugins: [i18n],
@@ -77,7 +77,7 @@ describe("megamenu test", async () => {
     const wrapped = await mountSuspended(BaseMegaMenu, {
       props: {
         items: headerMegaMenu,
-        subItems: headerMegaMenuFooterItems,
+        subItems: headerMegaMenuTeamItems,
       },
       global: {
         plugins: [i18n],
