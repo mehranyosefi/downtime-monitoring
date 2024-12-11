@@ -109,9 +109,14 @@ const animationNameCompute = (key: number) => {
     <div class="transition-colors pb-32">
       <div class="container mx-auto px-10 pb-14" id="container">
         <div
-          class="grid grid-row-2 lg:grid-cols-2 min-h-[calc(100vh-89px)] content-center"
+          class="grid grid-row-2 lg:grid-cols-2 gap-y-20 gap-x-10 max-lg:py-24 min-h-[calc(100vh-89px)] content-center"
         >
-          <div class="w-fit m-auto max-md:mt-20">
+          <div
+            class="w-fit m-auto max-md:mt-20"
+            v-animation-on-viewport="
+              locale == 'en' ? 'slide-left' : 'slide-right'
+            "
+          >
             <h4 v-if="locale == 'en'" class="text-6xl font-semibold">
               {{ `${t("index.serviceTitle.one")}` }} <br />
               <span class="text-green-500 dark:text-primary-500">
@@ -147,8 +152,10 @@ const animationNameCompute = (key: number) => {
           </div>
 
           <div
-            class="w-fit m-auto max-md:mt-20 viewportanimation"
-            v-animation-on-viewport
+            class="w-fit m-auto max-lg:mt-20"
+            v-animation-on-viewport="
+              locale == 'en' ? 'slide-right' : 'slide-left'
+            "
           >
             <i
               class="w-[26rem] md:w-[30rem]"
@@ -165,7 +172,10 @@ const animationNameCompute = (key: number) => {
       >
         <div class="container mx-auto px-10 py-32">
           <div>
-            <h4 class="text-4xl font-semibold text-center">
+            <h4
+              class="text-4xl font-semibold text-center"
+              v-animation-on-viewport="'slide-right'"
+            >
               {{ t("index.careAbout") }} <br />
               <span v-if="locale == 'fa'" class="leading-normal">
                 {{ t("phrases.etc.inOnePlace") }}
@@ -225,7 +235,10 @@ const animationNameCompute = (key: number) => {
       </div>
       <div class="container mx-auto px-10 py-32" v-if="templateSections.trust">
         <div>
-          <h4 class="text-4xl font-semibold text-center">
+          <h4
+            class="text-4xl font-semibold text-center"
+            v-animation-on-viewport
+          >
             <span v-if="locale === 'en'">
               {{ `${t("general.why")} ${t("general.users")}` }}
               <span

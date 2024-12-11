@@ -19,10 +19,11 @@
   opacity: 0;
 }
 
-/* animations */
-.viewportanimation {
- 
-  animation: viewport .8s linear;
+.slide-right-animation {
+  animation: slide-right 0.5s linear;
+}
+.slide-left-animation {
+  animation: slide-left 0.5s linear;
 }
 
 /* media screen */
@@ -33,13 +34,24 @@
 } */
 
 /* keyframes */
-@keyframes viewport {
-  0% {
-    opacity: .5;
-    transform: translateY(70vh);
+@keyframes slide-right {
+  from {
+    opacity: 0.5;
+    transform: translateX(40vw);
   }
-  100% {
-    transform: translateY(0);
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-left {
+  from {
+    opacity: 0.5;
+    transform: translateX(-40vw);
+  }
+  to {
+    transform: translateX(0);
     opacity: 1;
   }
 }

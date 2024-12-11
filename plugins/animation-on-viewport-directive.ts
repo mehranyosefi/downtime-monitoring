@@ -4,36 +4,24 @@ export default defineNuxtPlugin((nuxtApp) => {
       el: HTMLElement,
       binding: { value: string; arg?: string | undefined }
     ) {
-      // function callback(
-      //   entires: IntersectionObserverEntry[],
-      //   observer: IntersectionObserver
-      // ) {
-      //   entires.forEach((entry) => {
-      //     // const targetElement = entry.target;
-      //     if (entry.intersectionRatio > 0) {
-      //       el.classList.add("animate");
-      //     }
-      //     if (!entry.isIntersecting) {
-      //       el.classList.remove("animate");
-      //       //
-      //     }
-      //   });
-
-      // }
       const callback: IntersectionObserverCallback = (entries) => {
         entries.forEach((entry) => {
           if (entry.intersectionRatio > 0) {
-            el.classList.add("viewportanimation");
+            if (binding.value)
+              entry.target.classList.add(`${binding.value}-animation`);
+            else entry.target.classList.add(`slide-left-animation`);
           } else {
-            el.classList.remove("viewportanimation");
+            if (binding.value)
+              entry.target.classList.remove(`${binding.value}-animation`);
+            else entry.target.classList.remove(`slide-left-animation`);
           }
         });
       };
-      const options: IntersectionObserverInit = {
-        threshold: 0,
-        rootMargin: "0px",
-      };
-      const io = new IntersectionObserver(callback, options);
+      // const options: IntersectionObserverInit = {
+      //   threshold: 0,
+      //   rootMargin: "0px",
+      // };
+      const io = new IntersectionObserver(callback);
       io.observe(el);
     },
   });
