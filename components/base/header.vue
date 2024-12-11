@@ -164,13 +164,13 @@ function set_shadow() {
               v-if="sideNavActive"
               width="3rem"
               height="3rem"
-              href="/img/icons.svg/#close"
+              href="/img/icons.svg#close"
             ></use>
             <use
               v-else
               width="3rem"
               height="3rem"
-              href="/img/icons.svg/#menu"
+              href="/img/icons.svg#menu"
             ></use>
           </Transition>
         </svg>

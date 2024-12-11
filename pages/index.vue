@@ -111,7 +111,7 @@ const animationNameCompute = (key: number) => {
         <div
           class="grid grid-row-2 lg:grid-cols-2 min-h-[calc(100vh-89px)] content-center"
         >
-          <div class="w-fit m-auto mt-20">
+          <div class="w-fit m-auto max-md:mt-20">
             <h4 v-if="locale == 'en'" class="text-6xl font-semibold">
               {{ `${t("index.serviceTitle.one")}` }} <br />
               <span class="text-green-500 dark:text-primary-500">
@@ -146,7 +146,10 @@ const animationNameCompute = (key: number) => {
             </PrimeButton>
           </div>
 
-          <div class="w-fit m-auto mt-20">
+          <div
+            class="w-fit m-auto max-md:mt-20 viewportanimation"
+            v-animation-on-viewport
+          >
             <i
               class="w-[26rem] md:w-[30rem]"
               :class="{
