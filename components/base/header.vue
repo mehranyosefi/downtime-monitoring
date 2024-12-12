@@ -33,17 +33,28 @@ const toggle = (event: Event) => {
 // }
 onMounted(() => {
   if (props.signSection) {
-    const elm = document.querySelector(".root-element-page") as HTMLElement;
-    elm.addEventListener("scroll", set_shadow);
+    const mainElement = document.querySelector("main.main") as HTMLElement;
+    const rootElement = document.querySelector(
+      ".root-element-page"
+    ) as HTMLElement;
+    mainElement.addEventListener("scroll", (e) => {
+      set_shadow(e.target as HTMLElement);
+    });
+    rootElement.addEventListener("scroll", (e) => {
+      set_shadow(e.target as HTMLElement);
+    });
   }
 });
 
-function set_shadow() {
-  const top = header.value!.getBoundingClientRect().top;
-  if (top <= 0) {
+function set_shadow(el: HTMLElement) {
+  if (el.scrollTop > 0) {
     header.value!.classList.add("shadow-xl");
+    header.value!.classList.remove("lg:mt-10");
+    header.value!.classList.add("lg:!mt-0");
   } else {
     header.value!.classList.remove("shadow-xl");
+    header.value!.classList.remove("lg:!mt-0");
+    header.value!.classList.add("lg:mt-10");
   }
 }
 </script>
@@ -181,7 +192,7 @@ function set_shadow() {
 
 <style lang="postcss">
 .header {
-  @apply sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 mt-0 lg:mt-10 z-40 flex items-center;
+  @apply sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 lg:mt-10 z-40 flex items-center transition-all;
 }
 /* #overlay_language_menu {
   min-width: 0;
