@@ -88,9 +88,9 @@ export const headerMegaMenu: MegaMenuInterface[] = [
         "از نظارت بر کلمه کلیدی برای بررسی وجود یا عدم وجود متن خاص در بدنه پاسخ درخواست (معمولاً HTML یا JSON) استفاده کنید.",
     },
   ]),
-  new MegaMenu("integrations", "#integrations"),
-  new MegaMenu("statusPage", "#status-page"),
-  new MegaMenu("pricing", "#pricing"),
+  new MegaMenu("integrations", "integrations"),
+  new MegaMenu("statusPage", "status-page"),
+  new MegaMenu("pricing", "pricing"),
 ];
 export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
   new MegaMenu("general.teams", undefined, [

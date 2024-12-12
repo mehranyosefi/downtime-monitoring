@@ -7,7 +7,9 @@ import { trustItems } from "~/types/menu";
 import { faTrustItems } from "~/types/menu";
 
 definePageMeta({
-  layout: false,
+  pageTransition: {
+    name: "page",
+  },
 });
 useHead({
   title: t("phrases.seo.index.title"),
@@ -63,13 +65,15 @@ const responsiveOptions = ref([
     numScroll: 1,
   },
 ]);
+const layoutIsScrollable = ref<boolean>(false);
 
 onMounted(() => {
   finiteScrolling(
     ".main",
     templateSections.value,
-    (items: { [key: string]: boolean }) => {
+    (items: { [key: string]: boolean }, isEnd) => {
       templateSections.value = items;
+      layoutIsScrollable.value = isEnd;
     }
   );
 });
@@ -105,7 +109,7 @@ const animationNameCompute = (key: number) => {
 </script>
 
 <template>
-  <NuxtLayout name="default">
+  <NuxtLayout name="default" :scrollable="layoutIsScrollable">
     <div class="transition-colors pb-32">
       <div class="container mx-auto px-10 pb-14" id="container">
         <div
@@ -117,19 +121,19 @@ const animationNameCompute = (key: number) => {
               locale == 'en' ? 'slide-left' : 'slide-right'
             "
           >
-            <h4 v-if="locale == 'en'" class="text-6xl font-semibold">
+            <h2 v-if="locale == 'en'" class="text-6xl font-semibold">
               {{ `${t("index.serviceTitle.one")}` }} <br />
               <span class="text-green-500 dark:text-primary-500">
                 {{ `${t("general.uptime")} ${t("general.monitoring")}` }}
               </span>
               service.
-            </h4>
-            <h4 v-else class="text-6xl font-semibold leading-relaxed">
+            </h2>
+            <h2 v-else class="text-6xl font-semibold leading-relaxed">
               {{ `${t("index.serviceTitle.one")}` }} <br />
               <span class="text-green-500 dark:text-primary-500">
                 {{ `${t("index.serviceTitle.two")}` }}
               </span>
-            </h4>
+            </h2>
             <p class="my-8 text-xl font-semibold">
               {{ `${t("index.getTitle")}` }}
               <span class="text-green-500 dark:text-primary-500"

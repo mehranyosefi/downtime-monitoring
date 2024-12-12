@@ -26,12 +26,15 @@
   animation: slide-left 0.5s linear;
 }
 
-/* media screen */
-/* @media screen and (max-width: 768px) {
-  .animate {
-    animation: scrollAnimateMobile 1s linear;
-  }
-} */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
 
 /* keyframes */
 @keyframes slide-right {

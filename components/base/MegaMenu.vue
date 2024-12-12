@@ -43,7 +43,7 @@ function triggerItemSelect(
           <PrimeButton
             class="megamenu--button"
             :as="item.path ? 'router-link' : 'button'"
-            :to="localepath(item.path!)"
+            :to="localepath(item.path ?? '/')"
             @click="triggerItemSelect(item)"
             @mouseover="triggerItemSelect(item, 'hover')"
             @blur="activeSubMenu = false"

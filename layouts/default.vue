@@ -3,6 +3,14 @@ import { headerMegaMenu } from "~/types/menu";
 import { headerMegaMenuTeamItems } from "~/types/menu";
 import { resources } from "~/types/menu";
 
+withDefaults(
+  defineProps<{
+    scrollable?: boolean;
+  }>(),
+  {
+    scrollable: true,
+  }
+);
 const { locale, t } = useI18n();
 const useApp = useAppStore();
 const overflowAuto = ref<boolean>(false);
@@ -17,10 +25,26 @@ useHead({
   },
 });
 const sideNav = useTemplateRef("sideNav");
+const mainIsScrollable = ref<boolean>(true);
+onMounted(() => {
+  const root = document.querySelector("div.root-element-page") as HTMLElement;
+  root.onscroll = (e) => {
+    const el = e.target! as HTMLElement;
+    if (el.scrollTop > 20) {
+      mainIsScrollable.value = false;
+    } else {
+      mainIsScrollable.value = true;
+    }
+  };
+});
+
 //functions
 </script>
 <template>
-  <div class="root-element-page overflow-x-hidden overflow-y-auto h-screen">
+  <div
+    class="root-element-page overflow-x-hidden h-screen"
+    :class="{ 'overflow-y-auto': scrollable, 'overflow-y-hidden': !scrollable }"
+  >
     <slot name="header">
       <base-header
         sign-section
@@ -30,7 +54,13 @@ const sideNav = useTemplateRef("sideNav");
         :side-nav-active="sideNav?.sideNavActive"
       />
     </slot>
-    <main class="main overflow-xhidden overflow-y-auto h-[120vh]">
+    <main
+      class="main overflow-x-hidden h-[120vh]"
+      :class="{
+        'overflow-y-auto': mainIsScrollable,
+        'overflow-y-hidden': !mainIsScrollable,
+      }"
+    >
       <div class="overflow-hidden">
         <slot />
         <NuxtLazyHydrate :on-interaction="['click', 'touchstart']">

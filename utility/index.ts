@@ -1,9 +1,10 @@
 export function finiteScrolling(
   id: string,
   sections: { [key: string]: boolean },
-  callBack: (items: { [key: string]: boolean }) => void
+  callBack: (items: { [key: string]: boolean }, isEnd: boolean) => void
 ) {
   const elm = document.querySelector(id) as HTMLElement;
+  let isEnd: boolean = false;
   elm?.addEventListener(
     "scroll",
     (e) => {
@@ -14,12 +15,18 @@ export function finiteScrolling(
           if (sections[keys[i]]) continue;
           else {
             sections[keys[i]] = true;
-            break;
+            if (
+              sections[keys[i]] ===
+              sections[keys[Object.keys(sections).length - 1]]
+            )
+              break;
           }
         }
-
-        callBack(sections);
+        isEnd = true;
+      } else {
+        isEnd = false;
       }
+      callBack(sections, isEnd);
     },
     false
   );
