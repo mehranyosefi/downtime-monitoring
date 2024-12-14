@@ -56,7 +56,13 @@
     "locations": "Locations",
     "IPs": "IPs",
     "knowledgehub": "Knowledge hub",
-    "locations&IPs": "@:general.locations & @:general.IPs"
+    "locations&IPs": "@:general.locations & @:general.IPs",
+    "integrations": "Integraions",
+    "statusPage": "Status Page",
+    "pricing": "Pricing",
+    "personal": "personal",
+    "notification": "notification",
+    "channels": "channels"
   },
 
   "user": {
@@ -104,9 +110,19 @@
     "port": "Port monitoring",
     "keyword": "Keyword monitoring"
   },
-  "integrations": "Integraions",
-  "statusPage": "Status Page",
-  "pricing": "Pricing",
+  "integrations": {
+    "title": {
+      "episode-1": "Downtime happens.",
+      "episode-2": "Get notified!"
+    },
+    "subTitle": "Everyone knows it happens. But it’s important to realize before customers do."
+  },
+  "statusPage": {
+    "title": ""
+  },
+  "pricing": {
+    "title": ""
+  },
   "teams": {
     "devops": "DevOps",
     "developers": "Developers",

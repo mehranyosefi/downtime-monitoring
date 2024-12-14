@@ -15,7 +15,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           const middleWidth = container.offsetWidth / 2;
           if (!binding.value) {
             const ratio =
-              (container.offsetHeight - properties.top) / middleHeight;
+              (container.offsetHeight - properties.top) / (0.9 * middleHeight);
             el.style.opacity = Math.min(ratio, 1).toString();
             el.style.transform = `scale(${Math.min(ratio, 1)})`;
           } else if (

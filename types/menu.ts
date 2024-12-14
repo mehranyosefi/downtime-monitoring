@@ -88,9 +88,9 @@ export const headerMegaMenu: MegaMenuInterface[] = [
         "از نظارت بر کلمه کلیدی برای بررسی وجود یا عدم وجود متن خاص در بدنه پاسخ درخواست (معمولاً HTML یا JSON) استفاده کنید.",
     },
   ]),
-  new MegaMenu("integrations", "integrations"),
-  new MegaMenu("statusPage", "status-page"),
-  new MegaMenu("pricing", "pricing"),
+  new MegaMenu("general.integrations", "integrations"),
+  new MegaMenu("general.statusPage", "status-page"),
+  new MegaMenu("general.pricing", "pricing"),
 ];
 export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
   new MegaMenu("general.teams", undefined, [
@@ -171,7 +171,7 @@ export const faTrustItems = [
 export const resources: MegaMenuInterface[] = [
   new MegaMenu("general.resources", undefined, [
     {
-      label: "integrations",
+      label: "general.integrations",
       path: "#integrations",
     },
     {
@@ -187,4 +187,23 @@ export const resources: MegaMenuInterface[] = [
       path: "#knowledgehub",
     },
   ]),
+];
+
+export const notificatoins = [
+  {
+    label: "email",
+    icon: "/img/icons.svg#mail",
+  },
+  {
+    label: "sms",
+    icon: "/img/icons.svg#sms",
+  },
+  {
+    label: "voicecall",
+    icon: "/img/icons.svg#call",
+  },
+  {
+    label: "mobileapppush",
+    icon: "/img/icons.svg#notifications",
+  },
 ];

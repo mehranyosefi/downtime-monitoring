@@ -144,7 +144,7 @@ function set_shadow(el: HTMLElement) {
           <NuxtLink
             :to="localePath('login')"
             v-text="t('general.log_in')"
-            class="hidden xl:block font-semibold text-gray-900 hover:!text-green-500 dark:!text-gray-100 mx-6 dark:hover:!text-primary-500"
+            class="hidden xl:block font-semibold text-gray-900 hover:!text-green-500 dark:!text-white mx-6 dark:hover:!text-primary-500"
           ></NuxtLink>
         </PrimeButton>
         <PrimeButton severity="success" :pt="{ root: '!p-0' }">
@@ -168,7 +168,7 @@ function set_shadow(el: HTMLElement) {
         <svg
           width="3rem"
           height="3rem"
-          class="text-gray-900 dark:text-gray-100 hover:text-green-500 dark:hover:text-primary-500 cursor-pointer transition-all"
+          class="text-gray-900 dark:text-white hover:text-green-500 dark:hover:text-primary-500 cursor-pointer transition-all"
         >
           <Transition name="fade">
             <use

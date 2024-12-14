@@ -55,7 +55,7 @@ onMounted(() => {
       />
     </slot>
     <main
-      class="main overflow-x-hidden h-[120vh]"
+      class="main overflow-x-hidden h-[calc(100vh-89px)]"
       :class="{
         'overflow-y-auto': mainIsScrollable,
         'overflow-y-hidden': !mainIsScrollable,

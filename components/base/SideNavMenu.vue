@@ -72,7 +72,7 @@ defineExpose({
       <PrimeMenu
         :model="[subItems[0]]"
         :pt="{
-          root: '!text-gray-100 !border-none !rounded-none',
+          root: '!border-none !rounded-none',
           submenuLabel: '!p-0 mb-2 font-bold text-2xl',
           item: '!px-2 text-xl py-1 my-2',
           itemContent:
@@ -93,11 +93,11 @@ defineExpose({
       <PrimeMenu
         :model="items.slice(1)"
         :pt="{
-          root: '!text-gray-100 !border-none !rounded-none',
+          root: '!border-none !rounded-none',
           item: 'text-2xl my-3 font-bold',
           itemContent:
             'hover:!text-green-500 dark:hover:!text-primary-500 w-fit !leading-6',
-          end: 'text-gray-900 dark:!text-gray-100 hover:!text-green-500 dark:hover:!text-primary-500 !transition-colors !duration-75 w-fit !h-[20px] !leading-6',
+          end: 'hover:!text-green-500 dark:hover:!text-primary-500 !transition-colors !duration-75 w-fit !h-[20px] !leading-6',
         }"
       >
         <template #item="{ item, props }">

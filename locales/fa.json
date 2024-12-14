@@ -57,7 +57,13 @@
     "locations": "موقعیت ها",
     "IPs": "آی پی ها",
     "knowledgehub": "مرکز دانش",
-    "locations&IPs": "@:general.locations & @:general.IPs"
+    "locations&IPs": "@:general.locations & @:general.IPs",
+    "integrations": "یکپارچه سازی",
+    "statusPage": "صفحه وضعیت",
+    "pricing": "قیمت گذاری",
+    "personal": "شخصی",
+    "notification": "اطلاع رسانی",
+    "channels": "کانال ها"
   },
 
   "user": {
@@ -105,9 +111,19 @@
     "port": "نظارت پورت",
     "keyword": "نظارت کلمه کلیدی"
   },
-  "integrations": "یکپارچه سازی",
-  "statusPage": "صفحه وضعیت",
-  "pricing": "قیمت گذاری",
+  "integrations": {
+    "title": {
+      "episode-1": "مشکلی اتفاق افتاد.",
+      "episode-2": "باخبر شوید!"
+    },
+    "subTitle": "همه این اتفاق را میدانند. اما قبل از اینکه کاربران متوجه شوند مهم است."
+  },
+  "statusPage": {
+    "title": ""
+  },
+  "pricing": {
+    "title": ""
+  },
   "teams": {
     "devops": "توسعه عملیات",
     "developers": "توسعه دهندگان",

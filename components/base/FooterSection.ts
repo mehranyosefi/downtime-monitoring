@@ -52,7 +52,7 @@ export default {
                   "div",
                   {
                     class: [
-                      "py-[.15rem]",
+                      "py-[.15rem] px-10",
                       // locale.value === "en" ? "ml-20" : "mr-20",
                     ],
                   },

@@ -71,8 +71,9 @@ onMounted(() => {
   finiteScrolling(
     ".main",
     templateSections.value,
-    (items: { [key: string]: boolean }, isEnd) => {
-      templateSections.value = items;
+    (items: { [key: string]: boolean } | null, isEnd) => {
+      if (items) templateSections.value = items;
+      console.log(isEnd);
       layoutIsScrollable.value = isEnd;
     }
   );
@@ -172,7 +173,7 @@ const animationNameCompute = (key: number) => {
         </div>
       </div>
       <div
-        class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900 transition-colors"
+        class="bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 transition-colors"
       >
         <div class="container mx-auto px-10 py-32">
           <div>
@@ -200,7 +201,7 @@ const animationNameCompute = (key: number) => {
           </div>
           <div
             v-if="templateSections.cardItems"
-            class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-32"
+            class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 pt-16"
           >
             <PrimeCard
               v-for="(i, key) in headerMegaMenu[0].items"
@@ -261,7 +262,7 @@ const animationNameCompute = (key: number) => {
             </span>
           </h4>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-32">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-16">
           <Primecard
             v-for="(trust, key) in locale === 'en' ? trustItems : faTrustItems"
             :key="key"
@@ -304,10 +305,7 @@ const animationNameCompute = (key: number) => {
           </Primecard>
         </div>
       </div>
-      <div
-        v-if="templateSections.carousel"
-        class="dark:bg-gray-100 text-gray-100 dark:text-gray-900 py-32"
-      >
+      <div v-if="templateSections.carousel" class="dark:bg-gray-100 py-32">
         <div class="container mx-auto px-10 pb-14">
           <PrimeCarousel
             :value="products"
