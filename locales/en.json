@@ -115,7 +115,13 @@
       "episode-1": "Downtime happens.",
       "episode-2": "Get notified!"
     },
-    "subTitle": "Everyone knows it happens. But it’s important to realize before customers do."
+    "subTitle": "Everyone knows it happens. But it’s important to realize before customers do.",
+    "notifications": {
+      "email": "email",
+      "sms": "sms",
+      "voicecall": "voice call",
+      "mobileapppush": "mobile app push"
+    }
   },
   "statusPage": {
     "title": ""

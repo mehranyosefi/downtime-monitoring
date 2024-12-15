@@ -191,19 +191,19 @@ export const resources: MegaMenuInterface[] = [
 
 export const notificatoins = [
   {
-    label: "email",
+    label: "integrations.notifications.email",
     icon: "/img/icons.svg#mail",
   },
   {
-    label: "sms",
+    label: "integrations.notifications.sms",
     icon: "/img/icons.svg#sms",
   },
   {
-    label: "voicecall",
+    label: "integrations.notifications.voicecall",
     icon: "/img/icons.svg#call",
   },
   {
-    label: "mobileapppush",
+    label: "integrations.notifications.mobileapppush",
     icon: "/img/icons.svg#notifications",
   },
 ];

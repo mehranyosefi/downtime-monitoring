@@ -74,16 +74,16 @@ onMounted(() => {
               >
                 <div v-if="!showTextOver" key="1">
                   <svg
-                    width="3rem"
-                    height="3rem"
+                    width="4rem"
+                    height="4rem"
                     class="text-green-500 dark:text-primary-500"
                   >
-                    <use width="3rem" height="3rem" :href="notif.icon"></use>
+                    <use width="4rem" height="4rem" :href="notif.icon"></use>
                   </svg>
 
                   <span
-                    v-text="notif.label"
-                    class="text-xl font-extrabold pt-2"
+                    v-text="t(notif.label)"
+                    class="text-lg font-extrabold pt-1"
                   ></span>
                 </div>
                 <p v-else key="2" class="cursor-text">
