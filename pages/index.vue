@@ -23,6 +23,7 @@ const { isOnTablet, isOnMobile } = useWindowProperty();
 const templateSections = ref<{ [key: string]: boolean }>({
   cardItems: false,
   trust: false,
+  statusPage: false,
   carousel: false,
 });
 const products = reactive([
@@ -73,7 +74,6 @@ onMounted(() => {
     templateSections.value,
     (items: { [key: string]: boolean } | null, isEnd) => {
       if (items) templateSections.value = items;
-      console.log(isEnd);
       layoutIsScrollable.value = isEnd;
     }
   );
@@ -112,7 +112,7 @@ const animationNameCompute = (key: number) => {
 <template>
   <NuxtLayout name="default" :scrollable="layoutIsScrollable">
     <div class="transition-colors pb-32">
-      <div class="container mx-auto px-10 pb-14" id="container">
+      <div class="container mx-auto px-10 pb-14">
         <div
           class="grid grid-row-2 lg:grid-cols-2 gap-y-20 gap-x-10 max-lg:py-24 min-h-[calc(100vh-89px)] content-center"
         >
@@ -303,6 +303,65 @@ const animationNameCompute = (key: number) => {
               </div>
             </template>
           </Primecard>
+        </div>
+      </div>
+      <div
+        v-if="templateSections.statusPage"
+        class="bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 min-h-screen content-center pb-48"
+      >
+        <div class="container mx-auto px-10">
+          <div class="grid grid-cols-l lg:grid-cols-2 gap-x-8 gap-y-16">
+            <div class="order-2 lg:order-1 mt-40 px-10 lg:mt-auto">
+              <h4 class="text-5xl font-semibold">
+                Inform your customers about incidents with
+                <br />
+                <span class="text-green-500 dark:text-primary-500"
+                  >status pages</span
+                >.
+              </h4>
+              <p
+                class="my-4 text-lg"
+                :class="{ 'pr-10': locale === 'en', 'pl-10': locale !== 'en' }"
+              >
+                Be transparent. Inform customers of planned outages. <br />
+                Show them that you strive to keep your service 100% online.
+              </p>
+              <div class="flex items-center">
+                <div class="text-green-500 dark:text-primary-500 flex">
+                  <nuxt-link to="/">Check LIVE demo</nuxt-link>
+                  <svg class="mx-1" width="1rem" height="1rem">
+                    <use
+                      width="1rem"
+                      height="1rem"
+                      href="/img/icons.svg#external-link"
+                    ></use>
+                  </svg>
+                </div>
+                <span class="px-1" v-text="t('general.or')"></span>
+                <nuxt-link to="/" class="text-green-500 dark:text-primary-500">
+                  Status Pages</nuxt-link
+                >
+              </div>
+            </div>
+            <div class="relative order-1 lg:order-2 lg:-top-24 xl:-top-0 flex">
+              <div
+                class="absolute max-xl:top-5 rounded-full bg-green-500 dark:bg-blue-500 h-[70vw] w-[70vw] lg:h-[31rem] lg:w-[31rem] xl:h-[35rem] xl:w-[35rem] max-lg:-right-[45vw]"
+              ></div>
+              <div
+                class="relative bg-white dark:bg-gray-800 w-full top-[14vw] lg:w-[36rem] lg:h-[19rem] xl:w-[40rem] xl:h-[23rem] z-10 lg:right-[7rem] xl:right-[7rem] lg:top-[7rem] xl:top-[5.5rem]"
+              >
+                <i
+                  class="w-full h-full p-3 content-serviceStatus"
+                  :class="{
+                    'content-serviceStatusDark': useApp.isDarkTheme,
+                    'content-serviceStatus': !useApp.isDarkTheme,
+                  }"
+                ></i>
+              </div>
+            </div>
+            <!-- <div>3</div>
+            <div>4</div> -->
+          </div>
         </div>
       </div>
       <div v-if="templateSections.carousel" class="dark:bg-gray-100 py-32">

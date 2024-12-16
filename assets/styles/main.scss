@@ -12,14 +12,14 @@ html {
 
 @media (min-width: #{$xsmall}){
     html {
-        font-size: .75rem;
-    }
-}
-@media (min-width: #{$small}){
-    html {
         font-size: .8rem;
     }
 }
+// @media (min-width: #{$small}){
+//     html {
+//         font-size: .8rem;
+//     }
+// }
 @media (min-width: #{$medium}){
     html {
         font-size: .85rem;

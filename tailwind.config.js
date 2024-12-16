@@ -147,6 +147,8 @@ export default {
         moon: "url('/img/moon.svg')",
         darkIndex: "url('/img/darkIndex.svg')",
         lightIndex: "url('/img/lightIndex.svg')",
+        serviceStatus: "url('/img/serviceStatus.svg')",
+        serviceStatusDark: "url('/img/serviceStatusDark.svg')",
         email: "url('/img/email.svg')",
         emailDark: "url('/img/email-dark.svg')",
       },
