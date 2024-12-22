@@ -44,7 +44,7 @@ export default {
               {
                 class: [
                   "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-10",
-                  locale.value === "en" ? "md:pl-[10rem]" : "md:pr-[10rem]",
+                  locale.value === "en" ? "md:pl-[6rem]" : "md:pr-[6rem]",
                 ],
               },
               [

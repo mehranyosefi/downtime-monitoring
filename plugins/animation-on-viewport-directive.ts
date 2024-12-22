@@ -17,11 +17,11 @@ export default defineNuxtPlugin((nuxtApp) => {
           }
         });
       };
-      // const options: IntersectionObserverInit = {
-      //   threshold: 0,
-      //   rootMargin: "0px",
-      // };
-      const io = new IntersectionObserver(callback);
+      const options: IntersectionObserverInit = {
+        threshold: binding.arg ? parseInt(binding.arg) : 0,
+        rootMargin: "0px",
+      };
+      const io = new IntersectionObserver(callback, options);
       io.observe(el);
     },
   });

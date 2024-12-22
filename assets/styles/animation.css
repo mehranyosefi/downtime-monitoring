@@ -27,6 +27,12 @@
 .slide-left-animation {
   animation: slide-left 0.5s linear;
 }
+.slide-top-animation {
+  animation: slide-top 0.5s linear;
+}
+.slide-bottom-animation {
+  animation: slide-bottom 0.5s linear;
+}
 
 .page-enter-active,
 .page-leave-active {
@@ -42,7 +48,7 @@
 @keyframes slide-right {
   from {
     opacity: 0.5;
-    transform: translateX(40vw);
+    transform: translateX(38vw);
   }
   to {
     transform: translateX(0);
@@ -53,10 +59,30 @@
 @keyframes slide-left {
   from {
     opacity: 0.5;
-    transform: translateX(-40vw);
+    transform: translateX(-38vw);
   }
   to {
     transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-top {
+  from {
+    opacity: 0.5;
+    transform: translateY(-38vh);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-bottom {
+  from {
+    opacity: 0.5;
+    transform: translateY(38vh);
+  }
+  to {
+    transform: translateY(0);
     opacity: 1;
   }
 }

@@ -63,7 +63,10 @@
     "personal": "personal",
     "notification": "notification",
     "channels": "channels",
-    "or": "or"
+    "or": "or",
+    "pages": "pages",
+    "status": "status",
+    "inform": "inform"
   },
 
   "user": {
@@ -144,13 +147,12 @@
     "getTitle": "Get 50 monitors with 5-minutes checks",
     "startMonitoring": "Start monitoring in 30 seconds",
     "careAbout": "All you really care about",
-    "trustItems": {
-      "reliable": {
-        "userName": "Basem",
-        "title": "Reliable service",
-        "link": "Captera.com"
-      }
+    "statusPage": {
+      "title": "Inform your customers about incidents with",
+      "subTitle": "Be transparent. Inform customers of planned outages. Show them that you strive to keep your service 100% online.",
+      "check": "check live demo"
     }
+
   },
   "footer": {
     "donwntimehappens": "Downtime happens. Get notified!",
