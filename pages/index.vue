@@ -307,7 +307,7 @@ const animationNameCompute = (key: number) => {
       </div>
       <div
         v-if="templateSections.statusPage"
-        class="bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 min-h-screen content-center py-28 transition-all"
+        class="bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 min-h-screen content-center pb-44 transition-all"
       >
         <div class="container mx-auto px-10">
           <div
