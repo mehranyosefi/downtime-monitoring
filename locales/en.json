@@ -64,6 +64,7 @@
     "notification": "notification",
     "channels": "channels",
     "or": "or",
+    "page": "page",
     "pages": "pages",
     "status": "status",
     "inform": "inform"
@@ -125,10 +126,12 @@
       "sms": "sms",
       "voicecall": "voice call",
       "mobileapppush": "mobile app push"
+    },
+    "statusPage": {
+      "title": "Showcase your service uptime with",
+      "subTitle": "Showcase your service uptime with a status page. Highlight your services reliability and build trust with your website visitors and (potential) customers.",
+      "check": "Check the LIVE Status Page Example"
     }
-  },
-  "statusPage": {
-    "title": ""
   },
   "pricing": {
     "title": ""

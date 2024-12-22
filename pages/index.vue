@@ -315,7 +315,7 @@ const animationNameCompute = (key: number) => {
           >
             <div class="mt-60 md:mt-80 lg:mt-auto w-full order-2 lg:order-1">
               <h4
-                class="text-4xl font-semibold leading-tight"
+                class="text-5xl font-semibold leading-tight"
                 :class="{ 'lg:pr-10': locale === 'en' }"
               >
                 {{ t("index.statusPage.title") }}
@@ -377,7 +377,7 @@ const animationNameCompute = (key: number) => {
                 }"
               ></div>
               <div
-                class="relative bg-white dark:bg-gray-800 w-full top-[14vw] lg:w-[36rem] lg:h-[19rem] xl:w-[40rem] xl:h-[23rem] z-10 lg:right-[1.5rem] 2xl:-right-[2.5rem] lg:top-[7.5rem] xl:top-[6.5rem]"
+                class="relative rounded-lg p-4 bg-white dark:bg-gray-800 w-full top-[14vw] lg:w-[36rem] lg:h-[19rem] xl:w-[40rem] xl:h-[23rem] z-10 lg:right-[1.5rem] 2xl:-right-[2.5rem] lg:top-[7.5rem] xl:top-[6.5rem]"
                 :class="{
                   '!right-auto lg:left-[2rem] 2xl:-left-[2.5rem]':
                     locale === 'fa',
@@ -395,8 +395,6 @@ const animationNameCompute = (key: number) => {
                 ></i>
               </div>
             </div>
-            <!-- <div>3</div>
-            <div>4</div> -->
           </div>
         </div>
       </div>

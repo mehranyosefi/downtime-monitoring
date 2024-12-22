@@ -9,7 +9,7 @@ definePageMeta({
 const { t, locale } = useI18n();
 const layoutIsScrollable = ref<boolean>(false);
 const showTextOver = ref<boolean>(false);
-
+const useApp = useAppStore();
 onMounted(() => {
   finiteScrolling(".main", null, (items, isEnd) => {
     layoutIsScrollable.value = isEnd;
@@ -92,6 +92,77 @@ onMounted(() => {
               </Transition>
             </template>
           </Primecard>
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 min-h-screen content-center pb-44 transition-all"
+    >
+      <div class="container mx-auto px-10">
+        <div
+          class="flex flex-col lg:flex-row justify-center lg:justify-around items-center"
+        >
+          <div class="mt-60 md:mt-80 lg:mt-auto w-full order-2 lg:order-1">
+            <h4
+              class="text-5xl font-semibold leading-tight"
+              :class="{ 'lg:pr-10': locale === 'en' }"
+            >
+              {{ t("integrations.statusPage.title") }}
+              <span v-if="locale === 'en'">the</span>
+              <span class="text-green-500 dark:text-primary-500 inline-flex">
+                <span
+                  v-text="t('general.status')"
+                  class="mx-2"
+                  :class="{ 'order-2': locale !== 'en' }"
+                ></span
+                ><span
+                  :class="{ 'order-1': locale !== 'en' }"
+                  v-text="t('general.page')"
+                ></span></span
+              >.
+            </h4>
+            <p
+              class="my-4 text-xl"
+              :class="{ 'pr-10': locale === 'en', 'pl-10': locale !== 'en' }"
+            >
+              {{ t("integrations.statusPage.subTitle") }}
+            </p>
+
+            <nuxt-link
+              to="/"
+              class="text-green-500 dark:text-primary-500 text-lg font-bold underline underline-offset-8"
+            >
+              {{ t("integrations.statusPage.check") }}
+            </nuxt-link>
+          </div>
+          <div
+            class="relative lg:-top-10 xl:-top-0 flex w-full order-1 lg:order-2"
+          >
+            <div
+              class="absolute max-xl:top-5 rounded-full bg-green-500 dark:bg-blue-500 h-[70vw] w-[70vw] lg:h-[31rem] lg:w-[31rem] xl:h-[35rem] xl:w-[35rem] lg:right-0 max-lg:-right-[45vw]"
+              :class="{
+                'lg:left-0 !right-auto max-lg:-left-[45vw]': locale === 'fa',
+              }"
+            ></div>
+            <div
+              class="relative rounded-lg p-4 bg-white dark:bg-gray-800 w-full top-[14vw] lg:w-[36rem] lg:h-[19rem] xl:w-[40rem] xl:h-[23rem] z-10 lg:right-[1.5rem] 2xl:-right-[2.5rem] lg:top-[7.5rem] xl:top-[6.5rem]"
+              :class="{
+                '!right-auto lg:left-[2rem] 2xl:-left-[2.5rem]':
+                  locale === 'fa',
+              }"
+              v-animation-on-viewport="
+                locale == 'en' ? 'slide-right' : 'slide-left'
+              "
+            >
+              <i
+                class="w-full h-full p-3 content-serviceStatus"
+                :class="{
+                  'content-serviceStatusDark': useApp.isDarkTheme,
+                  'content-serviceStatus': !useApp.isDarkTheme,
+                }"
+              ></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
