@@ -114,12 +114,7 @@ const animationNameCompute = (key: number) => {
         <div
           class="flex flex-col lg:flex-row justify-center lg:justify-around items-center max-lg:py-24 min-h-[calc(100vh-89px)] content-center"
         >
-          <div
-            class="w-fit max-md:mt-20"
-            v-animation-on-viewport="
-              locale == 'en' ? 'slide-left' : 'slide-right'
-            "
-          >
+          <div class="w-fit max-md:mt-20">
             <h2 v-if="locale == 'en'" class="text-6xl font-semibold">
               {{ `${t("index.serviceTitle.one")}` }} <br />
               <span class="text-green-500 dark:text-primary-500">
@@ -154,12 +149,7 @@ const animationNameCompute = (key: number) => {
             </PrimeButton>
           </div>
 
-          <div
-            class="w-fit max-lg:mt-20"
-            v-animation-on-viewport="
-              locale == 'en' ? 'slide-right' : 'slide-left'
-            "
-          >
+          <div class="w-fit max-lg:mt-20">
             <i
               class="w-[26rem] md:w-[30rem]"
               :class="{
@@ -394,32 +384,34 @@ const animationNameCompute = (key: number) => {
       </div>
       <div class="dark:bg-gray-100 py-32">
         <div class="container mx-auto px-10 pb-14">
-          <PrimeCarousel
-            :value="products"
-            :page="0"
-            :numVisible="5"
-            :numScroll="1"
-            :responsiveOptions="responsiveOptions"
-            :autoplayInterval="3000"
-            :showNavigators="false"
-            :showIndicators="false"
-            :circular="isOnMobile"
-            :pt="{
-              item: 'flex items-center justify-center',
-            }"
-            :dir="locale === 'en' ? 'ltr' : 'rtl'"
-          >
-            <template #item="slotProps">
-              <div>
-                <img
-                  width="120px"
-                  height="120px"
-                  :src="slotProps.data.img"
-                  alt=""
-                />
-              </div>
-            </template>
-          </PrimeCarousel>
+          <ClientOnly>
+            <PrimeCarousel
+              :value="products"
+              :page="0"
+              :numVisible="5"
+              :numScroll="1"
+              :responsiveOptions="responsiveOptions"
+              :autoplayInterval="3000"
+              :showNavigators="false"
+              :showIndicators="false"
+              :circular="isOnMobile"
+              :pt="{
+                item: 'flex items-center justify-center',
+              }"
+              :dir="locale === 'en' ? 'ltr' : 'rtl'"
+            >
+              <template #item="slotProps">
+                <div>
+                  <img
+                    width="120px"
+                    height="120px"
+                    :src="slotProps.data.img"
+                    alt=""
+                  />
+                </div>
+              </template>
+            </PrimeCarousel>
+          </ClientOnly>
         </div>
       </div>
     </div>

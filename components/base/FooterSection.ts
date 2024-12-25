@@ -143,7 +143,9 @@ export default {
                       h(
                         "h5",
                         null,
-                        h(NuxtLink, { to: item.path }, h("span", t(item.label)))
+                        h(NuxtLink, { to: item.path }, () =>
+                          h("span", t(item.label))
+                        )
                       ),
                   }
                 ),
@@ -172,7 +174,9 @@ export default {
                       h(
                         "h5",
                         null,
-                        h(NuxtLink, { to: item.path }, h("span", t(item.label)))
+                        h(NuxtLink, { to: item.path }, () =>
+                          h("span", t(item.label))
+                        )
                       ),
                   }
                 ),
@@ -197,7 +201,10 @@ export default {
                   {
                     submenulabel: ({ item }) => h("h5", t(item.label)),
                     item: ({ item }) =>
-                      h("h5", h(NuxtLink, { to: item.path }, t(item.label))),
+                      h(
+                        "h5",
+                        h(NuxtLink, { to: item.path }, () => t(item.label))
+                      ),
                   }
                 ),
               ]

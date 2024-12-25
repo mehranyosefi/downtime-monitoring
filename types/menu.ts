@@ -89,8 +89,8 @@ export const headerMegaMenu: MegaMenuInterface[] = [
     },
   ]),
   new MegaMenu("general.integrations", "integrations"),
-  new MegaMenu("general.statusPage", "status-page"),
-  new MegaMenu("general.pricing", "pricing"),
+  new MegaMenu("general.statusPage", "#status-page"),
+  new MegaMenu("general.pricing", "#pricing"),
 ];
 export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
   new MegaMenu("general.teams", undefined, [
