@@ -112,7 +112,7 @@ const animationNameCompute = (key: number) => {
     <div>
       <div class="container mx-auto pb-14 px-10">
         <div
-          class="flex flex-col lg:flex-row justify-center lg:justify-around items-center max-lg:py-24 min-h-[calc(100vh-89px)] content-center"
+          class="flex flex-col lg:flex-row justify-center lg:justify-around items-center max-lg:py-24 min-h-[calc(100vh-76px)] content-center"
         >
           <div class="w-fit max-md:mt-20">
             <h2 v-if="locale == 'en'" class="text-6xl font-semibold">

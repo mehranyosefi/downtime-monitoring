@@ -36,7 +36,7 @@ export default {
     return () => [
       h(
         "footer",
-        { class: "transition-colors pt-32 min-h-[calc(100vh-89px)]" },
+        { class: "transition-colors pt-32 min-h-[calc(100vh-76px)]" },
         [
           h("div", { class: "container mx-auto px-10" }, [
             h(

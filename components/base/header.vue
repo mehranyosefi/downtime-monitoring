@@ -63,7 +63,7 @@ function set_shadow(el: HTMLElement) {
   <header
     ref="header"
     class="header"
-    :class="{ 'min-h-32 max-lg:shadow-xl': signSection }"
+    :class="{ 'min-h-20 max-lg:shadow-xl': signSection }"
   >
     <div class="container mx-auto px-10 flex items-center xl:justify-between">
       <div
