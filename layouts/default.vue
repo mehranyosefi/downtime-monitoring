@@ -30,7 +30,9 @@ const sideNav = useTemplateRef("sideNav");
     </slot>
     <main class="main">
       <div class="overflow-hidden">
-        <slot />
+        <div class="page-animation">
+          <slot />
+        </div>
         <NuxtLazyHydrate :on-interaction="['click', 'touchstart']">
           <BaseSideNavMenu
             :items="headerMegaMenu"
@@ -48,6 +50,27 @@ const sideNav = useTemplateRef("sideNav");
         :resources="[resources[0]]"
       />
     </slot>
+    <button
+      class="fixed bottom-5 z-20 bg-white dark:bg-gray-800 w-14 h-14 flex items-center justify-center hover:shadow-md hover:bg-white/70 dark:hover:bg-gray-800/70"
+      :class="{
+        'rounded-l-full rounded-br-full right-6': locale === 'en',
+        'rounded-r-full rounded-bl-full  left-6': locale !== 'en',
+      }"
+    >
+      <svg
+        width="2rem"
+        height="2rem"
+        class="text-green-500 dark:text-primary-500"
+      >
+        <use
+          width="2rem"
+          height="2rem"
+          :href="`/img/icons.svg#chatbox-outline-${
+            locale === 'en' ? 'left' : 'right'
+          }`"
+        ></use>
+      </svg>
+    </button>
   </div>
 </template>
 

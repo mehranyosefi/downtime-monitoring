@@ -133,7 +133,7 @@ defineExpose({
 
 <style lang="postcss" scoped>
 .sidenav {
-  @apply h-full w-0 fixed z-[1] top-[8rem] overflow-x-hidden overflow-y-auto transition-all bg-gray-200 dark:bg-gray-800 shadow-md;
+  @apply h-full w-0 fixed z-10 top-[5rem] overflow-x-hidden overflow-y-auto transition-all bg-gray-200 dark:bg-gray-800 shadow-md;
 }
 
 .divider {
