@@ -5,7 +5,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     mounted(el: HTMLElement, binding: DirectiveBinding<any, string, string>) {
       const container = binding.arg
         ? (document.querySelector(binding.arg) as HTMLElement)
-        : (document.querySelector(".main") as HTMLElement);
+        : (document.querySelector(".root-element-page") as HTMLElement);
 
       container.addEventListener(
         "scroll",

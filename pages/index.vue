@@ -20,12 +20,12 @@ useHead({
 });
 const useApp = useAppStore();
 const { isOnTablet, isOnMobile } = useWindowProperty();
-const templateSections = ref<{ [key: string]: boolean }>({
-  cardItems: false,
-  trust: false,
-  statusPage: false,
-  carousel: false,
-});
+// const templateSections = ref<{ [key: string]: boolean }>({
+//   cardItems: false,
+//   trust: false,
+//   statusPage: false,
+//   carousel: false,
+// });
 const products = reactive([
   {
     img: "/img/godaddy-logo.svg",
@@ -66,18 +66,16 @@ const responsiveOptions = ref([
     numScroll: 1,
   },
 ]);
-const layoutIsScrollable = ref<boolean>(false);
 
-onMounted(() => {
-  finiteScrolling(
-    ".main",
-    templateSections.value,
-    (items: { [key: string]: boolean } | null, isEnd) => {
-      if (items) templateSections.value = items;
-      layoutIsScrollable.value = isEnd;
-    }
-  );
-});
+// onMounted(() => {
+//   finiteScrolling(
+//     ".main",
+//     templateSections.value,
+//     (items: { [key: string]: boolean } | null, isEnd) => {
+//       if (items) templateSections.value = items;
+//     }
+//   );
+// });
 
 const animationNameCompute = (key: number) => {
   if (key === 0) {
@@ -110,8 +108,8 @@ const animationNameCompute = (key: number) => {
 </script>
 
 <template>
-  <NuxtLayout name="default" :scrollable="layoutIsScrollable">
-    <div class="pb-32">
+  <NuxtLayout name="default">
+    <div>
       <div class="container mx-auto pb-14 px-10">
         <div
           class="flex flex-col lg:flex-row justify-center lg:justify-around items-center max-lg:py-24 min-h-[calc(100vh-89px)] content-center"
@@ -199,10 +197,7 @@ const animationNameCompute = (key: number) => {
               </span>
             </h4>
           </div>
-          <div
-            v-if="templateSections.cardItems"
-            class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 pt-16"
-          >
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 pt-16">
             <PrimeCard
               v-for="(i, key) in headerMegaMenu[0].items"
               :key="key"
@@ -238,7 +233,7 @@ const animationNameCompute = (key: number) => {
           </div>
         </div>
       </div>
-      <div class="container mx-auto py-32 px-10" v-if="templateSections.trust">
+      <div class="container mx-auto py-32 px-10">
         <div>
           <h4
             class="text-4xl font-semibold text-center"
@@ -306,7 +301,6 @@ const animationNameCompute = (key: number) => {
         </div>
       </div>
       <div
-        v-if="templateSections.statusPage"
         class="bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 min-h-screen content-center pb-44 transition-all"
       >
         <div class="container mx-auto px-10">
@@ -398,7 +392,7 @@ const animationNameCompute = (key: number) => {
           </div>
         </div>
       </div>
-      <div v-if="templateSections.carousel" class="dark:bg-gray-100 py-32">
+      <div class="dark:bg-gray-100 py-32">
         <div class="container mx-auto px-10 pb-14">
           <PrimeCarousel
             :value="products"
