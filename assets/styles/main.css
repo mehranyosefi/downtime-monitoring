@@ -5,7 +5,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer tailwind-base, primevue, tailwind-utilities;
+/* @layer tailwind-base, primevue, tailwind-utilities;
 
 @layer tailwind-base {
   @tailwind base;
@@ -14,6 +14,38 @@
 @layer tailwind-utilities {
   @tailwind components;
   @tailwind utilities;
+} */
+
+:root {
+  --var-body-bg: var(--p-gray-100);
+  --var-component-bg: var(--p-white-alpha-900);
+  --var-text-color: var(--p-gray-900);
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-300;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded transition-all;
+  }
+}
+
+:root[class*=" dark"] *,
+:root[class^="dark "] * {
+  --var-body-bg: var(--p-gray-900);
+  --var-component-bg: var(--p-gray-900);
+  --var-text-color: var(--p-white);
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-600;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-800;
+  }
 }
 
 /* Order */
@@ -24,6 +56,23 @@
   button,
   input {
     /* CSS to Reset */
+  }
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  html {
+    @apply overflow-hidden;
+  }
+  body {
+    background-color: var(--var-body-bg);
+    color: var(--var-text-color);
+    @apply transition-colors;
+  }
+  .main::-webkit-scrollbar {
+    width: 5px !important;
   }
 }
 
@@ -65,47 +114,13 @@
     @apply overflow-hidden text-ellipsis;
   }
 }
-html {
-  @apply overflow-hidden;
-}
-.main::-webkit-scrollbar {
-  width: 5px !important;
-}
 
-:root {
-  --var-body-bg: var(--p-gray-100);
-  --var-component-bg: var(--p-white-alpha-900);
-  --var-text-color: var(--p-gray-900);
-  ::-webkit-scrollbar {
-    width: 5px;
+@layer components {
+  .conversation-modal {
+    @apply fixed w-full h-full z-20 top-0 md:max-h-[83vh] md:w-[390px] md:top-auto md:bottom-[5.5rem] md:ltr:right-6 md:rtl:left-6
+    md:rounded-xl bg-white dark:bg-gray-800 shadow-2xl;
   }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-300;
+  .circle-shadow {
+    @apply w-8 h-8 shadow-2xl bg-green-100 dark:bg-primary-800 rounded-full flex items-center justify-center before:blur-none before:w-[1.4rem] before:h-[1.4rem] before:bg-green-500 dark:before:bg-primary-500 before:content-[''] before:rounded-full transition-colors;
   }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-400 rounded transition-all;
-  }
-}
-
-:root[class*=" dark"] *,
-:root[class^="dark "] * {
-  --var-body-bg: var(--p-gray-900);
-  --var-component-bg: var(--p-gray-900);
-  --var-text-color: var(--p-white);
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-600;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-800;
-  }
-}
-
-body {
-  background-color: var(--var-body-bg);
-  color: var(--var-text-color);
-  @apply transition-colors;
 }

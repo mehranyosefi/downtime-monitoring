@@ -35,11 +35,7 @@ defineExpose({
 </script>
 
 <template>
-  <div
-    ref="sidenav"
-    class="sidenav"
-    :class="{ 'left-0': locale == 'en', 'right-0': locale == 'fa' }"
-  >
+  <div ref="sidenav" class="sidenav ltr:left-0 rtl:right-0">
     <div class="px-24 pt-16 pb-28">
       <PrimeMenu
         :model="[items[0]]"

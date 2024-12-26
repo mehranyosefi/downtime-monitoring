@@ -4,7 +4,6 @@ import { headerMegaMenuTeamItems } from "~/types/menu";
 import { resources } from "~/types/menu";
 const { locale, t } = useI18n();
 const useApp = useAppStore();
-
 useHead({
   titleTemplate: `${t("general.UptimeRobot")} - %s`,
   htmlAttrs: {
@@ -15,6 +14,11 @@ useHead({
   },
 });
 const sideNav = useTemplateRef("sideNav");
+const conversationComponent = defineAsyncComponent(
+  () => import("@/components/base/Conversation.vue")
+);
+const conversation = ref<boolean>(false);
+
 //functions
 </script>
 <template>
@@ -50,27 +54,41 @@ const sideNav = useTemplateRef("sideNav");
         :resources="[resources[0]]"
       />
     </slot>
-    <button
-      class="fixed bottom-5 z-20 bg-white dark:bg-gray-800 w-14 h-14 flex items-center justify-center hover:shadow-md hover:bg-white/70 dark:hover:bg-gray-800/70"
-      :class="{
-        'rounded-l-full rounded-br-full right-6': locale === 'en',
-        'rounded-r-full rounded-bl-full  left-6': locale !== 'en',
-      }"
-    >
-      <svg
-        width="2rem"
-        height="2rem"
-        class="text-green-500 dark:text-primary-500"
+    <div v-click-outside="() => (conversation = false)">
+      <button
+        :dir="locale === 'en' ? 'ltr' : 'rtl'"
+        class="fixed bottom-5 z-10 bg-white dark:bg-gray-800 w-14 h-14 flex items-center justify-center hover:shadow-md ltr:rounded-l-full ltr:rounded-br-full ltr:right-6 rtl:rounded-r-full rtl:rounded-bl-full rtl:left-6"
+        @click="conversation = !conversation"
       >
-        <use
+        <svg
           width="2rem"
           height="2rem"
-          :href="`/img/icons.svg#chatbox-outline-${
-            locale === 'en' ? 'left' : 'right'
-          }`"
-        ></use>
-      </svg>
-    </button>
+          class="text-green-500 dark:text-primary-500"
+        >
+          <use
+            width="2rem"
+            height="2rem"
+            :href="`/img/icons.svg#chatbox-outline-${
+              locale === 'en' ? 'left' : 'right'
+            }`"
+          ></use>
+        </svg>
+      </button>
+      <Transition name="drop-drawer">
+        <div
+          v-if="conversation"
+          class="conversation-modal"
+          :dir="locale === 'en' ? 'ltr' : 'rtl'"
+        >
+          <Suspense>
+            <conversationComponent
+              @handle-close="() => (conversation = false)"
+            />
+            <template #fallback> Loading... </template>
+          </Suspense>
+        </div>
+      </Transition>
+    </div>
   </div>
 </template>
 

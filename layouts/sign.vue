@@ -27,10 +27,7 @@ useHead({
           class="columns-1 w-full md:w-2/3 xl:w-2/5 mx-auto mt-5 max-md:pt-32 md:pt-10"
         >
           <slot name="header">
-            <h1
-              v-text="t('general.UptimeRobot')"
-              class="text-3xl text-center font-bold"
-            ></h1>
+            <h1 v-text="t('general.UptimeRobot')" class="text-center"></h1>
           </slot>
 
           <slot />

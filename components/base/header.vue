@@ -76,7 +76,7 @@ function set_shadow(el: HTMLElement) {
             ></div>
             <h1
               v-text="t('general.UptimeRobot')"
-              class="text-3xl font-bold !inline-block mx-[3px]"
+              class="!inline-block mx-[3px]"
             ></h1>
           </NuxtLink>
           <PrimeButton
@@ -192,7 +192,7 @@ function set_shadow(el: HTMLElement) {
 
 <style lang="postcss">
 .header {
-  @apply sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 lg:mt-10 z-40 flex items-center transition-all;
+  @apply sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 lg:mt-10 z-20 flex items-center transition-all;
 }
 /* #overlay_language_menu {
   min-width: 0;
