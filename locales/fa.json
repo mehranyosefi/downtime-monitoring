@@ -68,7 +68,11 @@
     "pages": "صفحات",
     "page": "صفحه",
     "status": "وضعیت",
-    "inform": "مطلع کنید"
+    "inform": "مطلع کنید",
+    "support": "پشتیبانی",
+    "start": "شروع",
+    "conversation": "مکالمه",
+    "new": "جدید"
   },
 
   "user": {
@@ -97,7 +101,8 @@
       }
     },
     "etc": {
-      "inOnePlace": "@:general.in @:general.one @:general.place"
+      "inOnePlace": "@:general.in @:general.one @:general.place",
+      "helpYou": "چگونه می توانیم کمکتان کنیم؟"
     }
   },
   "signup": {

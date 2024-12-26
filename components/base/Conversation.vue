@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { locale, t } = useI18n();
 // await new Promise((resolve, reject) => {
 //   setTimeout(resolve, 1500);
 // });
@@ -26,10 +27,25 @@
         </PrimeButton>
       </div>
       <div class="mt-4">
-        <h2 class="text-2xl font-bold">UptimeRobot Team Support</h2>
-        <p class="font-bold">How can we help you?</p>
+        <h2 class="text-2xl font-bold capitalize">
+          <span v-if="locale === 'en'">
+            {{
+              `${t("general.UptimeRobot")} ${t("general.team")} ${t(
+                "general.support"
+              )}`
+            }}
+          </span>
+          <span v-else>
+            {{
+              `${t("general.team")} ${t("general.support")} ${t(
+                "general.UptimeRobot"
+              )}`
+            }}
+          </span>
+        </h2>
+        <p class="font-bold my-1" v-text="t('phrases.etc.helpYou')"></p>
       </div>
-      <div class="mt-1 flex">
+      <div class="mt-2 flex">
         <PrimeAvatar
           image="/img/conversation-avatar-1.jpg"
           :pt="{
@@ -61,7 +77,7 @@
       </div>
     </div>
     <div
-      class="bg-gray-800 dark:bg-white rounded-xl h-[68%] transition-colors text-white dark:text-gray-900 relative"
+      class="bg-gray-800 dark:bg-white rounded-xl h-[68.5%] transition-colors text-white dark:text-gray-900 relative"
     >
       <PrimeButton
         :pt="{
@@ -69,7 +85,7 @@
         }"
         unstyled
       >
-        <div class="circle-shadow dark:bg-primary-400/90"></div>
+        <div class="circle-shadow bg-green-200 dark:bg-primary-400/90"></div>
         <div
           class="flex flex-col items-start w-[calc(100%-36px)] ltr:pl-3 rtl:pr-3"
         >
@@ -78,7 +94,8 @@
             <span class="date text-xs"> 10/14/2024 13:50 </span>
           </div>
           <p class="text-sm text-gray-200 dark:text-gray-700">
-            Hey!.join our Discord...
+            <span v-if="locale === 'en'">Hey!.join our Discord...</span>
+            <span v-else>سلام! به گفت و گوی ما بپیوندید...</span>
           </p>
         </div>
       </PrimeButton>
@@ -93,7 +110,20 @@
             href="/img/icons.svg#send-message"
           ></use>
         </svg>
-        <span>start new conversation</span>
+        <span v-if="locale === 'en'" class="text-lg">
+          {{
+            `${t("general.start")} ${t("general.new")} ${t(
+              "general.conversation"
+            )}`
+          }}
+        </span>
+        <span v-else class="text-lg">
+          {{
+            `${t("general.start")} ${t("general.conversation")} ${t(
+              "general.new"
+            )}`
+          }}
+        </span>
       </PrimeButton>
     </div>
   </div>

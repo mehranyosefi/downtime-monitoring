@@ -102,6 +102,7 @@ function set_shadow(el: HTMLElement) {
             :popup="true"
             :style="{
               minWidth: 0,
+              marginTop: '3px',
             }"
           >
             <template #item="{ item, props }">
@@ -194,7 +195,4 @@ function set_shadow(el: HTMLElement) {
 .header {
   @apply sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 lg:mt-10 z-20 flex items-center transition-all;
 }
-/* #overlay_language_menu {
-  min-width: 0;
-} */
 </style>

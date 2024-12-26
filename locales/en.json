@@ -67,7 +67,11 @@
     "page": "page",
     "pages": "pages",
     "status": "status",
-    "inform": "inform"
+    "inform": "inform",
+    "support": "support",
+    "start": "start",
+    "conversation": "conversation",
+    "new": "new"
   },
 
   "user": {
@@ -96,7 +100,8 @@
       }
     },
     "etc": {
-      "inOnePlace": "@:general.in @:general.one @:general.place"
+      "inOnePlace": "@:general.in @:general.one @:general.place",
+      "helpYou": "How can we help you?"
     }
   },
   "signup": {
