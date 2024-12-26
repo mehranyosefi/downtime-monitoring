@@ -1,20 +1,20 @@
 @font-face {
   font-family: "Iran Sans X FaNum";
-  src: url("./source/IRANSans(FaNum)-Bold.ttf") format("truetype");
+  src: url("./source/Iransans-Bold.ttf") format("truetype");
   font-weight: bolder;
   font-style: normal;
   font-stretch: normal;
 }
 @font-face {
   font-family: "Iran Sans X FaNum";
-  src: url("./source/IRANSans(FaNum)-Medium.ttf") format("truetype");
+  src: url("./source/Iransans-Medium.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
 }
 @font-face {
   font-family: "Iran Sans X FaNum";
-  src: url("./source/IRANSans(FaNum).ttf") format("truetype");
+  src: url("./source/Iransans.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
