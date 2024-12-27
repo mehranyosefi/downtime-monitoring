@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const { locale, t } = useI18n();
-// await new Promise((resolve, reject) => {
-//   setTimeout(resolve, 1500);
-// });
+await new Promise((resolve, reject) => {
+  setTimeout(resolve, 2000);
+});
 </script>
 
 <template>

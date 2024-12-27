@@ -296,6 +296,16 @@ const MyPreset = definePreset(Aura, {
         dark: {},
       },
     },
+    skeleton: {
+      colorScheme: {
+        light: {
+          background: "{gray.100}",
+        },
+        dark: {
+          background: "{gray.900}",
+        },
+      },
+    },
   },
 });
 
