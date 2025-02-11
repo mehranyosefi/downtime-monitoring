@@ -1,10 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { locales } from "./types/menu";
 
-const fetchLocales = async () => {
-  const res = await fetch(process.env.NUXT_BASE_URL_API! + "locales");
-  console.log("res", res);
-};
-fetchLocales();
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
@@ -34,21 +30,21 @@ export default defineNuxtConfig({
   ],
   css: ["@/assets/styles/main.css", "@/assets/styles/main.scss"],
   i18n: {
-    // vueI18n: "./i18n.config.ts", // if you are using custom path, default
+    vueI18n: "./i18n.config.ts", // if you are using custom path, default
     locales: [
       {
         code: "fa",
         iso: "fa-IR",
         countryName: "Iran",
         logo: "/img/logo_country/iran.svg",
-        file: { path: "./i18n/locales/en.ts", cache: false },
+        file: { path: "./i18n/locales/fa.ts", cache: true },
       },
       {
         code: "en",
         iso: "en-US",
         countryName: "England",
         logo: "/img/logo_country/england.svg",
-        file: "./i18n/locales/en.ts",
+        file: { path: "./i18n/locales/en.ts", cache: true },
       },
     ],
     lazy: true,

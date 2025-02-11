@@ -7,6 +7,7 @@ const { locale, t } = useI18n();
 
 <template>
   <div>
+    {{ locale }}
     {{ t("welcome") }}
   </div>
 </template>

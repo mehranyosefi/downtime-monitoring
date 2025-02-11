@@ -2,7 +2,6 @@
 // import en from "@/locales/en.json";
 
 export default defineI18nConfig(() => ({
-  locale: "en",
   fallbackLocale: "en",
   // messages: {
   //   fa: fa,

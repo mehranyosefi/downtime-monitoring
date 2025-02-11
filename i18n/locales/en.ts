@@ -1,9 +1,14 @@
 export default defineI18nLocale(async (locale) => {
-  await $fetch(`http://127.0.0.1:8000/api/${locale}`);
-  return {
-    welcome: "Bienvenue",
-  };
-  // return $fetch(`/api/${locale}`)
+  const { data }: { data: object } = await $fetch(
+    `http://127.0.0.1:8000/api/locales/${locale}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }
+  );
+  return data;
 });
 
 // or
