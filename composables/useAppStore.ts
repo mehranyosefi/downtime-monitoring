@@ -4,7 +4,7 @@ export const useAppStore = defineStore("app", () => {
   //state
   const state = reactive({
     theme: useCookie("them", {
-      default: () => "dark",
+      default: () => "light",
       watch: true,
     }),
   });

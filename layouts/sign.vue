@@ -19,7 +19,7 @@ useHead({
   <NuxtLoadingIndicator />
   <div class="h-screen transition-all overflow-y-auto">
     <div
-      class="container mx-auto py-5 w-100 md:w-11/12 max-w-[1500px] page-animation"
+      class="container mx-auto w-100 md:w-11/12 max-w-[1500px] page-animation"
     >
       <base-header />
       <main class="w-full">

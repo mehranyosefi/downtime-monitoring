@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 const { locale, t } = useI18n();
 const localePath = useLocalePath();
-import { headerMegaMenu } from "~/types/menu";
-import { finiteScrolling } from "~/utility";
-import { trustItems } from "~/types/menu";
-import { faTrustItems } from "~/types/menu";
+import { faTrustItems, headerMegaMenu, trustItems } from "~/types/menu";
 
 // definePageMeta({
 //   pageTransition: {
@@ -26,6 +23,7 @@ const { isOnTablet, isOnMobile } = useWindowProperty();
 //   statusPage: false,
 //   carousel: false,
 // });
+
 const products = reactive([
   {
     img: "/img/godaddy-logo.svg",
@@ -67,15 +65,8 @@ const responsiveOptions = ref([
   },
 ]);
 
-// onMounted(() => {
-//   finiteScrolling(
-//     ".main",
-//     templateSections.value,
-//     (items: { [key: string]: boolean } | null, isEnd) => {
-//       if (items) templateSections.value = items;
-//     }
-//   );
-// });
+const { data, error } = await useAPI("/index");
+console.log(data, error);
 
 const animationNameCompute = (key: number) => {
   if (key === 0) {

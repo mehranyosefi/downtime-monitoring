@@ -160,22 +160,21 @@
       "subTitle": "Be transparent. Inform customers of planned outages. Show them that you strive to keep your service 100% online.",
       "check": "check live demo"
     }
-
   },
   "footer": {
     "donwntimehappens": "Downtime happens. Get notified!",
     "description": "Join more than 2,100,000 happy users! UptimeRobot is one of the most popular website monitoring services in the world."
   },
   "errors": {
-    "email":{
+    "email": {
       "required": "email is required"
     },
-    "fullName":{
+    "fullName": {
       "required": "fullName is required",
       "min": "fullName must be at least { number } characters",
       "max": "fullName must be a maximum { number } characters"
     },
-    "password":{
+    "password": {
       "required": "password is required",
       "min": "password must be at least { number } characters",
       "max": "password must be a maximum { number } characters"
