@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const { locale, t } = useI18n();
 const localePath = useLocalePath();
-import { faTrustItems, headerMegaMenu, trustItems } from "~/types/menu";
+import { faTrustItems, headerMegaMenu, trustItems } from "~/types";
 
 // definePageMeta({
 //   pageTransition: {

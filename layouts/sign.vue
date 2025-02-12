@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import "primeicons/primeicons.css";
-
 const useApp = useAppStore();
 const { locale, t } = useI18n();
 

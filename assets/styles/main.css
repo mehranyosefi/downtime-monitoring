@@ -123,4 +123,7 @@
   .circle-shadow {
     @apply w-8 h-8 shadow-2xl bg-green-100 dark:bg-primary-800 rounded-full flex items-center justify-center before:blur-none before:w-[1.4rem] before:h-[1.4rem] before:bg-green-500 dark:before:bg-primary-500 before:content-[''] before:rounded-full transition-colors;
   }
+  .p-toast {
+    @apply z-20;
+  }
 }

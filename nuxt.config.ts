@@ -1,4 +1,4 @@
-import { locales } from "./types/menu";
+import { locales } from "./types";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({

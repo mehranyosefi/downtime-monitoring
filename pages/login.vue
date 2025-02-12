@@ -81,13 +81,13 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
             <div class="flex flex-col gap-1">
               <label for="email" v-text="t('general.email')"></label>
               <PrimeInputText
-                :pt="{
-                  root: 'mt-2',
-                }"
                 name="email"
                 type="email"
                 :placeholder="t('phrases.placeholder.email')"
                 fluid
+                :pt="{
+                  root: 'mt-1',
+                }"
               />
               <PrimeMessage
                 v-if="$form.email?.invalid"
@@ -106,13 +106,13 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
                 class="mt-5"
               ></label>
               <PrimeInputText
-                :pt="{
-                  root: 'mt-2',
-                }"
                 name="password"
                 type="password"
                 :placeholder="t('phrases.placeholder.password')"
                 fluid
+                :pt="{
+                  root: 'mt-1',
+                }"
               />
               <PrimeMessage
                 v-if="$form.password?.invalid"

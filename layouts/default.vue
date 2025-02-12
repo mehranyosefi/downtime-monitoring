@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { headerMegaMenu } from "~/types/menu";
-import { headerMegaMenuTeamItems } from "~/types/menu";
-import { resources } from "~/types/menu";
+import { headerMegaMenu, headerMegaMenuTeamItems, resources } from "~/types";
 const { locale, t } = useI18n();
 const useApp = useAppStore();
 useHead({

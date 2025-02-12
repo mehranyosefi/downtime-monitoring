@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const localePath = useLocalePath();
 const { locale, t } = useI18n();
+import { useToast } from "primevue/usetoast";
 
 definePageMeta({
   layout: false,
@@ -24,7 +25,10 @@ const initialValues = reactive<{
   fullName: "",
   password: "",
 });
-
+const requestLoading = shallowRef<boolean>(false);
+const toast = useToast();
+const useUser = useUserStore();
+const router = useRouter();
 //method
 const resolver = ({ values }: Record<string, any>) => {
   const errors: any = { email: [], fullName: [], password: [] };
@@ -34,7 +38,6 @@ const resolver = ({ values }: Record<string, any>) => {
       message: t("errors.email.required"),
     });
   }
-
   if (!values.fullName) {
     errors.fullName.push({
       type: "required",
@@ -64,13 +67,41 @@ const resolver = ({ values }: Record<string, any>) => {
   };
 };
 
-const onFormSubmit = ({ valid }: { valid: boolean }) => {
-  if (valid) {
-    // toast.add({
-    //   severity: "success",
-    //   summary: "Form is submitted.",
-    //   life: 3000,
-    // });
+const onFormSubmit = async (e: { valid: boolean; states: object }) => {
+  if (e.valid) {
+    try {
+      requestLoading.value = true;
+      const { status, data, error } = await useAPI("/register", {
+        method: "POST",
+        server: false,
+        body: {
+          fullName: e.states.fullName.value,
+          email: e.states.email.value,
+          password: e.states.password.value,
+        },
+      });
+      if (status.value === "error") {
+        //TODO handle api errors
+        toast.add({
+          severity: "error",
+          summary: error.value?.data.message,
+          life: 3000,
+        });
+      } else if (status.value === "success") {
+        useUser.state.user = data.value.user;
+        toast.add({
+          severity: "success",
+          summary: data.value.message,
+          life: 3000,
+        });
+        router.push(localePath("login"));
+      }
+      console.log(data, status);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      requestLoading.value = false;
+    }
   } else console.log("InValid");
 };
 </script>
@@ -116,6 +147,9 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
                 :placeholder="t('phrases.placeholder.email')"
                 fluid
                 autocomplete="on"
+                :pt="{
+                  root: 'mt-1',
+                }"
               />
               <PrimeMessage
                 v-if="$form.email?.invalid"
@@ -139,6 +173,9 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
                 :placeholder="t('phrases.placeholder.fullName')"
                 fluid
                 autocomplete="on"
+                :pt="{
+                  root: 'mt-1',
+                }"
               />
               <PrimeMessage
                 v-if="$form.fullName?.invalid"
@@ -162,6 +199,9 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
                 :placeholder="t('phrases.placeholder.password')"
                 fluid
                 autocomplete="on"
+                :pt="{
+                  root: 'mt-1',
+                }"
               />
               <PrimeMessage
                 v-if="$form.password?.invalid"
@@ -180,11 +220,11 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
               severity="success"
               type="submit"
               :label="t('general.register')"
+              :loading="requestLoading"
             />
           </PrimeForm>
         </template>
       </PrimeCard>
-
       <template #footer>
         <footer>
           <div>
@@ -201,10 +241,4 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
   </div>
 </template>
 
-<style lang="postcss" scoped>
-.p-form {
-  .p-inputtext {
-    @apply mt-2;
-  }
-}
-</style>
+<style lang="postcss" scoped></style>

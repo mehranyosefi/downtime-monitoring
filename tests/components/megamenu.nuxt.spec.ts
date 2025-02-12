@@ -1,11 +1,11 @@
 import { mountSuspended } from "@nuxt/test-utils/runtime";
 import { test, it, describe, expect } from "vitest";
 import { BaseMegaMenu } from "#components";
-import { headerMegaMenu } from "~/types/menu";
+import { headerMegaMenu } from "~/types";
 import { createI18n } from "vue-i18n";
 // import { useI18n } from "vue-i18n";
 // import { mount } from "@vue/test-utils";
-import { headerMegaMenuTeamItems } from "~/types/menu";
+import { headerMegaMenuTeamItems } from "~/types";
 import fa from "~/locales/fa.json";
 import en from "~/locales/en.json";
 import { setup } from "@nuxt/test-utils";

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { headerMegaMenu, headerMegaMenuTeamItems } from "~/types/menu";
+import { headerMegaMenu, headerMegaMenuTeamItems } from "~/types";
 
 const props = withDefaults(
   defineProps<{

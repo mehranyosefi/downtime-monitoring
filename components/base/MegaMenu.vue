@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import "primeicons/primeicons.css";
-import type { MegaMenuInterface } from "~/types/menu";
+import type { MegaMenuInterface } from "~/types";
 
 const props = defineProps<{
   items: MegaMenuInterface[];

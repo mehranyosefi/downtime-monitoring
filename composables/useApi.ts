@@ -10,6 +10,8 @@ export function useAPI<T>(
     headers: {
       ...options?.headers,
       locale: useApp.getLocaleOject.code,
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
   };
   return useFetch((runtimeConfig.public.baseUrlApi as string) + url, {

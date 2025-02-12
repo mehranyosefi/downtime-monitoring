@@ -20,6 +20,7 @@ declare module 'vue' {
     PrimeMenubar: typeof import('primevue/menubar')['default']
     PrimeMessage: typeof import('primevue/message')['default']
     PrimeSkeleton: typeof import('primevue/skeleton')['default']
+    PrimeToast: typeof import('primevue/toast')['default']
     PrimeToggleSwitch: typeof import('primevue/toggleswitch')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

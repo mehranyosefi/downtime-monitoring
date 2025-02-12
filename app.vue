@@ -9,6 +9,7 @@ const loadingColor = computed(() => {
 </script>
 <template>
   <div>
+    <PrimeToast />
     <NuxtLoadingIndicator
       :color="loadingColor"
       class="!opacity-100"

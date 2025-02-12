@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { notificatoins } from "~/types/menu";
-import { finiteScrolling } from "~/utility";
+import { notificatoins } from "~/types";
 // definePageMeta({
 //   pageTransition: {
 //     name: "page",
