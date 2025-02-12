@@ -2,20 +2,19 @@
 import type { ShallowRef } from "vue";
 import { headerMegaMenu, headerMegaMenuTeamItems } from "~/types";
 
-const props = withDefaults(
-  defineProps<{
-    logo?: boolean;
-    signSection?: boolean;
-    menuSection?: boolean;
-    sideNavActive?: boolean;
-  }>(),
-  {
-    logo: false,
-    signSection: false,
-    menuSection: false,
-    sideNavActive: false,
-  }
-);
+interface Props {
+  logo?: boolean;
+  signSection?: boolean;
+  menuSection?: boolean;
+  sideNavActive?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  logo: false,
+  signSection: false,
+  menuSection: false,
+  sideNavActive: false,
+});
 
 const useApp = useAppStore();
 const menu_language = useTemplateRef("menu_language");
@@ -25,7 +24,7 @@ const headerMenuActive: ShallowRef<boolean> = shallowRef<boolean>(false);
 const header = useTemplateRef("header");
 
 const toggle = (event: Event) => {
-  menu_language.value.toggle(event);
+  menu_language.value?.toggle(event);
 };
 
 onMounted(() => {

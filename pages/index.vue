@@ -60,10 +60,8 @@ const responsiveOptions = ref([
   },
 ]);
 
-const { data, error } = await useAPI("/index");
-console.log(data, error);
-
-const animationNameCompute = (key: number) => {
+// const { data, error } = await useAPI("/index");
+const animationNameCompute = (key: number): string => {
   if (key === 0) {
     if (locale.value === "en") {
       return "slide-left";

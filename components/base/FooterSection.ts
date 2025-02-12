@@ -1,5 +1,12 @@
 import { Divider, Menu } from "primevue";
 import { NuxtLink } from "#components";
+
+interface Props {
+  monitoring: [];
+  teams: [];
+  resources: [];
+}
+
 export default {
   props: {
     monitoring: {
@@ -13,7 +20,7 @@ export default {
     },
   },
 
-  setup(props: { monitoring: any; teams: any; resources: any }, context: any) {
+  setup(props: Props) {
     const { locale, t } = useI18n();
     const icons = [
       {

@@ -68,7 +68,10 @@ const resolver = ({ values }: Record<string, any>) => {
   };
 };
 
-const onFormSubmit = async (e: { valid: boolean; states: object }) => {
+const onFormSubmit = async (e: {
+  valid: boolean;
+  states: object;
+}): Promise<void> => {
   if (e.valid) {
     try {
       requestLoading.value = true;

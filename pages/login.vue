@@ -13,7 +13,6 @@ useHead({
   ],
 });
 //data
-
 const initialValues = reactive<{
   email: string;
   password: string;
@@ -49,7 +48,7 @@ const resolver = ({ values }: Record<string, any>) => {
   };
 };
 
-const onFormSubmit = ({ valid }: { valid: boolean }) => {
+const onFormSubmit = ({ valid }: { valid: boolean }): void => {
   if (valid) {
     // toast.add({
     //   severity: "success",
