@@ -27,7 +27,6 @@ useHead({
           <slot name="header">
             <h1 v-text="t('general.UptimeRobot')" class="text-center"></h1>
           </slot>
-
           <slot />
         </div>
       </main>

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { ShallowRef } from "vue";
 import { headerMegaMenu, headerMegaMenuTeamItems } from "~/types";
 
 const props = withDefaults(
@@ -17,19 +18,16 @@ const props = withDefaults(
 );
 
 const useApp = useAppStore();
-const menu_language = ref();
+const menu_language = useTemplateRef("menu_language");
 const { locale, locales, setLocale, t } = useI18n();
 const localePath = useLocalePath();
-const headerMenuActive = ref<boolean>(false);
+const headerMenuActive: ShallowRef<boolean> = shallowRef<boolean>(false);
 const header = useTemplateRef("header");
 
 const toggle = (event: Event) => {
   menu_language.value.toggle(event);
 };
 
-// if (import.meta.client) {
-//   document.onscroll = (event) => set_shadow();
-// }
 onMounted(() => {
   if (props.signSection) {
     const mainElement = document.querySelector("main.main") as HTMLElement;
@@ -61,7 +59,7 @@ function set_shadow(el: HTMLElement) {
 <template>
   <header
     ref="header"
-    class="header"
+    class="header sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 lg:mt-10 z-20 flex items-center transition-all"
     :class="{ 'min-h-20 max-lg:shadow-xl': signSection }"
   >
     <div class="container mx-auto px-10 flex items-center xl:justify-between">
@@ -190,8 +188,4 @@ function set_shadow(el: HTMLElement) {
   </header>
 </template>
 
-<style lang="postcss">
-.header {
-  @apply sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 lg:mt-10 z-20 flex items-center transition-all;
-}
-</style>
+<style lang="postcss"></style>

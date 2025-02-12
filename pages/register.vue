@@ -2,6 +2,7 @@
 const localePath = useLocalePath();
 const { locale, t } = useI18n();
 import { useToast } from "primevue/usetoast";
+import type { ShallowRef } from "vue";
 
 definePageMeta({
   layout: false,
@@ -25,7 +26,7 @@ const initialValues = reactive<{
   fullName: "",
   password: "",
 });
-const requestLoading = shallowRef<boolean>(false);
+const requestLoading: ShallowRef<boolean> = shallowRef<boolean>(false);
 const toast = useToast();
 const useUser = useUserStore();
 const router = useRouter();

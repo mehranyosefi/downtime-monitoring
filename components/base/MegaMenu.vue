@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { Reactive, ShallowRef } from "vue";
 import type { MegaMenuInterface } from "~/types";
 
 const props = defineProps<{
@@ -8,9 +9,9 @@ const props = defineProps<{
 
 const { t, locale } = useI18n();
 const localepath = useLocalePath();
-const activeSubMenu = ref<boolean>(false);
+const activeSubMenu: ShallowRef<boolean> = shallowRef<boolean>(false);
 
-const selectedItem = reactive<MegaMenuInterface>({
+const selectedItem: Reactive<MegaMenuInterface> = reactive<MegaMenuInterface>({
   label: "",
 });
 
@@ -18,7 +19,7 @@ const selectedItem = reactive<MegaMenuInterface>({
 function triggerItemSelect(
   item: MegaMenuInterface,
   hover: string | null = null
-) {
+): void {
   if (item.items) {
     if (activeSubMenu.value && hover == null) activeSubMenu.value = false;
     else {

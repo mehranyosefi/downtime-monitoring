@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { locale, t } = useI18n();
 await new Promise((resolve, reject) => {
-  setTimeout(resolve, 2000);
+  setTimeout(resolve, 1600);
 });
 </script>
 
 <template>
-  <div class="conversation">
+  <div class="conversation pt-5 h-full transition-colors">
     <div class="w-[90%] mx-auto h-[32%]">
       <div class="flex items-center justify-between">
         <div class="circle-shadow"></div>
@@ -129,8 +129,4 @@ await new Promise((resolve, reject) => {
   </div>
 </template>
 
-<style lang="postcss" scoped>
-.conversation {
-  @apply pt-5 h-full transition-colors;
-}
-</style>
+<style lang="postcss" scoped></style>

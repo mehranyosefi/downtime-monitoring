@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ShallowRef } from "vue";
 import type { MegaMenuInterface } from "~/types";
 
 const props = defineProps<{
@@ -10,9 +11,9 @@ const { t, locale } = useI18n();
 const localepath = useLocalePath();
 const route = useRoute();
 const sidenav = useTemplateRef("sidenav");
-const sideNavActive = ref<boolean>(false);
+const sideNavActive: ShallowRef<boolean> = shallowRef<boolean>(false);
 
-function toggle_sideNav() {
+function toggle_sideNav(): void {
   if (sideNavActive.value) {
     sidenav.value!.style.width = "0";
     sideNavActive.value = false;
@@ -34,7 +35,10 @@ defineExpose({
 </script>
 
 <template>
-  <div ref="sidenav" class="sidenav ltr:left-0 rtl:right-0">
+  <div
+    ref="sidenav"
+    class="sidenav ltr:left-0 rtl:right-0 h-full w-0 fixed z-10 top-[5rem] overflow-x-hidden overflow-y-auto transition-all bg-gray-200 dark:bg-gray-800 shadow-md"
+  >
     <div class="px-24 pt-16 pb-28">
       <PrimeMenu
         :model="[items[0]]"
@@ -63,7 +67,7 @@ defineExpose({
           </NuxtLink>
         </template>
       </PrimeMenu>
-      <PrimeDivider class="divider" />
+      <PrimeDivider class="divider my-10" />
       <PrimeMenu
         :model="[subItems[0]]"
         :pt="{
@@ -84,7 +88,7 @@ defineExpose({
           </NuxtLink>
         </template>
       </PrimeMenu>
-      <PrimeDivider class="divider" />
+      <PrimeDivider class="divider my-10" />
       <PrimeMenu
         :model="items.slice(1)"
         :pt="{
@@ -109,7 +113,7 @@ defineExpose({
           </NuxtLink>
         </template>
       </PrimeMenu>
-      <PrimeDivider class="divider" />
+      <PrimeDivider class="divider my-10" />
       <PrimeButton
         severity="success"
         :pt="{
@@ -127,21 +131,12 @@ defineExpose({
 </template>
 
 <style lang="postcss" scoped>
-.sidenav {
-  @apply h-full w-0 fixed z-10 top-[5rem] overflow-x-hidden overflow-y-auto transition-all bg-gray-200 dark:bg-gray-800 shadow-md;
-}
-
-.divider {
-  @apply my-10;
-  &::before {
-    border-block-start-color: var(--p-gray-400);
-  }
+.divider::before {
+  border-block-start-color: var(--p-gray-400);
 }
 .dark {
-  .divider {
-    &::before {
-      border-block-start-color: var(--p-gray-500);
-    }
+  .divider ::before {
+    border-block-start-color: var(--p-gray-500);
   }
 }
 </style>

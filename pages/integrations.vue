@@ -1,12 +1,8 @@
 <script setup lang="ts">
+import type { ShallowRef } from "vue";
 import { notificatoins } from "~/types";
-// definePageMeta({
-//   pageTransition: {
-//     name: "page",
-//   },
-// });
 const { t, locale } = useI18n();
-const showTextOver = ref<boolean>(false);
+const showTextOver: ShallowRef<boolean> = shallowRef<boolean>(false);
 const useApp = useAppStore();
 </script>
 <template>

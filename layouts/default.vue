@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { ShallowRef } from "vue";
 import { headerMegaMenu, headerMegaMenuTeamItems, resources } from "~/types";
 const { locale, t } = useI18n();
 const useApp = useAppStore();
@@ -15,7 +16,7 @@ const sideNav = useTemplateRef("sideNav");
 const conversationComponent = defineAsyncComponent(
   () => import("@/components/base/Conversation.vue")
 );
-const conversation = ref<boolean>(false);
+const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
 
 //functions
 </script>

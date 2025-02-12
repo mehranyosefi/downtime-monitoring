@@ -3,11 +3,6 @@ const { locale, t } = useI18n();
 const localePath = useLocalePath();
 import { faTrustItems, headerMegaMenu, trustItems } from "~/types";
 
-// definePageMeta({
-//   pageTransition: {
-//     name: "page",
-//   },
-// });
 useHead({
   title: t("phrases.seo.index.title"),
   meta: [
@@ -92,10 +87,6 @@ const animationNameCompute = (key: number) => {
     }
   }
 };
-
-// const { data: trustItems } = useFetch(`/api/${locale.value}/trust`, {
-//   server: false,
-// });
 </script>
 
 <template>

@@ -15,12 +15,12 @@ const props = withDefaults(
 //data
 const { locale } = useI18n();
 
-const menu = ref(null);
-const menuContent = ref(null);
+const menu = useTemplateRef("menu");
+const menuContent = useTemplateRef("menuContent");
 
 //TODO reactive style
 const style = computed(() => {
-  const properties = menu.value.getBoundingClientRect();
+  const properties = menu.value!.getBoundingClientRect();
   const leftFit =
     locale.value == "fa" ? -properties?.width - 12 : +properties?.width + 3;
   menuContent.value?.getBoundingClientRect();
@@ -32,22 +32,7 @@ const style = computed(() => {
 });
 </script>
 
-<style lang="postcss" scoped>
-/* .menu-global {
-    @apply block w-full;
-} */
-.menu {
-  @apply absolute bg-gray-800 dark:bg-gray-200 outline-none shadow-lg overflow-y-auto p-0 m-0 rounded-md
-  text-white dark:text-balck;
-  max-width: 465px;
-  max-height: calc(50vh - 76px);
-  z-index: 1000;
-
-  ul li {
-    /* @apply hover:bg-primary/10; */
-  }
-}
-</style>
+<style lang="postcss" scoped></style>
 
 <template>
   <div class="menu-global" ref="menu">
@@ -58,7 +43,7 @@ const style = computed(() => {
           ref="menuContent"
           :style="style"
           v-if="active"
-          class="menu"
+          class="menu absolute bg-gray-800 dark:bg-gray-200 outline-none shadow-lg overflow-y-auto p-0 m-0 rounded-md text-white dark:text-balck z-[1000] max-w-[465px] max-h-[calc(50vh-76px)]"
           :class="[locale == 'fa' ? 'rtl' : null, locale]"
         >
           <slot name="prepend-item"></slot>
