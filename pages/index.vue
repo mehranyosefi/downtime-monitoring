@@ -12,13 +12,6 @@ useHead({
 });
 const useApp = useAppStore();
 const { isOnTablet, isOnMobile } = useWindowProperty();
-// const templateSections = ref<{ [key: string]: boolean }>({
-//   cardItems: false,
-//   trust: false,
-//   statusPage: false,
-//   carousel: false,
-// });
-
 const products = reactive([
   {
     img: "/img/godaddy-logo.svg",
@@ -36,7 +29,6 @@ const products = reactive([
     img: "/img/expedia-logo.svg",
   },
 ]);
-
 const responsiveOptions = ref([
   {
     breakpoint: "1280px",
@@ -60,7 +52,6 @@ const responsiveOptions = ref([
   },
 ]);
 
-// const { data, error } = await useAPI("/index");
 const animationNameCompute = (key: number): string => {
   if (key === 0) {
     if (locale.value === "en") {
@@ -126,7 +117,7 @@ const animationNameCompute = (key: number): string => {
                 }"
               >
                 <NuxtLink
-                  :to="`${localePath('index')}#`"
+                  to="/start"
                   class="font-semibold"
                   v-text="t('index.startMonitoring')"
                 ></NuxtLink>
@@ -321,7 +312,7 @@ const animationNameCompute = (key: number): string => {
                 </p>
                 <div class="flex items-center text-lg">
                   <div class="text-green-500 dark:text-primary-500 flex">
-                    <nuxt-link to="/">{{
+                    <nuxt-link to="/check">{{
                       t("index.statusPage.check")
                     }}</nuxt-link>
                     <svg width="1rem" height="1rem">
@@ -334,11 +325,10 @@ const animationNameCompute = (key: number): string => {
                   </div>
                   <span class="px-1" v-text="t('general.or')"></span>
                   <nuxt-link
-                    to="/"
+                    to="/status-page"
                     class="text-green-500 dark:text-primary-500"
                   >
                     {{
-                      // `${t("general.status")} ${t("general.pages")}`
                       locale === "en"
                         ? `${t("general.status")} ${t("general.pages")}`
                         : `${t("general.pages")} ${t("general.status")}`

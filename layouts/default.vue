@@ -12,7 +12,7 @@ useHead({
     ],
   },
 });
-const sideNav = useTemplateRef("sideNav");
+const sideNavMenu: ShallowRef<boolean> = shallowRef<boolean>(false);
 const conversationComponent = defineAsyncComponent(
   () => import("@/components/base/Conversation.vue")
 );
@@ -24,11 +24,10 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
   <div class="root-element-page overflow-x-hidden overflow-y-auto h-screen">
     <slot name="header">
       <base-header
-        sign-section
         menu-section
         logo
-        @show-sideNav="sideNav?.toggle_sideNav"
-        :side-nav-active="sideNav?.sideNavActive"
+        @show-sideNav="sideNavMenu = !sideNavMenu"
+        :side-nav-active="sideNavMenu"
       />
     </slot>
     <main class="main">
@@ -36,13 +35,20 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
         <div class="page-animation">
           <slot />
         </div>
-        <NuxtLazyHydrate :on-interaction="['click', 'touchstart']">
+        <!-- <NuxtLazyHydrate :on-interaction="['click', 'touchstart']"> -->
+        <PrimeDrawer
+          v-model:visible="sideNavMenu"
+          class="!w-full h-[calc(100vh-5rem)] top-[5rem] overflow-x-hidden !overflow-y-auto"
+          :pt="{
+            header: '!hidden',
+          }"
+        >
           <BaseSideNavMenu
             :items="headerMegaMenu"
             :subItems="headerMegaMenuTeamItems"
-            ref="sideNav"
           />
-        </NuxtLazyHydrate>
+        </PrimeDrawer>
+        <!-- </NuxtLazyHydrate> -->
       </div>
     </main>
     <slot name="footer">

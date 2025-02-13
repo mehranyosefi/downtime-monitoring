@@ -63,7 +63,7 @@ export const headerMegaMenu: MegaMenuInterface[] = [
     {
       label: "monitoring.website",
       icon: "/img/icons.svg#website-monitoring",
-      path: "#website-monitoring",
+      path: "/website-monitoring",
       content:
         "Be the first to know that your website is down! Reliable monitoring warns you before any significant trouble and saves you money.",
       faContent:
@@ -72,7 +72,7 @@ export const headerMegaMenu: MegaMenuInterface[] = [
     {
       label: "monitoring.port",
       icon: "/img/icons.svg#port-monitoring",
-      path: "#port-monitoring",
+      path: "/port-monitoring",
       content:
         "Is the email service still UP? How about the critical database server? Let's check! Monitor any specific service running on any port.",
       faContent:
@@ -81,16 +81,16 @@ export const headerMegaMenu: MegaMenuInterface[] = [
     {
       label: "monitoring.keyword",
       icon: "/img/icons.svg#keyword-monitoring",
-      path: "#keyword-monitoring",
+      path: "/keyword-monitoring",
       content:
         "Use keyword monitoring to check presence or absence of specific text in the request's response body (typically HTML or JSON).",
       faContent:
         "از نظارت بر کلمه کلیدی برای بررسی وجود یا عدم وجود متن خاص در بدنه پاسخ درخواست (معمولاً HTML یا JSON) استفاده کنید.",
     },
   ]),
-  new MegaMenu("general.integrations", "integrations"),
-  new MegaMenu("general.statusPage", "#status-page"),
-  new MegaMenu("general.pricing", "#pricing"),
+  new MegaMenu("general.integrations", "/integrations"),
+  new MegaMenu("general.statusPage", "/status-page"),
+  new MegaMenu("general.pricing", "/pricing"),
 ];
 export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
   new MegaMenu("general.teams", undefined, [
@@ -99,23 +99,23 @@ export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
       // command: () => {
       //   router.push("/introduction");
       // },
-      path: "#devops",
+      path: "/devops",
     },
     {
       label: "teams.developers",
-      path: "#developer",
+      path: "/developer",
     },
     {
       label: "teams.marketers",
-      path: "#marketers",
+      path: "/marketers",
     },
     {
       label: "teams.support",
-      path: "#support",
+      path: "/support",
     },
     {
       label: "teams.businessOwners",
-      path: "#business-owners",
+      path: "/business-owners",
     },
   ]),
 ];
@@ -172,19 +172,19 @@ export const resources: MegaMenuInterface[] = [
   new MegaMenu("general.resources", undefined, [
     {
       label: "general.integrations",
-      path: "#integrations",
+      path: "/integrations",
     },
     {
       label: "general.helpcenter",
-      path: "#helpcenter",
+      path: "/helpcenter",
     },
     {
       label: "general.locations&IPs",
-      path: "#location&IPs",
+      path: "/location&IPs",
     },
     {
       label: "general.knowledgehub",
-      path: "#knowledgehub",
+      path: "/knowledgehub",
     },
   ]),
 ];

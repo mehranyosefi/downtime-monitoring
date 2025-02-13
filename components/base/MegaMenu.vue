@@ -33,7 +33,7 @@ function triggerItemSelect(
 
 <template>
   <nav
-    class="megamenu"
+    class="megamenu p-4 relative"
     @blur="activeSubMenu = false"
     @mouseleave="activeSubMenu = false"
   >
@@ -41,21 +41,36 @@ function triggerItemSelect(
       <li v-for="(item, index) in items" :key="index">
         <slot :name="item.label">
           <PrimeButton
-            class="megamenu--button"
+            class="megamenu--button !border-none !bg-transparent hover:!bg-transparent flex justify-center items-center !gap-0 !p-0 mx-4 !text-lg !font-bold group"
             :as="item.path ? 'router-link' : 'button'"
-            :to="localepath(item.path ?? '/')"
+            :to="localepath(item.path ?? item.label)"
             @click="triggerItemSelect(item)"
             @mouseover="triggerItemSelect(item, 'hover')"
             @blur="activeSubMenu = false"
           >
-            <h2 v-text="t(item.label)"></h2>
-            <i v-if="item.items" class="pi pi-fw pi-angle-down"></i>
+            <h2
+              class="transition-colors duration-300 text-gray-900 dark:text-white group-hover:text-green-500 dark:group-hover:text-primary-500"
+              v-text="t(item.label)"
+            ></h2>
+            <svg
+              v-if="item.items"
+              class="size-6 transition-all duration-300 text-gray-900 dark:text-white group-hover:text-green-500 dark:group-hover:text-primary-500 mb-1"
+              :class="{ 'rotate-180': activeSubMenu }"
+            >
+              <use
+                class="size-6"
+                href="/img/icons.svg#arrow-down-rounded"
+              ></use>
+            </svg>
           </PrimeButton>
         </slot>
       </li>
     </ul>
     <Transition name="drop-drawer">
-      <div v-if="activeSubMenu" class="megamenu--submenu">
+      <div
+        v-if="activeSubMenu"
+        class="megamenu--submenu absolute w-full top-14 bg-white dark:bg-gray-800 right-0 left-0 rounded-md p-3"
+      >
         <ul class="columns-3">
           <li v-for="(item, key) in selectedItem.items" :key="key">
             <NuxtLink
@@ -102,17 +117,21 @@ function triggerItemSelect(
             <nuxt-link
               v-if="item.path"
               :to="item.path"
-              class="flex items-center hover:bg-white dark:bg-gray-800 hover:text-green-500 dark:hover:text-primary-400"
+              class="flex items-center hover:bg-white dark:bg-gray-800 hover:text-green-500 dark:hover:text-primary-400 group"
             >
               <span v-if="item.icon" :class="item.icon" />
               <span>{{ t(item.label as string) }}</span>
-              <i
-                class="pi mx-1 text-sm"
+              <svg
+                class="size-5 mx-1"
                 :class="{
-                  'pi-arrow-right': locale == 'en',
-                  'pi-arrow-left': locale == 'fa',
+                  'group-hover:translate-x-1 transition-transform':
+                    locale == 'en',
+                  'rotate-180 group-hover:-translate-x-1 transition-transform':
+                    locale == 'fa',
                 }"
-              ></i>
+              >
+                <use class="size-5" href="/img/icons.svg#arrow-right"></use>
+              </svg>
             </nuxt-link>
           </template>
         </PrimeMenubar>
@@ -120,27 +139,4 @@ function triggerItemSelect(
     </Transition>
   </nav>
 </template>
-<style lang="postcss" scoped>
-.megamenu {
-  @apply p-4 relative;
-  &--button {
-    @apply !border-none !bg-transparent hover:!bg-transparent flex justify-center items-center gap-0
-        !text-gray-900 dark:!text-white hover:!text-green-500 dark:hover:!text-primary-500 !p-0 mx-4 !text-lg !font-bold;
-  }
-  &--submenu {
-    @apply absolute w-full top-14 bg-white dark:bg-gray-800 right-0 left-0 rounded-md p-3;
-    .p-menubar {
-      a:hover {
-        i.pi-arrow-right {
-          @apply translate-x-1 transition-transform;
-        }
-      }
-      a:hover {
-        i.pi-arrow-left {
-          @apply -translate-x-1 transition-transform;
-        }
-      }
-    }
-  }
-}
-</style>
+<style lang="postcss" scoped></style>

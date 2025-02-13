@@ -127,3 +127,9 @@
     @apply z-20;
   }
 }
+.router-link-active,
+.router-link-exact-active {
+  * {
+    @apply !text-green-500;
+  }
+}

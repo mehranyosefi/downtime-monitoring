@@ -4,14 +4,12 @@ import { headerMegaMenu, headerMegaMenuTeamItems } from "~/types";
 
 interface Props {
   logo?: boolean;
-  signSection?: boolean;
   menuSection?: boolean;
   sideNavActive?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   logo: false,
-  signSection: false,
   menuSection: false,
   sideNavActive: false,
 });
@@ -22,24 +20,23 @@ const { locale, locales, setLocale, t } = useI18n();
 const localePath = useLocalePath();
 const headerMenuActive: ShallowRef<boolean> = shallowRef<boolean>(false);
 const header = useTemplateRef("header");
+const useUser = useUserStore();
 
 const toggle = (event: Event) => {
   menu_language.value?.toggle(event);
 };
 
 onMounted(() => {
-  if (props.signSection) {
-    const mainElement = document.querySelector("main.main") as HTMLElement;
-    const rootElement = document.querySelector(
-      ".root-element-page"
-    ) as HTMLElement;
-    mainElement.addEventListener("scroll", (e) => {
-      set_shadow(e.target as HTMLElement);
-    });
-    rootElement.addEventListener("scroll", (e) => {
-      set_shadow(e.target as HTMLElement);
-    });
-  }
+  const mainElement = document.querySelector("main.main") as HTMLElement;
+  const rootElement = document.querySelector(
+    ".root-element-page"
+  ) as HTMLElement;
+  mainElement?.addEventListener("scroll", (e) => {
+    set_shadow(e.target as HTMLElement);
+  });
+  rootElement?.addEventListener("scroll", (e) => {
+    set_shadow(e.target as HTMLElement);
+  });
 });
 
 function set_shadow(el: HTMLElement) {
@@ -58,10 +55,9 @@ function set_shadow(el: HTMLElement) {
 <template>
   <header
     ref="header"
-    class="header sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 lg:mt-10 z-20 flex items-center transition-all"
-    :class="{ 'min-h-20 max-lg:shadow-xl': signSection }"
+    class="header sticky top-0 lg:-top-1 bg-gray-100 dark:bg-gray-900 lg:mt-10 z-20 flex items-center transition-all min-h-20 max-lg:shadow-xl"
   >
-    <div class="container mx-auto px-10 flex items-center xl:justify-between">
+    <div class="container mx-auto px-10 flex items-baseline xl:justify-between">
       <div
         class="flex flex-nowrap items-center justify-between pt-1 mx-5 md:mx-0"
       >
@@ -136,7 +132,7 @@ function set_shadow(el: HTMLElement) {
         class="hidden lg:block lg:w-[50%] xl:w-[52%] mx-auto"
       >
       </BaseMegaMenu>
-      <section v-if="signSection" class="sign hidden sm:block">
+      <section v-if="!useUser.loggedIn" class="sign hidden sm:block">
         <PrimeButton class="!bg-transparent !border-none !h-fit !p-0">
           <NuxtLink
             :to="localePath('login')"
@@ -152,10 +148,23 @@ function set_shadow(el: HTMLElement) {
           ></NuxtLink>
         </PrimeButton>
       </section>
+      <section v-if="useUser.loggedIn" class="log-out">
+        <NuxtLink
+          :to="localePath('dashboard')"
+          class="flex gap-x-1 transition-colors duration-300 hover:text-green-500 dark:hover:text-primary-500"
+        >
+          <span
+            class="capitalize text-xl"
+            v-text="t('general.dashboard')"
+          ></span>
+          <svg class="size-6" :class="{ 'rotate-180': locale === 'fa' }">
+            <use class="size-6" href="/img/icons.svg#log-out"></use>
+          </svg>
+        </NuxtLink>
+      </section>
     </div>
     <ClientOnly>
       <PrimeButton
-        v-if="signSection"
         class="inline-block lg:!hidden"
         :pt="{
           root: '!bg-transparent !hover:bg-transparent !border-none !rounded-none !h-[2rem] !w-[3rem] !p-0 mx-10',

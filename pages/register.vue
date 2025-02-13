@@ -85,14 +85,13 @@ const onFormSubmit = async (e: {
         },
       });
       if (status.value === "error") {
-        //TODO handle api errors
         toast.add({
           severity: "error",
           summary: error.value?.data.message,
           life: 3000,
         });
       } else if (status.value === "success") {
-        useUser.state.user = data.value.user;
+        useUser.setUser(data.value.user as object);
         toast.add({
           severity: "success",
           summary: data.value.message,
@@ -106,7 +105,7 @@ const onFormSubmit = async (e: {
     } finally {
       requestLoading.value = false;
     }
-  } else console.log("InValid");
+  }
 };
 </script>
 

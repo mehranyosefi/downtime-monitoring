@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ShallowRef } from "vue";
+
 const { locale, t } = useI18n();
 const localePath = useLocalePath();
 
@@ -20,6 +22,10 @@ const initialValues = reactive<{
   email: "",
   password: "",
 });
+const requestLoading: ShallowRef<boolean> = shallowRef<boolean>(false);
+const toast = useToast();
+const router = useRouter();
+const useUser = useUserStore();
 
 //method
 const resolver = ({ values }: Record<string, any>) => {
@@ -48,14 +54,54 @@ const resolver = ({ values }: Record<string, any>) => {
   };
 };
 
-const onFormSubmit = ({ valid }: { valid: boolean }): void => {
-  if (valid) {
-    // toast.add({
-    //   severity: "success",
-    //   summary: "Form is submitted.",
-    //   life: 3000,
-    // });
-  } else console.log("InValid");
+const onFormSubmit = async (e: {
+  valid: boolean;
+  states: object;
+}): Promise<void> => {
+  if (e.valid) {
+    try {
+      requestLoading.value = true;
+      const { status, data, error } = await useAPI("/login", {
+        method: "POST",
+        server: false,
+        body: {
+          email: e.states.email.value,
+          password: e.states.password.value,
+        },
+      });
+      if (status.value === "error") {
+        toast.add({
+          severity: "error",
+          summary: error.value?.data.error,
+          life: 3000,
+        });
+      } else if (status.value === "success") {
+        localStorage.setItem("user", JSON.stringify(data.value.user));
+        localStorage.setItem(
+          "sessions",
+          JSON.stringify({
+            access_token: data.value.token,
+            refresh_token: "",
+          })
+        );
+        useUser.setUser(data.value.user as object);
+        useUser.setSessions({
+          access_token: data.value.token,
+          refresh_token: "",
+        });
+        toast.add({
+          severity: "success",
+          summary: data.value.message,
+          life: 3000,
+        });
+        router.push(localePath("/"));
+      }
+    } catch (e) {
+      // console.log(e);
+    } finally {
+      requestLoading.value = false;
+    }
+  }
 };
 </script>
 
@@ -130,6 +176,7 @@ const onFormSubmit = ({ valid }: { valid: boolean }): void => {
               type="submit"
               severity="success"
               :label="t('general.login')"
+              :loading="requestLoading"
             />
           </PrimeForm>
         </template>

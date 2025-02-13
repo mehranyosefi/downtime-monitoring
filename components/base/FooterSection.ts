@@ -24,19 +24,19 @@ export default {
     const { locale, t } = useI18n();
     const icons = [
       {
-        href: "#facebook",
+        href: "/facebook",
         svgId: "/img/icons.svg#facebook",
       },
       {
-        href: "#twitter",
+        href: "/twitter",
         svgId: "/img/icons.svg#twitter",
       },
       {
-        href: "#linkedin",
+        href: "/linkedin",
         svgId: "/img/icons.svg#linkedin",
       },
       {
-        href: "#telegram",
+        href: "/telegram",
         svgId: "/img/icons.svg#telegram",
       },
     ];
@@ -88,8 +88,8 @@ export default {
                           "a",
                           {
                             class: [
-                              "router-link-active router-link-exact-active mx-1",
-                              item.href == "#twitter"
+                              "mx-1",
+                              item.href == "/twitter"
                                 ? "bg-gray-500 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors rounded-full flex items-center justify-center p-[.38rem]"
                                 : null,
                             ],
@@ -101,20 +101,20 @@ export default {
                               "svg",
                               {
                                 width:
-                                  item.href === "#twitter" ? "1.22rem" : "2rem",
+                                  item.href === "/twitter" ? "1.22rem" : "2rem",
                                 height:
-                                  item.href === "#twitter" ? "1.22rem" : "2rem",
+                                  item.href === "/twitter" ? "1.22rem" : "2rem",
                                 class: [
-                                  item.href !== "#twitter"
+                                  item.href !== "/twitter"
                                     ? "text-gray-500 hover:text-gray-800 dark:hover:text-gray-100 transition-colors"
                                     : "text-gray-100 dark:text-gray-800",
                                 ],
                               },
                               h("use", {
                                 width:
-                                  item.href === "#twitter" ? "1.22rem" : "2rem",
+                                  item.href === "/twitter" ? "1.22rem" : "2rem",
                                 height:
-                                  item.href === "#twitter" ? "1.22rem" : "2rem",
+                                  item.href === "/twitter" ? "1.22rem" : "2rem",
                                 href: item.svgId,
                               })
                             ),

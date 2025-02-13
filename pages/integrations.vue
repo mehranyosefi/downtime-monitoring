@@ -119,7 +119,7 @@ const useApp = useAppStore();
               </p>
 
               <nuxt-link
-                to="/"
+                to="/check"
                 class="text-green-500 dark:text-primary-500 text-lg font-bold underline underline-offset-8"
               >
                 {{ t("integrations.statusPage.check") }}
