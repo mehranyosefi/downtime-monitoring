@@ -6,8 +6,8 @@ import { faTrustItems, headerMegaMenu, trustItems } from "~/types";
 useHead({
   title: t("phrases.seo.index.title"),
   meta: [
-    { name: "description", content: t("phrases.seo.signUp.description") },
-    { name: "keywords", content: t("phrases.seo.signUp.keywords") },
+    { name: "description", content: t("phrases.seo.index.description") },
+    { name: "keywords", content: t("phrases.seo.index.keywords") },
   ],
 });
 const useApp = useAppStore();
@@ -115,6 +115,7 @@ const animationNameCompute = (key: number): string => {
                 :pt="{
                   root: '!px-20 !py-4 !mx-auto',
                 }"
+                name="start"
               >
                 <NuxtLink
                   to="/start"
@@ -140,7 +141,7 @@ const animationNameCompute = (key: number): string => {
         >
           <div class="container mx-auto py-32 px-10">
             <div>
-              <h4
+              <h3
                 class="text-4xl font-semibold text-center"
                 v-animation-on-viewport="'slide-right'"
               >
@@ -160,7 +161,7 @@ const animationNameCompute = (key: number): string => {
                   ></span>
                   {{ t("phrases.etc.inOnePlace") }}.
                 </span>
-              </h4>
+              </h3>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 pt-16">
               <PrimeCard
@@ -180,7 +181,7 @@ const animationNameCompute = (key: number): string => {
                   >
                     <use :href="i.icon" width="5rem" height="5rem"></use>
                   </svg>
-                  <h5 v-text="t(i.label)" class="font-bold text-2xl mt-2"></h5>
+                  <h4 v-text="t(i.label)" class="font-bold text-2xl mt-2"></h4>
                 </template>
                 <template #content>
                   <p
@@ -191,6 +192,7 @@ const animationNameCompute = (key: number): string => {
                     severity="success"
                     class="mt-5"
                     :label="t(i.label)"
+                    :name="i.label"
                   >
                   </PrimeButton>
                 </template>
@@ -200,8 +202,8 @@ const animationNameCompute = (key: number): string => {
         </div>
         <div class="container mx-auto py-32 px-10">
           <div>
-            <h4
-              class="text-4xl font-semibold text-center"
+            <h3
+              class="text-3xl font-semibold text-center"
               v-animation-on-viewport
             >
               <span v-if="locale === 'en'">
@@ -223,7 +225,7 @@ const animationNameCompute = (key: number): string => {
                   v-text="t('general.trusts')"
                 ></span>
               </span>
-            </h4>
+            </h3>
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16 mt-16">
             <Primecard
@@ -248,7 +250,7 @@ const animationNameCompute = (key: number): string => {
                     <use href="/img/icons.svg#star"></use>
                   </svg>
                 </div>
-                <h5 class="font-extrabold text-2xl" v-text="trust.title"></h5>
+                <h4 class="font-extrabold text-2xl" v-text="trust.title"></h4>
               </template>
               <template #content>
                 <p
@@ -278,8 +280,8 @@ const animationNameCompute = (key: number): string => {
               class="flex flex-col lg:flex-row justify-center lg:justify-around items-center"
             >
               <div class="mt-60 md:mt-80 lg:mt-auto w-full order-2 lg:order-1">
-                <h4
-                  class="text-5xl font-semibold leading-tight"
+                <h3
+                  class="text-2xl font-semibold leading-tight"
                   :class="{ 'lg:pr-10': locale === 'en' }"
                 >
                   {{ t("index.statusPage.title") }}
@@ -300,7 +302,7 @@ const animationNameCompute = (key: number): string => {
                     class="px-2"
                   ></span
                   >.
-                </h4>
+                </h3>
                 <p
                   class="my-4 text-xl"
                   :class="{

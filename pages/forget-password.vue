@@ -1,52 +1,39 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { ShallowRef } from "vue";
 
+const route = useRoute();
 const { locale, t } = useI18n();
 const localePath = useLocalePath();
 
-definePageMeta({
-  middleware: "authorized",
-});
 useHead({
-  title: t("general.login"),
+  title: t("general.forget_password"),
   meta: [
-    { name: "description", content: t("phrases.seo.login.description") },
-    { name: "keywords", content: t("phrases.seo.login.keywords") },
+    {
+      name: "description",
+      content: t("phrases.seo.forget_password.description"),
+    },
+    { name: "keywords", content: t("phrases.seo.forget_password.keywords") },
   ],
 });
-//data
+
 const initialValues = reactive<{
   email: string;
-  password: string;
 }>({
   email: "",
-  password: "",
 });
 const requestLoading: ShallowRef<boolean> = shallowRef<boolean>(false);
 const toast = useToast();
 const router = useRouter();
 const useUser = useUserStore();
 
-//method
 const resolver = ({ values }: Record<string, any>) => {
-  const errors: any = { email: [], fullName: [], password: [] };
+  const errors: any = {
+    email: [],
+  };
   if (!values.email) {
     errors.email.push({
       type: "required",
       message: t("errors.email.required"),
-    });
-  }
-
-  if (!values.password) {
-    errors.password.push({
-      type: "required",
-      message: t("errors.password.required"),
-    });
-  }
-  if (values.password?.length < 8) {
-    errors.password.push({
-      type: "required",
-      message: t("errors.password.min", { number: 8 }),
     });
   }
   return {
@@ -61,40 +48,26 @@ const onFormSubmit = async (e: {
   if (e.valid) {
     try {
       requestLoading.value = true;
-      const { status, data, error } = await useAPI("/login", {
+      const { status, data, error } = await useAPI("/forget-password", {
         method: "POST",
         server: false,
         body: {
           email: e.states.email.value,
-          password: e.states.password.value,
         },
       });
+      console.log(status, data);
       if (status.value === "error") {
         toast.add({
           severity: "error",
-          summary: error.value?.data.error,
+          summary: error.value?.data.message,
           life: 3000,
         });
       } else if (status.value === "success") {
-        localStorage.setItem("user", JSON.stringify(data.value.user));
-        localStorage.setItem(
-          "sessions",
-          JSON.stringify({
-            access_token: data.value.token,
-            refresh_token: "",
-          })
-        );
-        useUser.setUser(data.value.user as object);
-        useUser.setSessions({
-          access_token: data.value.token,
-          refresh_token: "",
-        });
         toast.add({
           severity: "success",
-          summary: data.value.message,
-          life: 3000,
+          summary: data.value?.message,
+          life: 15000,
         });
-        router.push(localePath("/"));
       }
     } catch (e) {
       // console.log(e);
@@ -110,9 +83,13 @@ const onFormSubmit = async (e: {
     <PrimeCard class="mt-5">
       <template #title class="text-center">
         <h2
-          v-text="$t('general.welcome')"
+          v-text="$t('general.forget_password')"
           class="text-center font-semibold text-green-500 dark:text-primary-500 capitalize"
         ></h2>
+        <p
+          class="text-xs font-semibold text-center text-gray-600 dark:text-gray-300 mt-4"
+          v-text="t('phrases.etc.resetPassword')"
+        ></p>
       </template>
       <template #content>
         <PrimeForm
@@ -144,50 +121,22 @@ const onFormSubmit = async (e: {
               }"
               >{{ $form.email.error?.message }}</PrimeMessage
             >
-            <label
-              for="password"
-              v-text="t('general.password')"
-              class="mt-5"
-            ></label>
-            <PrimeInputText
-              name="password"
-              type="password"
-              :placeholder="t('phrases.placeholder.password')"
-              fluid
-              :pt="{
-                root: 'mt-1',
-              }"
-            />
-            <PrimeMessage
-              v-if="$form.password?.invalid"
-              class="mr-1"
-              severity="error"
-              size="small"
-              variant="simple"
-              :pt="{
-                text: '!text-xs',
-              }"
-              >{{ $form.password.error?.message }}</PrimeMessage
-            >
           </div>
           <PrimeButton
-            class="mt-6"
+            class="mt-6 capitalize"
             type="submit"
             severity="success"
-            :label="t('general.login')"
+            :label="t('general.send')"
             :loading="requestLoading"
-            name="login"
+            name="send"
           />
           <nuxt-link
-            :to="localePath('forget-password')"
+            :to="localePath('login')"
             class="block w-fit mx-auto mt-2 underline text-sm"
           >
-            <span v-if="locale === 'en'">
-              {{ `${$t("general.forgot")} ${$t("general.yourPassword")}?` }}
-            </span>
-            <span v-else>
-              {{ `${$t("general.yourPassword")} ${$t("general.forgot")}؟` }}
-            </span>
+            {{
+              `${$t("general.back")} ${$t("general.to")} ${$t("general.login")}`
+            }}
           </nuxt-link>
         </PrimeForm>
       </template>
@@ -210,5 +159,4 @@ const onFormSubmit = async (e: {
     </template>
   </NuxtLayout>
 </template>
-
 <style lang="postcss" scoped></style>

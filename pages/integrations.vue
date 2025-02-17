@@ -1,9 +1,18 @@
 <script setup lang="ts">
 import type { ShallowRef } from "vue";
 import { notificatoins } from "~/types";
+
 const { t, locale } = useI18n();
 const showTextOver: ShallowRef<boolean> = shallowRef<boolean>(false);
 const useApp = useAppStore();
+
+useHead({
+  title: t("phrases.seo.integrations.title"),
+  meta: [
+    { name: "description", content: t("phrases.seo.integrations.description") },
+    { name: "keywords", content: t("phrases.seo.integrations.keywords") },
+  ],
+});
 </script>
 <template>
   <div>

@@ -47,6 +47,9 @@ function triggerItemSelect(
             @click="triggerItemSelect(item)"
             @mouseover="triggerItemSelect(item, 'hover')"
             @blur="activeSubMenu = false"
+            activeClass="link-active"
+            exactActiveClass="link-exact-active"
+            :name="item.label"
           >
             <h2
               class="transition-colors duration-300 text-gray-900 dark:text-white group-hover:text-green-500 dark:group-hover:text-primary-500"

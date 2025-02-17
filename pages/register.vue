@@ -5,7 +5,7 @@ import { useToast } from "primevue/usetoast";
 import type { ShallowRef } from "vue";
 
 definePageMeta({
-  layout: false,
+  middleware: "authorized",
 });
 useHead({
   title: t("general.signUp"),
@@ -112,11 +112,11 @@ const onFormSubmit = async (e: {
 <template>
   <div>
     <NuxtLayout name="sign">
-      <PrimeCard class="mt-10">
+      <PrimeCard class="mt-5">
         <template #title class="text-center">
           <h2
             v-if="locale == 'fa'"
-            class="text-center text-xl font-semibold"
+            class="text-center font-semibold"
             v-html="
               `${$t('general.yourAccount')} را
               <span class='text-green-500 dark:text-primary-500'>${$t(
@@ -126,7 +126,7 @@ const onFormSubmit = async (e: {
           ></h2>
           <h2
             v-else
-            class="text-center text-xl font-semibold"
+            class="text-center font-semibold"
             v-html="
               `<span class='text-green-500 dark:text-primary-500'>${$t(
                 'general.register'
@@ -140,7 +140,7 @@ const onFormSubmit = async (e: {
             :initialValues
             :resolver
             @submit="onFormSubmit"
-            class="flex flex-col"
+            class="flex flex-col mt-2"
           >
             <div class="flex flex-col gap-1">
               <label for="email" v-text="t('general.email')"></label>
@@ -224,6 +224,7 @@ const onFormSubmit = async (e: {
               type="submit"
               :label="t('general.register')"
               :loading="requestLoading"
+              name="register"
             />
           </PrimeForm>
         </template>

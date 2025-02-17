@@ -126,10 +126,10 @@
   .p-toast {
     @apply z-20;
   }
-}
-.router-link-active,
-.router-link-exact-active {
-  * {
-    @apply !text-green-500;
+  .link-active,
+  .link-exact-active {
+    * {
+      @apply !text-green-500 dark:!text-primary-500 !underline underline-offset-8;
+    }
   }
 }

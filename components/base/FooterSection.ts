@@ -65,7 +65,7 @@ export default {
                   },
                   [
                     h(
-                      "h5",
+                      "h4",
                       { class: "font-bold text-2xl" },
                       t("general.UptimeRobot")
                     ),
@@ -94,6 +94,7 @@ export default {
                                 : null,
                             ],
                             "aria-current": "page",
+                            "aria-label": item.href,
                             href: item.href,
                           },
                           [
@@ -142,13 +143,15 @@ export default {
 
                       itemIcon: "!hidden",
                     },
+                    role: props.monitoring,
                   },
 
                   {
-                    submenulabel: ({ item }) => h("h5", t(item.label)),
+                    submenulabel: ({ item }) =>
+                      h("h5", { role: "heading" }, t(item.label)),
                     item: ({ item }) =>
                       h(
-                        "h5",
+                        "h6",
                         null,
                         h(NuxtLink, { to: item.path }, () =>
                           h("span", t(item.label))
@@ -176,10 +179,11 @@ export default {
                   },
 
                   {
-                    submenulabel: ({ item }) => h("h5", t(item.label)),
+                    submenulabel: ({ item }) =>
+                      h("h5", { role: "heading" }, t(item.label)),
                     item: ({ item }) =>
                       h(
-                        "h5",
+                        "h6",
                         null,
                         h(NuxtLink, { to: item.path }, () =>
                           h("span", t(item.label))
@@ -206,10 +210,11 @@ export default {
                     },
                   },
                   {
-                    submenulabel: ({ item }) => h("h5", t(item.label)),
+                    submenulabel: ({ item }) =>
+                      h("h5", { role: "heading" }, t(item.label)),
                     item: ({ item }) =>
                       h(
-                        "h5",
+                        "h6",
                         h(NuxtLink, { to: item.path }, () => t(item.label))
                       ),
                   }

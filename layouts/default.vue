@@ -10,6 +10,7 @@ useHead({
       locale.value == "fa" ? "rtl fa" : "ltr en",
       useApp.state.theme === "dark" ? "dark" : "",
     ],
+    lang: locale.value,
   },
 });
 const sideNavMenu: ShallowRef<boolean> = shallowRef<boolean>(false);
@@ -24,7 +25,6 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
   <div class="root-element-page overflow-x-hidden overflow-y-auto h-screen">
     <slot name="header">
       <base-header
-        menu-section
         logo
         @show-sideNav="sideNavMenu = !sideNavMenu"
         :side-nav-active="sideNavMenu"
@@ -35,12 +35,14 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
         <div class="page-animation">
           <slot />
         </div>
-        <!-- <NuxtLazyHydrate :on-interaction="['click', 'touchstart']"> -->
+        <!-- <NuxtLazyHydrate when-visible> -->
         <PrimeDrawer
           v-model:visible="sideNavMenu"
           class="!w-full h-[calc(100vh-5rem)] top-[5rem] overflow-x-hidden !overflow-y-auto"
           :pt="{
             header: '!hidden',
+            mask: '!bg-transparent',
+            root: '!bg-gray-100 dark:!bg-gray-900',
           }"
         >
           <BaseSideNavMenu
@@ -64,6 +66,7 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
         :dir="locale === 'en' ? 'ltr' : 'rtl'"
         class="fixed bottom-5 z-10 bg-white dark:bg-gray-800 w-14 h-14 flex items-center justify-center shadow-xl ltr:rounded-l-full ltr:rounded-br-full ltr:right-6 rtl:rounded-r-full rtl:rounded-bl-full rtl:left-6"
         @click="conversation = !conversation"
+        aria-label="conversation"
       >
         <svg
           width="2rem"

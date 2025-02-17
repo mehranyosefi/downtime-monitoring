@@ -1,35 +1,42 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { ShallowRef } from "vue";
 
+const route = useRoute();
 const { locale, t } = useI18n();
 const localePath = useLocalePath();
 
-definePageMeta({
-  middleware: "authorized",
-});
 useHead({
-  title: t("general.login"),
+  title: t("general.reset_password"),
   meta: [
-    { name: "description", content: t("phrases.seo.login.description") },
-    { name: "keywords", content: t("phrases.seo.login.keywords") },
+    {
+      name: "description",
+      content: t("phrases.seo.reset_password.description"),
+    },
+    { name: "keywords", content: t("phrases.seo.reset_password.keywords") },
   ],
 });
-//data
 const initialValues = reactive<{
-  email: string;
   password: string;
+  password_confirmation: string;
+  email: string;
+  token: string;
 }>({
-  email: "",
   password: "",
+  password_confirmation: "",
+  email: route.query.email as string,
+  token: route.query.token as string,
 });
 const requestLoading: ShallowRef<boolean> = shallowRef<boolean>(false);
 const toast = useToast();
 const router = useRouter();
-const useUser = useUserStore();
 
-//method
 const resolver = ({ values }: Record<string, any>) => {
-  const errors: any = { email: [], fullName: [], password: [] };
+  const errors: any = {
+    email: [],
+    fullName: [],
+    password: [],
+    password_confirmation: [],
+  };
   if (!values.email) {
     errors.email.push({
       type: "required",
@@ -49,6 +56,18 @@ const resolver = ({ values }: Record<string, any>) => {
       message: t("errors.password.min", { number: 8 }),
     });
   }
+  if (!values.password_confirmation) {
+    errors.password_confirmation.push({
+      type: "required",
+      message: t("errors.password_confirmation.required"),
+    });
+  }
+  if (values.password_confirmation?.length < 8) {
+    errors.password_confirmation.push({
+      type: "required",
+      message: t("errors.password_confirmation.min", { number: 8 }),
+    });
+  }
   return {
     errors,
   };
@@ -59,42 +78,40 @@ const onFormSubmit = async (e: {
   states: object;
 }): Promise<void> => {
   if (e.valid) {
+    if (!(e.states.password.value === e.states.password_confirmation.value)) {
+      toast.add({
+        severity: "error",
+        summary: t("phrases.etc.invalidRepeatPassword"),
+        life: 3000,
+      });
+      return;
+    }
+    console.log(e.states);
     try {
       requestLoading.value = true;
-      const { status, data, error } = await useAPI("/login", {
+      const { status, data, error } = await useAPI("/reset-password", {
         method: "POST",
         server: false,
         body: {
           email: e.states.email.value,
           password: e.states.password.value,
+          password_confirmation: e.states.password_confirmation.value,
+          token: e.states.token.value,
         },
       });
       if (status.value === "error") {
         toast.add({
           severity: "error",
-          summary: error.value?.data.error,
+          summary: error.value?.data.message,
           life: 3000,
         });
       } else if (status.value === "success") {
-        localStorage.setItem("user", JSON.stringify(data.value.user));
-        localStorage.setItem(
-          "sessions",
-          JSON.stringify({
-            access_token: data.value.token,
-            refresh_token: "",
-          })
-        );
-        useUser.setUser(data.value.user as object);
-        useUser.setSessions({
-          access_token: data.value.token,
-          refresh_token: "",
-        });
         toast.add({
           severity: "success",
           summary: data.value.message,
-          life: 3000,
+          life: 15000,
         });
-        router.push(localePath("/"));
+        router.push(localePath("login"));
       }
     } catch (e) {
       // console.log(e);
@@ -110,8 +127,8 @@ const onFormSubmit = async (e: {
     <PrimeCard class="mt-5">
       <template #title class="text-center">
         <h2
-          v-text="$t('general.welcome')"
-          class="text-center font-semibold text-green-500 dark:text-primary-500 capitalize"
+          v-text="$t('general.reset_password')"
+          class="text-center font-semibold text-green-500 dark:text-primary-500"
         ></h2>
       </template>
       <template #content>
@@ -123,27 +140,6 @@ const onFormSubmit = async (e: {
           class="flex flex-col gap-4 mt-2"
         >
           <div class="flex flex-col gap-1">
-            <label for="email" v-text="t('general.email')"></label>
-            <PrimeInputText
-              name="email"
-              type="email"
-              :placeholder="t('phrases.placeholder.email')"
-              fluid
-              :pt="{
-                root: 'mt-1',
-              }"
-            />
-            <PrimeMessage
-              v-if="$form.email?.invalid"
-              class="mr-1"
-              severity="error"
-              size="small"
-              variant="simple"
-              :pt="{
-                text: '!text-xs',
-              }"
-              >{{ $form.email.error?.message }}</PrimeMessage
-            >
             <label
               for="password"
               v-text="t('general.password')"
@@ -169,25 +165,50 @@ const onFormSubmit = async (e: {
               }"
               >{{ $form.password.error?.message }}</PrimeMessage
             >
+
+            <label
+              for="password_confirmation"
+              v-text="`${t('general.repeat')} ${t('general.password')}`"
+              class="mt-5"
+            ></label>
+            <PrimeInputText
+              name="password_confirmation"
+              type="password"
+              :placeholder="t('phrases.placeholder.password')"
+              fluid
+              :pt="{
+                root: 'mt-1',
+              }"
+            />
+            <PrimeMessage
+              v-if="$form.password_confirmation?.invalid"
+              class="mr-1"
+              severity="error"
+              size="small"
+              variant="simple"
+              :pt="{
+                text: '!text-xs',
+              }"
+              >{{ $form.password_confirmation.error?.message }}</PrimeMessage
+            >
+            <PrimeInputText name="email" type="hidden" fluid />
+            <PrimeInputText name="token" type="hidden" fluid />
           </div>
           <PrimeButton
-            class="mt-6"
+            class="mt-6 capitalize"
             type="submit"
             severity="success"
-            :label="t('general.login')"
+            :label="t('general.verify')"
             :loading="requestLoading"
-            name="login"
+            name="verify"
           />
           <nuxt-link
-            :to="localePath('forget-password')"
+            :to="localePath('login')"
             class="block w-fit mx-auto mt-2 underline text-sm"
           >
-            <span v-if="locale === 'en'">
-              {{ `${$t("general.forgot")} ${$t("general.yourPassword")}?` }}
-            </span>
-            <span v-else>
-              {{ `${$t("general.yourPassword")} ${$t("general.forgot")}؟` }}
-            </span>
+            {{
+              `${$t("general.back")} ${$t("general.to")} ${$t("general.login")}`
+            }}
           </nuxt-link>
         </PrimeForm>
       </template>
@@ -210,5 +231,4 @@ const onFormSubmit = async (e: {
     </template>
   </NuxtLayout>
 </template>
-
 <style lang="postcss" scoped></style>

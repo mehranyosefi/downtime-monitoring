@@ -16,6 +16,7 @@ await new Promise((resolve, reject) => {
             root: '!bg-transparent !hover:bg-transparent !border-none !rounded-none !p-0',
           }"
           @click="$emit('handle-close')"
+          name="close"
         >
           <svg
             width="2rem"
@@ -84,6 +85,7 @@ await new Promise((resolve, reject) => {
           root: 'flex w-full rounded-b-none rounded-t-xl p-4 hover:bg-gray-700 dark:hover:bg-gray-100',
         }"
         unstyled
+        name="conversation"
       >
         <div class="circle-shadow bg-green-200 dark:bg-primary-400/90"></div>
         <div
@@ -102,6 +104,7 @@ await new Promise((resolve, reject) => {
       <PrimeButton
         severity="success"
         class="!absolute bottom-5 !mx-auto left-0 right-0 !w-[80%] !rounded-md"
+        name="send-message"
       >
         <svg width="1.2rem" height="1.2rem">
           <use
