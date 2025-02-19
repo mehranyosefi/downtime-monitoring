@@ -207,3 +207,31 @@ export const notificatoins = [
     icon: "/img/icons.svg#notifications",
   },
 ];
+
+export const dashboardMenu = [
+  {
+    label: "monitoring.monitoring",
+    path: "/dashboard/monitors",
+    icon: "/img/icons.svg#website-monitoring",
+  },
+  {
+    label: "general.incidents",
+    path: "/dashboard/incidents",
+    icon: "/img/icons.svg#shield-error",
+  },
+  {
+    label: "general.statusPage",
+    path: "/dashboard/status",
+    icon: "/img/icons.svg#status-online",
+  },
+
+  {
+    label: "general.more",
+    icon: "/img/icons.svg#menu",
+  },
+  {
+    label: "general.maintenance",
+    path: "/dashboard/maintenance",
+    icon: "/img/icons.svg#wrench",
+  },
+];

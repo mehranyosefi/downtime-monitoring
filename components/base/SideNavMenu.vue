@@ -76,7 +76,7 @@ if (import.meta.client) {
       }"
     >
       <template #item="{ item, props }">
-        <NuxtLink :to="item.path">
+        <NuxtLink :to="localepath(item.path)">
           <span v-text="t(item.label as string)"></span>
         </NuxtLink>
       </template>

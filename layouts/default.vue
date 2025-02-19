@@ -38,6 +38,7 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
         <!-- <NuxtLazyHydrate when-visible> -->
         <PrimeDrawer
           v-model:visible="sideNavMenu"
+          :position="locale === 'fa' ? 'right' : 'left'"
           class="!w-full h-[calc(100vh-5rem)] top-[5rem] overflow-x-hidden !overflow-y-auto"
           :pt="{
             header: '!hidden',

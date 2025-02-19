@@ -13,6 +13,7 @@ declare module 'vue' {
     PrimeCard: typeof import('primevue/card')['default']
     PrimeCarousel: typeof import('primevue/carousel')['default']
     PrimeDivider: typeof import('primevue/divider')['default']
+    PrimeDock: typeof import('primevue/dock')['default']
     PrimeDrawer: typeof import('primevue/drawer')['default']
     PrimeForm: typeof import('@primevue/forms/form')['default']
     PrimeImage: typeof import('primevue/image')['default']
@@ -25,5 +26,8 @@ declare module 'vue' {
     PrimeToggleSwitch: typeof import('primevue/toggleswitch')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+  }
+  export interface ComponentCustomProperties {
+    Tooltip: typeof import('primevue/tooltip')['default']
   }
 }

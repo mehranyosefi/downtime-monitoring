@@ -4,9 +4,7 @@ definePageMeta({
 });
 </script>
 <template>
-  <NuxtLayout name="dashboard">
-    <NuxtPage />
-  </NuxtLayout>
+  <div>status</div>
 </template>
 
 <style lang="postcss" scoped></style>

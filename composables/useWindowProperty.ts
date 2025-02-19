@@ -6,7 +6,7 @@ export const useWindowProperty = () => {
     });
   });
   const isOnMobile = computed(() => {
-    if (windowWidth.value > 768) return false;
+    if (windowWidth.value > 576) return false;
     return true;
   });
   const isOnTablet = computed(() => {

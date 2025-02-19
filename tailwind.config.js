@@ -140,6 +140,9 @@ export default {
         email: "url('/img/email.svg')",
         emailDark: "url('/img/email-dark.svg')",
       },
+      screens: {
+        xs: "576px",
+      },
     },
   },
   plugins: [],
