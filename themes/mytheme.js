@@ -1,4 +1,4 @@
-import { css, definePreset } from "@primevue/themes";
+import { definePreset } from "@primevue/themes";
 import Aura from "@primevue/themes/aura";
 const MyPreset = definePreset(Aura, {
   primary: {
@@ -151,6 +151,7 @@ const MyPreset = definePreset(Aura, {
       paddingY: "{myButton.paddingY}",
       borderRadius: "{borderRadius}",
       transitionDuration: "150ms",
+      // gap: "2px",
       colorScheme: {
         light: {
           secondary: {
@@ -163,6 +164,10 @@ const MyPreset = definePreset(Aura, {
           success: {
             color: "{gray.100}",
           },
+          outlinedSuccess: {
+            hoverBackground: "{green.600}",
+            activeBackground: "transparent",
+          },
         },
         dark: {
           secondary: {
@@ -174,6 +179,7 @@ const MyPreset = definePreset(Aura, {
           },
           outlinedSuccess: {
             borderColor: "{primary.500}",
+            hoverBackground: "{primary.600}",
             color: "{gray.100}",
           },
           success: {
@@ -191,7 +197,6 @@ const MyPreset = definePreset(Aura, {
       },
     },
     menu: {
-      borderRadius: "{borderRadius}",
       listPadding: "0",
       shadow: "none",
       background: "transparent",
@@ -303,6 +308,50 @@ const MyPreset = definePreset(Aura, {
         },
         dark: {
           background: "{gray.900}",
+        },
+      },
+    },
+    dock: {
+      colorScheme: {
+        light: {
+          background: "{gray.100}",
+          borderColor: "transparent",
+        },
+        dark: {
+          background: "{gray.900}",
+          borderColor: "transparent",
+        },
+      },
+    },
+    tooltip: {
+      colorScheme: {
+        light: {
+          background: "{gray.100}",
+          color: "{gray.900}",
+        },
+        dark: {
+          background: "{gray.800}",
+          color: "{gray.100}",
+        },
+      },
+    },
+    select: {
+      colorScheme: {
+        light: {
+          background: "{gray.100}",
+          borderColor: "{gray.200}",
+          hoverBorderColor: "{gray.300}",
+          focusBorderColor: "{green.500}",
+          optionSelectedBackground: "transparent",
+          optionSelectedFocusBackground: "transparent",
+        },
+        dark: {
+          background: "{gray.900}",
+          borderColor: "{gray.700}",
+          hoverBorderColor: "{gray.600}",
+          focusBorderColor: "{primary.500}",
+          optionSelectedBackground: "transparent",
+          optionSelectedFocusBackground: "transparent",
         },
       },
     },

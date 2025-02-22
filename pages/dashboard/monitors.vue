@@ -1,10 +1,10 @@
-<script setup lang="ts">
-definePageMeta({
-  middleware: "auth",
-});
-</script>
+<script setup lang="ts"></script>
 <template>
-  <div class="w-full bg-yellow-100">monitors</div>
+  <NuxtLayout name="dashboard">
+    <div class="p-5">
+      <NuxtPage />
+    </div>
+  </NuxtLayout>
 </template>
 
 <style lang="postcss" scoped></style>

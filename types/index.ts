@@ -235,3 +235,55 @@ export const dashboardMenu = [
     icon: "/img/icons.svg#wrench",
   },
 ];
+export const monitorItems = [
+  {
+    label: "general.single general.monitor",
+    path: "/dashboard/monitors/new/http",
+    icon: "/img/icons.svg#website-monitoring",
+  },
+  {
+    label: "general.monitor general.wizard",
+    path: "/dashboard/monitors/wizard",
+    icon: "/img/icons.svg#magic",
+  },
+];
+export const addMonitorTabs = [
+  {
+    label: "general.monitor general.details",
+    query: "",
+  },
+  {
+    label: "general.integrations",
+    query: "?tab=notifications",
+    name: "notifications",
+  },
+  {
+    label: "general.maintenance general.info",
+    query: "?tab=maintenance",
+    name: "maintenance",
+  },
+];
+
+export const monitorTypes = [
+  {
+    label: "website",
+    path: "http",
+    icon: "/img/icons.svg#website-monitoring",
+    description:
+      "Use HTTP(S) monitor to monitor your website, API endpoint, or anything running on HTTP.",
+  },
+  {
+    label: "keyword",
+    path: "keyword",
+    icon: "/img/icons.svg#keyword-monitoring",
+    description:
+      "Check the presence or absence of specific text in the request's response body (typically HTML or JSON).",
+  },
+  {
+    label: "port",
+    path: "port",
+    icon: "/img/icons.svg#port-monitoring",
+    description:
+      "Monitor any service on your server. Useful for SMTP,  POP3, FTP, and other services running on specific TCP ports.",
+  },
+];

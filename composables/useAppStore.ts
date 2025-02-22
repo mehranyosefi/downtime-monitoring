@@ -23,6 +23,10 @@ export const useAppStore = defineStore("app", () => {
       else state.theme = "light";
     },
   });
+  const dir = computed(() => {
+    if (locale.value === "en") return "ltr";
+    return "rtl";
+  });
 
   //actions
   function update_theme(theme: string) {
@@ -37,5 +41,14 @@ export const useAppStore = defineStore("app", () => {
       else document.documentElement.classList.remove("dark");
     }
   );
-  return { getLocaleOject, state, isDarkTheme, update_theme };
+  return {
+    //states
+    state,
+    //getters
+    getLocaleOject,
+    isDarkTheme,
+    dir,
+    //actions
+    update_theme,
+  };
 });
