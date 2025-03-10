@@ -25,7 +25,7 @@ function handleShowChat() {
     <slot name="activator">
       <button
         :dir="locale === 'en' ? 'ltr' : 'rtl'"
-        class="fixed bottom-5 z-10 bg-white dark:bg-gray-800 w-14 h-14 flex items-center justify-center shadow-xl ltr:rounded-l-full ltr:rounded-br-full ltr:right-6 rtl:rounded-r-full rtl:rounded-bl-full rtl:left-6"
+        class="fixed bottom-5 z-10 bg-white dark:bg-gray-800 w-14 h-14 flex items-center justify-center shadow-xl ltr:rounded-l-full ltr:rounded-br-full ltr:right-6 rtl:rounded-r-full rtl:rounded-bl-full rtl:left-6 cursor-pointer"
         @click="handleShowChat"
         aria-label="conversation"
       >
