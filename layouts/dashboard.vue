@@ -112,11 +112,18 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
         </template>
       </PrimeDock>
     </ClientOnly>
-    <chat
+    <UiChat
+      class="chat"
       :active="conversation"
       @trigger-active="(val:boolean)=>conversation = val"
-    ></chat>
+    />
   </div>
 </template>
 
-<style lang="postcss" scoped></style>
+<style scoped>
+@reference "~/assets/styles/main.css";
+
+.chat :deep(.activator) {
+  @apply max-md:bottom-26;
+}
+</style>

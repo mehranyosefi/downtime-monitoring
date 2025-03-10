@@ -21,7 +21,7 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
 <template>
   <div class="root-element-page overflow-x-hidden overflow-y-auto h-screen">
     <slot name="header">
-      <base-header
+      <ui-header
         logo
         @show-sideNav="sideNavMenu = !sideNavMenu"
         :side-nav-active="sideNavMenu"
@@ -43,7 +43,7 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
             root: 'bg-gray-100! dark:bg-gray-900!',
           }"
         >
-          <BaseSideNavMenu
+          <UiSideNavMenu
             :items="headerMegaMenu"
             :subItems="headerMegaMenuTeamItems"
           />
@@ -53,16 +53,16 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
     </main>
     <slot name="footer">
       <!-- TODO hidration mismatch -->
-      <BaseFooterSection
+      <UiFooterSection
         :monitoring="[headerMegaMenu[0]]"
         :teams="[headerMegaMenuTeamItems[0]]"
         :resources="[resources[0]]"
       />
     </slot>
-    <chat
+    <UiChat
       :active="conversation"
       @trigger-active="(val:boolean)=>conversation = val"
-    ></chat>
+    />
   </div>
 </template>
 

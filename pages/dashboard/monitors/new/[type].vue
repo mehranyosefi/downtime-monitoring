@@ -110,8 +110,10 @@ setType();
                   placeholder="Select a Type"
                   class="w-full mt-2"
                   :pt="{
+                    root: '!w-full',
                     option: 'p-0!',
                     listContainer: 'min-h-64!',
+                    overlay: '!max-w-0 ',
                   }"
                   id="mobitor-type"
                 >
@@ -145,19 +147,18 @@ setType();
                       }`"
                       class="flex items-center w-full p-3 gap-x-2"
                     >
-                      <svg class="size-14 text-green-500 dark:text-primary-500">
-                        <use
-                          class="size-14"
-                          :href="slotProps.option.icon"
-                        ></use>
+                      <svg
+                        class="size-14 min-w-14 text-green-500 dark:text-primary-500 inline-block"
+                      >
+                        <use :href="slotProps.option.icon"></use>
                       </svg>
-                      <div>
+                      <div class="w-full">
                         <h3
                           class="font-bold text-xl text-gray-900 dark:text-gray-100"
                           v-text="slotProps.option.label"
                         ></h3>
                         <p
-                          class="text-sm text-gray-700 dark:text-gray-300"
+                          class="text-sm text-gray-700 dark:text-gray-300 text-ellipsis overflow-hidden w-[calc(100%-3.5rem)]"
                           v-text="slotProps.option.description"
                         ></p>
                       </div>
