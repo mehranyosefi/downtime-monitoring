@@ -19,12 +19,12 @@ if (import.meta.client) {
     <PrimeMenu
       :model="[items[0]]"
       :pt="{
-        root: '!border-none !rounded-none',
-        submenuLabel: '!p-0 mb-2 font-bold text-2xl',
-        item: '!px-2 text-xl py-1 my-2',
+        root: 'border-none! rounded-none!',
+        submenuLabel: 'p-0! mb-2 font-bold text-2xl',
+        item: 'px-2! text-xl py-1 my-2',
         itemContent:
-          'hover:!text-green-500 dark:hover:!text-primary-500 w-fit !leading-4',
-        itemIcon: '!text-green-500 dark:!text-primary-500',
+          'hover:text-green-500! dark:hover:text-primary-500! w-fit leading-4!',
+        itemIcon: 'text-green-500! dark:text-primary-500!',
       }"
     >
       <template #submenulabel="{ item }">
@@ -47,11 +47,11 @@ if (import.meta.client) {
     <PrimeMenu
       :model="[subItems[0]]"
       :pt="{
-        root: '!border-none !rounded-none',
-        submenuLabel: '!p-0 mb-2 font-bold text-2xl',
-        item: '!px-2 text-xl py-1 my-2',
+        root: 'border-none! rounded-none!',
+        submenuLabel: 'p-0! mb-2 font-bold text-2xl',
+        item: 'px-2! text-xl py-1 my-2',
         itemContent:
-          'hover:!text-green-500 dark:hover:!text-primary-500  w-fit !leading-4',
+          'hover:text-green-500! dark:hover:text-primary-500!  w-fit leading-4!',
         itemIcon: '',
       }"
     >
@@ -68,11 +68,11 @@ if (import.meta.client) {
     <PrimeMenu
       :model="items.slice(1)"
       :pt="{
-        root: '!border-none !rounded-none',
+        root: 'border-none! rounded-none!',
         item: 'text-2xl my-3 font-bold',
         itemContent:
-          'hover:!text-green-500 dark:hover:!text-primary-500 w-fit !leading-6',
-        end: 'hover:!text-green-500 dark:hover:!text-primary-500 !transition-colors !duration-75 w-fit !h-[20px] !leading-6 mb-6 mt-2',
+          'hover:text-green-500! dark:hover:text-primary-500! w-fit leading-6!',
+        end: 'hover:text-green-500! dark:hover:text-primary-500! transition-colors! duration-75! w-fit h-[20px]! leading-6! mb-6 mt-2',
       }"
     >
       <template #item="{ item, props }">
@@ -102,7 +102,7 @@ if (import.meta.client) {
       v-if="!useUser.loggedIn"
       severity="success"
       :pt="{
-        root: '!block !mx-auto !px-8 mt-5 mb-10',
+        root: 'block! mx-auto! px-8! mt-5 mb-10',
       }"
       name="register"
     >

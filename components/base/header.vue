@@ -32,10 +32,10 @@ function set_shadow(el: HTMLElement) {
   if (el.scrollTop > 0) {
     header.value!.classList.add("shadow-xl");
     header.value!.classList.remove("lg:mt-10");
-    header.value!.classList.add("lg:!mt-0");
+    header.value!.classList.add("lg:mt-0!");
   } else {
     header.value!.classList.remove("shadow-xl");
-    header.value!.classList.remove("lg:!mt-0");
+    header.value!.classList.remove("lg:mt-0!");
     header.value!.classList.add("lg:mt-10");
   }
 }
@@ -55,11 +55,11 @@ function set_shadow(el: HTMLElement) {
             ></div>
             <h1
               v-text="t('general.UptimeRobot')"
-              class="!inline-block mx-[3px]"
+              class="inline-block! mx-[3px]"
             ></h1>
           </NuxtLink>
           <PrimeButton
-            class="w-[3.5rem] h-6 md:!inline-flex shadow"
+            class="w-[3.5rem] h-6 md:inline-flex! shadow-sm"
             :class="{ 'ml-10': locale === 'en', 'mr-10': locale === 'fa' }"
             @click="toggle"
             severity="secondary"
@@ -90,7 +90,7 @@ function set_shadow(el: HTMLElement) {
                 @click="setLocale(item.code)"
                 severity="success"
                 :pt="{
-                  root: '!w-[3.5rem] h-7 !text-sm !p-0',
+                  root: 'w-[3.5rem]! h-7 text-sm! p-0!',
                 }"
                 name="setLocale"
               >
@@ -107,8 +107,8 @@ function set_shadow(el: HTMLElement) {
                 <i
                   :class="{
                     checked: useApp.isDarkTheme,
-                    'content-sun': !checked,
-                    'content-moon': checked,
+                    'content-(--content-sun)': !checked,
+                    'content-(--content-moon)': checked,
                   }"
                 />
               </template>
@@ -125,18 +125,18 @@ function set_shadow(el: HTMLElement) {
       </LazyBaseMegaMenu>
       <section v-if="!useUser.loggedIn" class="sign hidden sm:block">
         <PrimeButton
-          class="!bg-transparent !border-none !h-fit !p-0"
+          class="bg-transparent! border-none! h-fit! p-0!"
           name="login"
         >
           <NuxtLink
             :to="localePath('login')"
             v-text="t('general.log_in')"
-            class="hidden xl:block font-semibold text-gray-900 hover:!text-green-500 dark:!text-white mx-6 dark:hover:!text-primary-500"
+            class="hidden xl:block font-semibold text-gray-900 hover:text-green-500! dark:text-white! mx-6 dark:hover:text-primary-500!"
           ></NuxtLink>
         </PrimeButton>
         <PrimeButton
           severity="success"
-          class="!h-fit !p-0 !border-none"
+          class="h-fit! p-0! border-none!"
           name="register"
         >
           <NuxtLink
@@ -163,9 +163,9 @@ function set_shadow(el: HTMLElement) {
     </div>
     <ClientOnly>
       <PrimeButton
-        class="inline-block lg:!hidden"
+        class="inline-block lg:hidden!"
         :pt="{
-          root: '!bg-transparent !hover:bg-transparent !border-none !rounded-none !h-[2rem] !w-[3rem] !p-0 mx-10',
+          root: 'bg-transparent! !hover:bg-transparent border-none! rounded-none! h-[2rem]! w-[3rem]! p-0! mx-10',
         }"
         @click="$emit('show-sideNav')"
         name="sideNameMenu"

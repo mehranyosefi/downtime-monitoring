@@ -36,11 +36,11 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
         <PrimeDrawer
           v-model:visible="sideNavMenu"
           :position="locale === 'fa' ? 'right' : 'left'"
-          class="!w-full h-[calc(100vh-5rem)] top-[5rem] overflow-x-hidden !overflow-y-auto"
+          class="w-full! h-[calc(100vh-5rem)] top-[5rem] overflow-x-hidden overflow-y-auto!"
           :pt="{
-            header: '!hidden',
-            mask: '!bg-transparent',
-            root: '!bg-gray-100 dark:!bg-gray-900',
+            header: 'hidden!',
+            mask: 'bg-transparent!',
+            root: 'bg-gray-100! dark:bg-gray-900!',
           }"
         >
           <BaseSideNavMenu

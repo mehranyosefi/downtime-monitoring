@@ -20,7 +20,7 @@ function toggleMonitorMenu(e) {
         <PrimeButton
           severity="success"
           :pt="{
-            root: '!items-center',
+            root: 'items-center!',
           }"
           @click="router.push(localePath('dashboard-monitors-new-http'))"
         >
@@ -34,7 +34,7 @@ function toggleMonitorMenu(e) {
         </PrimeButton>
         <PrimeDivider
           layout="vertical"
-          class="divider__button w-[1px] !mx-0"
+          class="divider__button w-[1px] mx-0!"
         ></PrimeDivider>
         <PrimeButton severity="success" @click="toggleMonitorMenu">
           <template #icon>
@@ -57,8 +57,8 @@ function toggleMonitorMenu(e) {
           marginTop: '6px',
         }"
         :pt="{
-          root: '!bg-white dark:!bg-gray-800',
-          item: 'first:border-b first:border-b-gray-100 dark:first:border-gray-700 hover:!bg-gray-100 dark:hover:!bg-gray-900 transition duration-300',
+          root: 'bg-white! dark:bg-gray-800!',
+          item: 'first:border-b first:border-b-gray-100 dark:first:border-gray-700 hover:bg-gray-100! dark:hover:bg-gray-900! transition duration-300',
         }"
       >
         <template #item="{ item, props }">
@@ -93,7 +93,7 @@ function toggleMonitorMenu(e) {
     <PrimeButton
       severity="success"
       :pt="{
-        root: '!mx-auto !rounded-md !p-0',
+        root: 'mx-auto! rounded-md! p-0!',
       }"
       name="create"
     >

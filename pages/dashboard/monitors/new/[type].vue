@@ -36,12 +36,12 @@ setType();
         as="router-link"
         severity="secondary"
         :pt="{
-          root: 'flex !items-center !py-1 !px-3 !rounded-lg !gap-x-1 group',
+          root: 'flex items-center! py-1! px-3! rounded-lg! gap-x-1! group',
         }"
         :to="localePath('dashboard-monitors')"
       >
         <svg
-          class="size-4 pb-[3px] transition-transform duration-300 group-hover:-translate-x-[2px] rtl:group-hover:translate-x-[2px] rtl:rotate-180"
+          class="size-4 pb-[3px] transition-transform duration-300 group-hover:-translate-x-[2px] group-hover:rtl:translate-x-[2px] rtl:rotate-180"
           :dir="appStore.dir"
         >
           <use class="size-4" href="/img/icons.svg#arrow-back"></use>
@@ -110,8 +110,8 @@ setType();
                   placeholder="Select a Type"
                   class="w-full mt-2"
                   :pt="{
-                    option: '!p-0',
-                    listContainer: '!min-h-64',
+                    option: 'p-0!',
+                    listContainer: 'min-h-64!',
                   }"
                   id="mobitor-type"
                 >

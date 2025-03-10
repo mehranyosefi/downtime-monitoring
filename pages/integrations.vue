@@ -60,7 +60,7 @@ useHead({
               class="shadow-md p-2"
               :pt="{
                 root: 'w-60 m-auto',
-                body: '!p-1',
+                body: 'p-1!',
                 content: 'text-center',
               }"
             >
@@ -140,13 +140,13 @@ useHead({
               <div
                 class="absolute max-xl:top-5 rounded-full bg-green-500 dark:bg-blue-500 h-[70vw] w-[70vw] lg:h-[31rem] lg:w-[31rem] xl:h-[35rem] xl:w-[35rem] lg:right-0 max-lg:-right-[45vw]"
                 :class="{
-                  'lg:left-0 !right-auto max-lg:-left-[45vw]': locale === 'fa',
+                  'lg:left-0 right-auto! max-lg:-left-[45vw]': locale === 'fa',
                 }"
               ></div>
               <div
                 class="relative rounded-lg p-4 bg-white dark:bg-gray-800 w-full top-[14vw] lg:w-[36rem] lg:h-[19rem] xl:w-[40rem] xl:h-[23rem] z-10 lg:right-[1.5rem] 2xl:-right-[2.5rem] lg:top-[7.5rem] xl:top-[6.5rem]"
                 :class="{
-                  '!right-auto lg:left-[2rem] 2xl:-left-[2.5rem]':
+                  'right-auto! lg:left-[2rem] 2xl:-left-[2.5rem]':
                     locale === 'fa',
                 }"
                 v-animation-on-viewport="
@@ -156,8 +156,9 @@ useHead({
                 <i
                   class="w-full h-full p-3 content-serviceStatus"
                   :class="{
-                    'content-serviceStatusDark': useApp.isDarkTheme,
-                    'content-serviceStatus': !useApp.isDarkTheme,
+                    'content-(--content-service-status-dark)':
+                      useApp.isDarkTheme,
+                    'content-(--content-service-status)': !useApp.isDarkTheme,
                   }"
                 ></i>
               </div>

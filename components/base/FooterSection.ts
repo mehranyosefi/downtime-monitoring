@@ -127,7 +127,7 @@ export default {
                 ),
                 h(Divider, {
                   pt: {
-                    root: "md:!hidden",
+                    root: "md:hidden!",
                   },
                 }),
                 h(
@@ -135,13 +135,13 @@ export default {
                   {
                     model: props.monitoring,
                     pt: {
-                      root: "!border-none !rounded-none !px-10",
-                      submenuLabel: "!p-0 mb-2 font-bold text-2xl capitalize",
+                      root: "border-none! rounded-none! px-10!",
+                      submenuLabel: "p-0! mb-2 font-bold text-2xl capitalize",
                       item: "text-xl py-1 my-2",
                       itemContent:
-                        "hover:!text-green-500 dark:hover:!text-primary-500 w-fit !h-[20px] !leading-4",
+                        "hover:text-green-500! dark:hover:text-primary-500! w-fit h-[20px]! leading-4!",
 
-                      itemIcon: "!hidden",
+                      itemIcon: "hidden!",
                     },
                     role: props.monitoring,
                   },
@@ -161,7 +161,7 @@ export default {
                 ),
                 h(Divider, {
                   pt: {
-                    root: "md:!hidden",
+                    root: "md:hidden!",
                   },
                 }),
                 h(
@@ -169,12 +169,12 @@ export default {
                   {
                     model: props.teams,
                     pt: {
-                      root: "!border-none !rounded-none !px-10",
-                      submenuLabel: "!p-0 mb-2 font-bold text-2xl capitalize",
+                      root: "border-none! rounded-none! px-10!",
+                      submenuLabel: "p-0! mb-2 font-bold text-2xl capitalize",
                       item: "text-xl py-1 my-2",
                       itemContent:
-                        "hover:!text-green-500 dark:hover:!text-primary-500 w-fit !h-[20px] !leading-4",
-                      itemIcon: "!hidden",
+                        "hover:text-green-500! dark:hover:text-primary-500! w-fit h-[20px]! leading-4!",
+                      itemIcon: "hidden!",
                     },
                   },
 
@@ -193,7 +193,7 @@ export default {
                 ),
                 h(Divider, {
                   pt: {
-                    root: "md:!hidden",
+                    root: "md:hidden!",
                   },
                 }),
                 h(
@@ -201,12 +201,12 @@ export default {
                   {
                     model: props.resources,
                     pt: {
-                      root: "!border-none !rounded-none !px-10",
-                      submenuLabel: "!p-0 mb-2 font-bold text-2xl capitalize",
+                      root: "border-none! rounded-none! px-10!",
+                      submenuLabel: "p-0! mb-2 font-bold text-2xl capitalize",
                       item: "text-xl py-1 my-2",
                       itemContent:
-                        "hover:!text-green-500 dark:hover:!text-primary-500 w-fit !h-[20px] !leading-4",
-                      itemIcon: "!hidden",
+                        "hover:text-green-500! dark:hover:text-primary-500! w-fit h-[20px]! leading-4!",
+                      itemIcon: "hidden!",
                     },
                   },
                   {

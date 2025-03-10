@@ -113,7 +113,7 @@ const animationNameCompute = (key: number): string => {
               <PrimeButton
                 severity="success"
                 :pt="{
-                  root: '!px-20 !py-4 !mx-auto',
+                  root: 'px-20! py-4! mx-auto!',
                 }"
                 name="start"
               >
@@ -129,8 +129,8 @@ const animationNameCompute = (key: number): string => {
               <i
                 class="w-[26rem] md:w-[30rem]"
                 :class="{
-                  'content-darkIndex': useApp.isDarkTheme,
-                  'content-lightIndex': !useApp.isDarkTheme,
+                  'content-(--content-dark-index)': useApp.isDarkTheme,
+                  'content-(--content-light-index)': !useApp.isDarkTheme,
                 }"
               ></i>
             </div>
@@ -141,10 +141,7 @@ const animationNameCompute = (key: number): string => {
         >
           <div class="container mx-auto py-32 px-10">
             <div>
-              <h3
-                class="text-4xl font-semibold text-center"
-                v-animation-on-viewport="'slide-right'"
-              >
+              <h3 class="text-4xl font-semibold text-center">
                 {{ t("index.careAbout") }} <br />
                 <span v-if="locale == 'fa'" class="leading-normal">
                   {{ t("phrases.etc.inOnePlace") }}
@@ -168,9 +165,6 @@ const animationNameCompute = (key: number): string => {
                 v-for="(i, key) in headerMegaMenu[0].items"
                 :key="key"
                 class="shadow-md p-2"
-                :pt="{
-                  root: 'scale-0',
-                }"
                 v-animation-on-scroll
               >
                 <template #title>
@@ -202,10 +196,7 @@ const animationNameCompute = (key: number): string => {
         </div>
         <div class="container mx-auto py-32 px-10">
           <div>
-            <h3
-              class="text-3xl font-semibold text-center"
-              v-animation-on-viewport
-            >
+            <h3 class="text-3xl font-semibold text-center">
               <span v-if="locale === 'en'">
                 {{ `${t("general.why")} ${t("general.users")}` }}
                 <span
@@ -344,14 +335,14 @@ const animationNameCompute = (key: number): string => {
                 <div
                   class="absolute max-xl:top-5 rounded-full bg-green-500 dark:bg-blue-500 h-[70vw] w-[70vw] lg:h-[31rem] lg:w-[31rem] xl:h-[35rem] xl:w-[35rem] lg:right-0 max-lg:-right-[45vw]"
                   :class="{
-                    'lg:left-0 !right-auto max-lg:-left-[45vw]':
+                    'lg:left-0 right-auto! max-lg:-left-[45vw]':
                       locale === 'fa',
                   }"
                 ></div>
                 <div
                   class="relative rounded-lg p-4 bg-white dark:bg-gray-800 w-full top-[14vw] lg:w-[36rem] lg:h-[19rem] xl:w-[40rem] xl:h-[23rem] lg:right-[1.5rem] 2xl:-right-[2.5rem] lg:top-[7.5rem] xl:top-[6.5rem]"
                   :class="{
-                    '!right-auto lg:left-[2rem] 2xl:-left-[2.5rem]':
+                    'right-auto! lg:left-[2rem] 2xl:-left-[2.5rem]':
                       locale === 'fa',
                   }"
                   v-animation-on-viewport="
@@ -361,8 +352,9 @@ const animationNameCompute = (key: number): string => {
                   <i
                     class="w-full h-full p-3 content-serviceStatus"
                     :class="{
-                      'content-serviceStatusDark': useApp.isDarkTheme,
-                      'content-serviceStatus': !useApp.isDarkTheme,
+                      'content-(--content-service-status-dark)':
+                        useApp.isDarkTheme,
+                      'content-(--content-service-status)': !useApp.isDarkTheme,
                     }"
                   ></i>
                 </div>

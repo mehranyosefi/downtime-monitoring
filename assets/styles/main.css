@@ -1,65 +1,29 @@
-@import "./lang.css";
-@import "./animation.css";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* @layer tailwind-base, primevue, tailwind-utilities;
-
-@layer tailwind-base {
-  @tailwind base;
-}
-
-@layer tailwind-utilities {
-  @tailwind components;
-  @tailwind utilities;
-} */
-
-:root {
-  --var-body-bg: var(--p-gray-100);
-  --var-component-bg: var(--p-white-alpha-900);
-  --var-text-color: var(--p-gray-900);
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-300;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-400 rounded transition-all;
-  }
-}
-
-:root[class*=" dark"] *,
-:root[class^="dark "] * {
-  --var-body-bg: var(--p-gray-900);
-  --var-component-bg: var(--p-gray-900);
-  --var-text-color: var(--p-white);
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-600;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-800;
-  }
-}
-
-/* Order */
+@import "tailwindcss";
+@import "./lang.css" layer(base);
+@import "./animation.css" layer(base);
+@import "./themCustomizing.css";
 @layer reset, primevue;
 
-/* Reset CSS */
-@layer reset {
-  button,
-  input {
-    /* CSS to Reset */
-  }
-}
+@source '../../node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}';
 
+@custom-variant dark (&:is(.dark *));
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 @layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
   h1 {
     @apply text-3xl font-bold;
   }
@@ -76,67 +40,128 @@
   }
 }
 
-@layer utilities {
-  .rtl {
-    direction: rtl;
-  }
-  .unscrollable {
-    @apply overflow-y-clip touch-none;
-  }
-  .text-multiline-ellips-2 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    @apply overflow-hidden text-ellipsis;
-  }
-  .text-multiline-ellips-3 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    @apply overflow-hidden text-ellipsis;
-  }
-  .text-multiline-ellips-4 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    @apply overflow-hidden text-ellipsis;
-  }
-  .text-multiline-ellips-5 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-    @apply overflow-hidden text-ellipsis;
-  }
-  .text-multiline-ellips-6 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
-    @apply overflow-hidden text-ellipsis;
+@utility rtl {
+  direction: rtl;
+}
+
+@utility unscrollable {
+  @apply overflow-y-clip touch-none;
+}
+
+@utility text-multiline-ellips-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  @apply overflow-hidden text-ellipsis;
+}
+
+@utility text-multiline-ellips-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  @apply overflow-hidden text-ellipsis;
+}
+
+@utility text-multiline-ellips-4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  @apply overflow-hidden text-ellipsis;
+}
+
+@utility text-multiline-ellips-5 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  @apply overflow-hidden text-ellipsis;
+}
+
+@utility text-multiline-ellips-6 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  @apply overflow-hidden text-ellipsis;
+}
+
+@utility conversation-modal {
+  @apply fixed w-full h-full z-20 top-0 md:max-h-[83vh] md:w-[390px] md:top-auto md:bottom-[5.5rem] md:ltr:right-6 md:rtl:left-6
+    md:rounded-xl bg-white dark:bg-gray-800 shadow-2xl;
+}
+
+@utility circle-shadow {
+  @apply w-8 h-8 shadow-2xl bg-green-100 dark:bg-primary-800 rounded-full flex items-center justify-center before:blur-none before:w-[1.4rem] before:h-[1.4rem] before:bg-green-500 dark:before:bg-primary-500 before:content-[''] before:rounded-full transition-colors;
+}
+
+@utility p-toast {
+  @apply z-20;
+}
+
+@utility link-active {
+  * {
+    @apply text-green-500! dark:text-primary-500! underline! underline-offset-8;
   }
 }
 
-@layer components {
-  .conversation-modal {
-    @apply fixed w-full h-full z-20 top-0 md:max-h-[83vh] md:w-[390px] md:top-auto md:bottom-[5.5rem] md:ltr:right-6 md:rtl:left-6
-    md:rounded-xl bg-white dark:bg-gray-800 shadow-2xl;
+@utility link-exact-active {
+  * {
+    @apply text-green-500! dark:text-primary-500! underline! underline-offset-8;
   }
-  .circle-shadow {
-    @apply w-8 h-8 shadow-2xl bg-green-100 dark:bg-primary-800 rounded-full flex items-center justify-center before:blur-none before:w-[1.4rem] before:h-[1.4rem] before:bg-green-500 dark:before:bg-primary-500 before:content-[''] before:rounded-full transition-colors;
+}
+
+@utility dashboard-link-active {
+  @apply bg-gray-200! dark:bg-gray-800!;
+  .route-link__icon {
+    @apply text-green-500 dark:text-primary-500;
   }
-  .p-toast {
-    @apply z-20;
+}
+
+@utility dashboard-link-exact-active {
+  @apply bg-gray-200! dark:bg-gray-800!;
+  .route-link__icon {
+    @apply text-green-500 dark:text-primary-500;
   }
-  .link-active,
-  .link-exact-active {
-    * {
-      @apply !text-green-500 dark:!text-primary-500 !underline underline-offset-8;
+}
+
+@layer utilities {
+  :root {
+    --var-body-bg: var(--p-gray-100);
+    --var-component-bg: var(--p-white-alpha-900);
+    --var-text-color: var(--p-gray-900);
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      @apply bg-gray-300;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      @apply bg-gray-400 rounded-sm transition-all;
     }
   }
-  .dashboard-link-active,
-  .dashboard-link-exact-active {
-    @apply !bg-gray-200 dark:!bg-gray-800;
-    .route-link__icon {
-      @apply text-green-500 dark:text-primary-500;
+
+  :root[class*=" dark"] *,
+  :root[class^="dark "] * {
+    --var-body-bg: var(--p-gray-900);
+    --var-component-bg: var(--p-gray-900);
+    --var-text-color: var(--p-white);
+
+    ::-webkit-scrollbar-track {
+      @apply bg-gray-600;
     }
+
+    ::-webkit-scrollbar-thumb {
+      @apply bg-gray-800;
+    }
+  }
+
+  /* Order */
+}
+
+/* Reset CSS */
+@layer reset {
+  button,
+  input {
+    /* CSS to Reset */
   }
 }

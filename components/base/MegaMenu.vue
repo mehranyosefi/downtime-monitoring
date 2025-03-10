@@ -41,7 +41,7 @@ function triggerItemSelect(
       <li v-for="(item, index) in items" :key="index">
         <slot :name="item.label">
           <PrimeButton
-            class="megamenu--button !border-none !bg-transparent hover:!bg-transparent flex justify-center items-center !gap-0 !p-0 mx-4 !text-lg !font-bold group"
+            class="megamenu--button border-none! bg-transparent! hover:bg-transparent! flex justify-center items-center gap-0! p-0! mx-4 text-lg! font-bold! group"
             :as="item.path ? 'router-link' : 'button'"
             :to="localepath(item.path ?? item.label)"
             @click="triggerItemSelect(item)"
@@ -103,7 +103,7 @@ function triggerItemSelect(
         <PrimeMenubar
           :model="subItems[0].items"
           :pt="{
-            rootList: '!mr-5 text-sm xl:justify-between w-[calc(100%-9rem)]',
+            rootList: 'mr-5! text-sm xl:justify-between w-[calc(100%-9rem)]',
             item: 'mx-2',
           }"
         >

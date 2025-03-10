@@ -1,6 +1,4 @@
-import { locales } from "./types";
-
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
@@ -21,7 +19,6 @@ export default defineNuxtConfig({
     // pageTransition: { name: "page", mode: "out-in" },
   },
   modules: [
-    "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
     "@nuxtjs/i18n",
     "@primevue/nuxt-module",
@@ -80,15 +77,17 @@ export default defineNuxtConfig({
       prefix: "Prime",
     },
   },
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
+  // postcss: {
+  //   plugins: {
+  //     "@tailwindcss/postcss": {},
+  //   },
+  // },
   nitro: {
     prerender: {
       failOnError: false,
     },
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

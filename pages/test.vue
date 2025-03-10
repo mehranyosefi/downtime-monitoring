@@ -17,6 +17,7 @@ onMounted(() => {
 
 <template>
   <div>
+    <span class="text-red-300">f</span>
     <PrimeToast />
   </div>
 </template>

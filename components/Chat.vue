@@ -60,7 +60,7 @@ function handleShowChat() {
               <PrimeButton
                 class="inline-block"
                 :pt="{
-                  root: '!bg-transparent !hover:bg-transparent !border-none !rounded-none !p-0',
+                  root: 'bg-transparent! !hover:bg-transparent border-none! rounded-none! p-0!',
                 }"
                 @click="$emit('trigger-active', false)"
                 name="close"
@@ -101,28 +101,28 @@ function handleShowChat() {
               <PrimeAvatar
                 image="/img/conversation-avatar-1.jpg"
                 :pt="{
-                  root: '!w-10 !h-10',
+                  root: 'w-10! h-10!',
                   image: 'rounded-full',
                 }"
               />
               <PrimeAvatar
                 image="/img/conversation-avatar-2.jpg"
                 :pt="{
-                  root: '!w-10 !h-10',
+                  root: 'w-10! h-10!',
                   image: 'rounded-full',
                 }"
               />
               <PrimeAvatar
                 image="/img/conversation-avatar-3.jpg"
                 :pt="{
-                  root: '!w-10 !h-10',
+                  root: 'w-10! h-10!',
                   image: 'rounded-full',
                 }"
               />
               <PrimeAvatar
                 image="/img/conversation-avatar-4.webp"
                 :pt="{
-                  root: '!w-10 !h-10',
+                  root: 'w-10! h-10!',
                   image: 'rounded-full',
                 }"
               />
@@ -156,7 +156,7 @@ function handleShowChat() {
             </PrimeButton>
             <PrimeButton
               severity="success"
-              class="!absolute bottom-5 !mx-auto left-0 right-0 !w-[80%] !rounded-md"
+              class="absolute! bottom-5 mx-auto! left-0 right-0 w-[80%]! rounded-md!"
               name="send-message"
             >
               <svg width="1.2rem" height="1.2rem">

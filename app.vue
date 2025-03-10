@@ -12,7 +12,7 @@ const loadingColor = computed(() => {
     <PrimeToast />
     <NuxtLoadingIndicator
       :color="loadingColor"
-      class="!opacity-100"
+      class="opacity-100!"
       :height="2.5"
     />
     <NuxtPage />

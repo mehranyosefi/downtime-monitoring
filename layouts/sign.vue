@@ -25,7 +25,7 @@ const toggle = (event: Event) => {
     >
       <div class="flex items-center mt-10">
         <PrimeButton
-          class="w-[3.5rem] h-6 md:!inline-flex shadow"
+          class="w-[3.5rem] h-6 md:inline-flex! shadow-sm"
           :class="{ 'ml-10': locale === 'en', 'mr-10': locale === 'fa' }"
           @click="toggle"
           severity="secondary"
@@ -56,7 +56,7 @@ const toggle = (event: Event) => {
               @click="setLocale(item.code)"
               severity="success"
               :pt="{
-                root: '!w-[3.5rem] h-7 !text-sm !p-0',
+                root: 'w-[3.5rem]! h-7 text-sm! p-0!',
               }"
               name="setLocale"
             >
@@ -73,8 +73,8 @@ const toggle = (event: Event) => {
               <i
                 :class="{
                   checked: useApp.isDarkTheme,
-                  'content-sun': !checked,
-                  'content-moon': checked,
+                  'content-(--content-sun)': !checked,
+                  'content-(--content-moon)': checked,
                 }"
               />
             </template>

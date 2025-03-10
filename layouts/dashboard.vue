@@ -60,7 +60,7 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
           ></div>
           <span
             v-text="t('general.UptimeRobot')"
-            class="!inline-block text-2xl font-semibold mx-[3px]"
+            class="inline-block! text-2xl font-semibold mx-[3px]"
           ></span>
         </div>
       </header>
@@ -75,9 +75,9 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
         :model="sideBarItems"
         :pt="{
           root: 'shadow-2xl w-16 lg:w-52',
-          listContainer: `!p-0 !rounded-none h-full !justify-start w-full !border-none`,
-          list: 'w-full h-full !flex !justify-start',
-          item: 'w-full !p-0',
+          listContainer: `p-0! rounded-none! h-full justify-start! w-full border-none!`,
+          list: 'w-full h-full flex! justify-start!',
+          item: 'w-full p-0!',
         }"
         :position="dockPosition"
       >
@@ -85,10 +85,10 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
           <PrimeButton
             :as="item.path ? 'router-link' : 'button'"
             :to="localePath(item.path)"
-            class="!w-full !rounded-none !border-none flex flex-col lg:flex-row items-center justify-center lg:!justify-start sm:!py-4 hover:!bg-gray-200 dark:hover:!bg-gray-800 group"
+            class="w-full! rounded-none! border-none! flex flex-col lg:flex-row items-center justify-center lg:justify-start! sm:py-4! hover:bg-gray-200! dark:hover:bg-gray-800! group"
             :name="item.label as string"
             :pt="{
-              root: '!py-2 ',
+              root: 'py-2! ',
             }"
             outlined
             v-tooltip="

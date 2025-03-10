@@ -140,7 +140,7 @@ const onFormSubmit = async (e: {
               size="small"
               variant="simple"
               :pt="{
-                text: '!text-xs',
+                text: 'text-xs!',
               }"
               >{{ $form.email.error?.message }}</PrimeMessage
             >
@@ -165,7 +165,7 @@ const onFormSubmit = async (e: {
               size="small"
               variant="simple"
               :pt="{
-                text: '!text-xs',
+                text: 'text-xs!',
               }"
               >{{ $form.password.error?.message }}</PrimeMessage
             >

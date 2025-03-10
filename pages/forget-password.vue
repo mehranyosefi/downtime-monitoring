@@ -117,7 +117,7 @@ const onFormSubmit = async (e: {
               size="small"
               variant="simple"
               :pt="{
-                text: '!text-xs',
+                text: 'text-xs!',
               }"
               >{{ $form.email.error?.message }}</PrimeMessage
             >
