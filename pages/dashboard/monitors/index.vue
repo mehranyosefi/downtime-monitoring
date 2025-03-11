@@ -11,9 +11,9 @@ function toggleMonitorMenu(e) {
 </script>
 <template>
   <div>
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mt-2">
       <h1
-        class="text-xl font-semibold capitalize p-5"
+        class="text-xl font-semibold capitalize"
         v-text="t('general.monitors')"
       ></h1>
       <PrimeButtonGroup>
@@ -81,7 +81,7 @@ function toggleMonitorMenu(e) {
         </template>
       </PrimeMenu>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2">
+    <div class="grid grid-cols-1 lg:grid-cols-2 mt-5">
       <div>
         <h2 class="text-2xl font-semibold">
           <span v-text="t('monitors.title')"></span>

@@ -4,6 +4,7 @@ import { dashboardMenu, userMenuItems } from "~/types";
 const { locale, t } = useI18n();
 const useApp = useAppStore();
 const user = useUserStore();
+const localePath = useLocalePath();
 
 useHead({
   titleTemplate: `${t("general.UptimeRobot")} - %s`,
@@ -76,6 +77,23 @@ const toggle = (event: Event) => {
         :items="sideBarItems"
         class="xs:flex flex-col xs:w-16 lg:w-52"
       >
+        <template #prepend>
+          <nuxt-link
+            :to="localePath('dashboard-monitors')"
+            class="hidden xs:block text-center my-5"
+          >
+            <div class="circle-shadow mx-auto lg:hidden"></div>
+            <div class="max-lg:hidden">
+              <div
+                class="w-3 h-3 rounded-full bg-green-500 dark:bg-primary-500 inline-block"
+              ></div>
+              <h1
+                v-text="t('general.UptimeRobot')"
+                class="inline-block! mx-[3px] text-2xl"
+              ></h1>
+            </div>
+          </nuxt-link>
+        </template>
         <template #append>
           <div class="mt-auto mb-20 hidden xs:block">
             <PrimeButton
