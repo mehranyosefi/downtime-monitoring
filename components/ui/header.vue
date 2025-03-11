@@ -9,7 +9,6 @@ const localePath = useLocalePath();
 const headerMenuActive: ShallowRef<boolean> = shallowRef<boolean>(false);
 const header = useTemplateRef("header");
 const useUser = useUserStore();
-const sideNavActive = shallowRef<boolean>(false);
 
 const toggle = (event: Event) => {
   menu_language.value?.toggle(event);
@@ -116,13 +115,12 @@ function set_shadow(el: HTMLElement) {
           </section>
         </div>
       </div>
-      <LazyBaseMegaMenu
+      <LazyUiMegaMenu
         :active="headerMenuActive"
         :items="headerMegaMenu"
         :subItems="headerMegaMenuTeamItems"
         class="hidden lg:block lg:w-[50%] xl:w-[52%] mx-auto"
-      >
-      </LazyBaseMegaMenu>
+      />
       <section v-if="!useUser.loggedIn" class="sign hidden sm:block">
         <PrimeButton
           class="bg-transparent! border-none! h-fit! p-0!"

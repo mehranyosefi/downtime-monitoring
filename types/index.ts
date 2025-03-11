@@ -287,3 +287,14 @@ export const monitorTypes = [
       "Monitor any service on your server. Useful for SMTP,  POP3, FTP, and other services running on specific TCP ports.",
   },
 ];
+
+export const userMenuItems: { label: string; icon: string }[] = [
+  {
+    label: "general.account general.details",
+    icon: "/img/icons.svg#user",
+  },
+  {
+    label: "general.logout",
+    icon: "/img/icons.svg#outline-logout",
+  },
+];

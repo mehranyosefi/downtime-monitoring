@@ -1,14 +1,18 @@
 import type { CookieRef } from "#app";
+import Login from "~/pages/login.vue";
 
 export const useUserStore = defineStore("user", () => {
   interface UserState {
-    user: null | object;
+    user: CookieRef<null> | { fullName: string; email: string };
     sessions?:
       | CookieRef<null>
       | { access_token: string; refresh_token: string };
   }
   const state = reactive<UserState>({
-    user: null,
+    user: useCookie("user", {
+      default: () => null,
+      watch: true,
+    }),
     sessions: useCookie("sessions", {
       default: () => null,
       watch: true,
@@ -19,7 +23,7 @@ export const useUserStore = defineStore("user", () => {
   const loggedIn = computed(() => state.sessions !== null);
 
   //actions
-  function setUser(payload: object) {
+  function setUser(payload: object | null) {
     state.user = payload;
   }
   function setSessions(payload: {
@@ -29,6 +33,9 @@ export const useUserStore = defineStore("user", () => {
     state.sessions = payload;
   }
 
+  async function logIn(params: { email: string; password: string }) {}
+  async function logout() {}
+
   return {
     //states
     state,
@@ -37,6 +44,8 @@ export const useUserStore = defineStore("user", () => {
     loggedIn,
 
     //actions
+    logIn,
+    logout,
     setUser,
     setSessions,
   };

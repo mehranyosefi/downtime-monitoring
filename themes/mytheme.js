@@ -155,9 +155,9 @@ const MyPreset = definePreset(Aura, {
       colorScheme: {
         light: {
           secondary: {
-            background: "{white}",
-            activeBackground: "{whiteAlpha.600}",
-            hoverBackground: "{white}",
+            background: "{gray.100}",
+            activeBackground: "{gray.200}",
+            hoverBackground: "{gray.200}",
             borderColor: "{borderColor}",
             hoverBorderColor: "{hoverBorderColor}",
           },
@@ -171,8 +171,8 @@ const MyPreset = definePreset(Aura, {
         },
         dark: {
           secondary: {
-            background: "{gray.800}",
-            activeBackground: "{gray.700}",
+            background: "{gray.900}",
+            activeBackground: "{gray.800}",
             hoverBackground: "{gray.800}",
             borderColor: "{darkBorderColor}",
             hoverBorderColor: "{darkHoverBorderColor}",
@@ -205,6 +205,7 @@ const MyPreset = definePreset(Aura, {
       colorScheme: {
         light: {
           color: "{gray.900}",
+          background: "{white}",
           item: {
             color: "{gray.900}",
           },
@@ -225,7 +226,7 @@ const MyPreset = definePreset(Aura, {
           submenuLabel: {
             color: "gray.100",
           },
-          background: "transparent",
+          background: "{gray.800}",
           borderColor: "transparent",
         },
       },
@@ -233,20 +234,23 @@ const MyPreset = definePreset(Aura, {
     toggleswitch: {
       colorScheme: {
         light: {
-          background: "{white}",
-          handleBackground: "{gray.200}",
-          hoverBackground: "{gray.100}",
+          background: "{gray.100}",
+          handleBackground: "{white}",
+          handleHoverBackground: "{gray.100}",
+          hoverBackground: "{gray.200}",
           borderColor: "{borderColor}",
           hoverBorderColor: "{hoverBorderColor}",
+          shadow: "0 1px 3px 0 {gray.300}",
         },
         dark: {
-          checkedBackground: "{gray.800}",
-          handleCheckedBackground: "{gray.400}",
-          handleCheckedHoverBackground: "{gray.200}",
+          checkedBackground: "{gray.900}",
+          handleCheckedBackground: "{gray.200}",
+          handleCheckedHoverBackground: "{gray.400}",
           checkedHoverBackground: "{gray.800}",
           checkedBorderColor: "{darkBorderColor}",
           checkedHoverBorderColor: "{darkHoverBorderColor}",
           disabledBackground: "{gray.900}",
+          shadow: "0 1px 3px 0 {gray.900}",
         },
       },
       css: ({ dt }) => `

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { ShallowRef } from "vue";
-import { dashboardMenu } from "~/types";
+import { dashboardMenu, userMenuItems } from "~/types";
 
 const { locale, t } = useI18n();
 const useApp = useAppStore();
+const user = useUserStore();
 
 useHead({
   titleTemplate: `${t("general.UptimeRobot")} - %s`,
@@ -33,7 +33,14 @@ const sideBarItems = computed(() => {
     return dashboardMenu.filter((item) => item.path);
   }
 });
-const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
+const conversation = shallowRef<boolean>(false);
+const userMenuActive = shallowRef<boolean>(false);
+const menu_user = useTemplateRef("menu_user");
+
+const toggle = (event: Event) => {
+  menu_user.value?.toggle(event);
+  userMenuActive.value = !userMenuActive.value;
+};
 </script>
 
 <template>
@@ -65,7 +72,62 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
     </div>
 
     <ClientOnly>
-      <DashboardSideBar :items="sideBarItems"></DashboardSideBar>
+      <DashboardSideBar
+        :items="sideBarItems"
+        class="xs:flex flex-col xs:w-16 lg:w-52"
+      >
+        <template #append>
+          <div class="mt-auto mb-20 hidden xs:block">
+            <PrimeButton
+              severity="secondary"
+              :class="{ '!bg-gray-200 dark:!bg-gray-800': userMenuActive }"
+              :pt="{
+                root: '!rounded-md !border-none w-full !py-4 !items-center',
+              }"
+              @click="toggle"
+            >
+              <span v-text="user.state.user?.fullName"></span>
+              <svg class="size-7">
+                <use href="/img/icons.svg#dots-solid"></use>
+              </svg>
+            </PrimeButton>
+            <PrimeMenu
+              ref="menu_user"
+              :model="userMenuItems"
+              :popup="true"
+              :pt="{
+                root: '!min-w-auto !w-42 ltr:!left-16 ltr:lg:!left-52 rtl:!right-16 rtl:lg:!right-52',
+                itemIcon: '!bg-gray-500',
+              }"
+              @hide="userMenuActive = false"
+              :dir="useApp.dir"
+            >
+              <template #item="{ item, props }">
+                <PrimeButton
+                  severity="secondary"
+                  outlined
+                  :pt="{
+                    root: 'w-full !justify-start !rounded !border-none',
+                  }"
+                >
+                  <svg class="size-5">
+                    <use :href="item.icon"></use>
+                  </svg>
+                  <span
+                    v-text="
+                      `${t(item.label!.split(' ')[0])} ${
+                        item.label!.includes(' ')
+                          ? t(item.label!.split(' ')[1])
+                          : ''
+                      }`
+                    "
+                  ></span>
+                </PrimeButton>
+              </template>
+            </PrimeMenu>
+          </div>
+        </template>
+      </DashboardSideBar>
     </ClientOnly>
     <UiChat
       class="chat"
@@ -74,11 +136,11 @@ const conversation: ShallowRef<boolean> = shallowRef<boolean>(false);
     />
   </div>
 </template>
-
+<!-- 
 <style scoped>
 @reference "~/assets/styles/main.css";
 
 .chat :deep(.activator) {
   @apply max-md:bottom-26;
 }
-</style>
+</style> -->

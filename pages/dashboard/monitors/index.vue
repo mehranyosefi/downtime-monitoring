@@ -22,7 +22,7 @@ function toggleMonitorMenu(e) {
           :pt="{
             root: 'items-center!',
           }"
-          @click="router.push(localePath('dashboard-monitors-new-http'))"
+          @click="router.push(localePath('/dashboard/monitors/new/http'))"
         >
           <svg class="size-5">
             <use class="size-5" href="/img/icons.svg#plus"></use>

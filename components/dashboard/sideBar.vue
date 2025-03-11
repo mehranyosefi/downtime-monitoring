@@ -17,7 +17,7 @@ const dockPosition = computed(() => {
 
 <template>
   <nav
-    class="fixed bottom-0 ltr:left-0 rtl:right-0 w-full xs:top-0 xs:w-fit xs:h-screen shadow-2xl"
+    class="fixed bottom-0 ltr:left-0 rtl:right-0 xs:h-screen shadow-2xl w-full"
     :dir="appStore.dir"
   >
     <slot name="prepend"></slot>
@@ -27,7 +27,7 @@ const dockPosition = computed(() => {
           <PrimeButton
             :as="item.path ? 'router-link' : 'button'"
             :to="localePath(item.path)"
-            class="w-full! rounded-none! border-none! flex flex-col lg:flex-row items-center justify-center lg:justify-start! sm:py-4! hover:bg-gray-200! dark:hover:bg-gray-800! group"
+            class="w-full! rounded-md! border-none! flex flex-col lg:flex-row items-center justify-center lg:justify-start! sm:py-4! hover:bg-gray-200! dark:hover:bg-gray-800! group"
             :name="item.label as string"
             :pt="{
               root: 'py-2! ',

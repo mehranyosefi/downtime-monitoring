@@ -76,14 +76,6 @@ const onFormSubmit = async (e: {
           life: 3000,
         });
       } else if (status.value === "success") {
-        localStorage.setItem("user", JSON.stringify(data.value.user));
-        localStorage.setItem(
-          "sessions",
-          JSON.stringify({
-            access_token: data.value.token,
-            refresh_token: "",
-          })
-        );
         useUser.setUser(data.value.user as object);
         useUser.setSessions({
           access_token: data.value.token,
