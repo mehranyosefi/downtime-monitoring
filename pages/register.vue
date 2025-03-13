@@ -70,41 +70,17 @@ const resolver = ({ values }: Record<string, any>) => {
 
 const onFormSubmit = async (e: {
   valid: boolean;
-  states: object;
+  states: { fullName: Ref<string>; email: Ref<string>; password: Ref<string> };
 }): Promise<void> => {
   if (e.valid) {
-    try {
-      requestLoading.value = true;
-      const { status, data, error } = await useAPI("/register", {
-        method: "POST",
-        server: false,
-        body: {
-          fullName: e.states.fullName.value,
-          email: e.states.email.value,
-          password: e.states.password.value,
-        },
-      });
-      if (status.value === "error") {
-        toast.add({
-          severity: "error",
-          summary: error.value?.data.message,
-          life: 3000,
-        });
-      } else if (status.value === "success") {
-        useUser.setUser(data.value.user as object);
-        toast.add({
-          severity: "success",
-          summary: data.value.message,
-          life: 3000,
-        });
-        router.push(localePath("login"));
-      }
-      console.log(data, status);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      requestLoading.value = false;
-    }
+    requestLoading.value = true;
+    await useUser
+      .register({
+        fullName: e.states.fullName.value,
+        email: e.states.email.value,
+        password: e.states.password.value,
+      })
+      .finally(() => (requestLoading.value = false));
   }
 };
 </script>

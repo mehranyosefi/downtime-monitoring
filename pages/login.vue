@@ -56,43 +56,52 @@ const resolver = ({ values }: Record<string, any>) => {
 
 const onFormSubmit = async (e: {
   valid: boolean;
-  states: object;
+  states: { email: Ref<string>; password: Ref<string> };
 }): Promise<void> => {
   if (e.valid) {
-    try {
-      requestLoading.value = true;
-      const { status, data, error } = await useAPI("/login", {
-        method: "POST",
-        server: false,
-        body: {
-          email: e.states.email.value,
-          password: e.states.password.value,
-        },
+    requestLoading.value = true;
+    await useUser
+      .logIn({
+        email: e.states.email.value,
+        password: e.states.password.value,
+      })
+      .finally(() => {
+        requestLoading.value = false;
       });
-      if (status.value === "error") {
-        toast.add({
-          severity: "error",
-          summary: error.value?.data.error,
-          life: 3000,
-        });
-      } else if (status.value === "success") {
-        useUser.setUser(data.value.user as object);
-        useUser.setSessions({
-          access_token: data.value.token,
-          refresh_token: "",
-        });
-        toast.add({
-          severity: "success",
-          summary: data.value.message,
-          life: 3000,
-        });
-        router.push(localePath("/"));
-      }
-    } catch (e) {
-      // console.log(e);
-    } finally {
-      requestLoading.value = false;
-    }
+    // try {
+    //   requestLoading.value = true;
+    //   const { status, data, error } = await useAPI("/login", {
+    //     method: "POST",
+    //     server: false,
+    //     body: {
+    //       email: e.states.email.value,
+    //       password: e.states.password.value,
+    //     },
+    //   });
+    //   if (status.value === "error") {
+    //     toast.add({
+    //       severity: "error",
+    //       summary: error.value?.data.error,
+    //       life: 3000,
+    //     });
+    //   } else if (status.value === "success") {
+    //     useUser.setUser(data.value.user as object);
+    //     useUser.setSessions({
+    //       access_token: data.value.token,
+    //       refresh_token: "",
+    //     });
+    //     toast.add({
+    //       severity: "success",
+    //       summary: data.value.message,
+    //       life: 3000,
+    //     });
+    //     router.push(localePath("/"));
+    //   }
+    // } catch (e) {
+    //   // console.log(e);
+    // } finally {
+    //   requestLoading.value = false;
+    // }
   }
 };
 </script>

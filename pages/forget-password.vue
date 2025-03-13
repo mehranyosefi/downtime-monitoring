@@ -43,37 +43,13 @@ const resolver = ({ values }: Record<string, any>) => {
 
 const onFormSubmit = async (e: {
   valid: boolean;
-  states: object;
+  states: { email: Ref<string> };
 }): Promise<void> => {
   if (e.valid) {
-    try {
-      requestLoading.value = true;
-      const { status, data, error } = await useAPI("/forget-password", {
-        method: "POST",
-        server: false,
-        body: {
-          email: e.states.email.value,
-        },
-      });
-      console.log(status, data);
-      if (status.value === "error") {
-        toast.add({
-          severity: "error",
-          summary: error.value?.data.message,
-          life: 3000,
-        });
-      } else if (status.value === "success") {
-        toast.add({
-          severity: "success",
-          summary: data.value?.message,
-          life: 15000,
-        });
-      }
-    } catch (e) {
-      // console.log(e);
-    } finally {
-      requestLoading.value = false;
-    }
+    requestLoading.value = true;
+    await useUser
+      .forgetPassword(e.states.email.value)
+      .finally(() => (requestLoading.value = false));
   }
 };
 </script>

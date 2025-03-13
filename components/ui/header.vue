@@ -79,9 +79,8 @@ function set_shadow(el: HTMLElement) {
             id="overlay_language_menu"
             :model="locales"
             :popup="true"
-            :style="{
-              minWidth: 0,
-              marginTop: '3px',
+            :pt="{
+              root: '!min-w-0 !mt-1 !bg-transparent',
             }"
           >
             <template #item="{ item, props }">

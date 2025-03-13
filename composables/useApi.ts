@@ -1,10 +1,12 @@
 import type { UseFetchOptions } from "nuxt/app";
-export function useAPI<T>(
+export function useApi<T>(
   url: string | (() => string),
-  options?: UseFetchOptions<T>
+  options?: UseFetchOptions<T>,
+  authRequired?: boolean
 ) {
-  const useApp = useAppStore();
   const runtimeConfig = useRuntimeConfig();
+  const useApp = useAppStore();
+  const user = useUserStore();
   const overrideOptions = {
     ...options,
     headers: {
@@ -12,9 +14,14 @@ export function useAPI<T>(
       locale: useApp.getLocaleOject.code,
       "Content-Type": "application/json",
       Accept: "application/json",
+      ...(authRequired &&
+        user.state.sessions && {
+          Authorization: `Bearer ${user.state.sessions.access_token}`,
+        }),
     },
+    baseURL: runtimeConfig.public.baseUrlApi,
   };
-  return useFetch((runtimeConfig.public.baseUrlApi as string) + url, {
+  return useFetch(url, {
     ...overrideOptions,
     $fetch: useNuxtApp().$api as typeof $fetch,
   });

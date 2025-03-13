@@ -135,7 +135,7 @@ export default {
                   {
                     model: props.monitoring,
                     pt: {
-                      root: "border-none! rounded-none! px-10!",
+                      root: "border-none! rounded-none! px-10! !bg-transparent",
                       submenuLabel: "p-0! mb-2 font-bold text-2xl capitalize",
                       item: "text-xl py-1 my-2",
                       itemContent:
@@ -169,7 +169,7 @@ export default {
                   {
                     model: props.teams,
                     pt: {
-                      root: "border-none! rounded-none! px-10!",
+                      root: "border-none! rounded-none! px-10! !bg-transparent",
                       submenuLabel: "p-0! mb-2 font-bold text-2xl capitalize",
                       item: "text-xl py-1 my-2",
                       itemContent:
@@ -201,7 +201,7 @@ export default {
                   {
                     model: props.resources,
                     pt: {
-                      root: "border-none! rounded-none! px-10!",
+                      root: "border-none! rounded-none! px-10! !bg-transparent",
                       submenuLabel: "p-0! mb-2 font-bold text-2xl capitalize",
                       item: "text-xl py-1 my-2",
                       itemContent:

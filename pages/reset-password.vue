@@ -28,7 +28,7 @@ const initialValues = reactive<{
 });
 const requestLoading: ShallowRef<boolean> = shallowRef<boolean>(false);
 const toast = useToast();
-const router = useRouter();
+const useUser = useUserStore();
 
 const resolver = ({ values }: Record<string, any>) => {
   const errors: any = {
@@ -75,7 +75,12 @@ const resolver = ({ values }: Record<string, any>) => {
 
 const onFormSubmit = async (e: {
   valid: boolean;
-  states: object;
+  states: {
+    email: Ref<string>;
+    password: Ref<string>;
+    password_confirmation: Ref<string>;
+    token: Ref<string>;
+  };
 }): Promise<void> => {
   if (e.valid) {
     if (!(e.states.password.value === e.states.password_confirmation.value)) {
@@ -86,38 +91,15 @@ const onFormSubmit = async (e: {
       });
       return;
     }
-    console.log(e.states);
-    try {
-      requestLoading.value = true;
-      const { status, data, error } = await useAPI("/reset-password", {
-        method: "POST",
-        server: false,
-        body: {
-          email: e.states.email.value,
-          password: e.states.password.value,
-          password_confirmation: e.states.password_confirmation.value,
-          token: e.states.token.value,
-        },
-      });
-      if (status.value === "error") {
-        toast.add({
-          severity: "error",
-          summary: error.value?.data.message,
-          life: 3000,
-        });
-      } else if (status.value === "success") {
-        toast.add({
-          severity: "success",
-          summary: data.value.message,
-          life: 15000,
-        });
-        router.push(localePath("login"));
-      }
-    } catch (e) {
-      // console.log(e);
-    } finally {
-      requestLoading.value = false;
-    }
+    requestLoading.value = true;
+    await useUser
+      .resetPassword({
+        email: e.states.email.value,
+        password: e.states.password.value,
+        password_confirmation: e.states.password_confirmation.value,
+        token: e.states.token.value,
+      })
+      .finally(() => (requestLoading.value = false));
   }
 };
 </script>

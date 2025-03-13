@@ -42,6 +42,10 @@ const toggle = (event: Event) => {
   menu_user.value?.toggle(event);
   userMenuActive.value = !userMenuActive.value;
 };
+
+function handleClikMenuItem(action: string | null) {
+  if (action) eval(action);
+}
 </script>
 
 <template>
@@ -127,6 +131,7 @@ const toggle = (event: Event) => {
                   :pt="{
                     root: 'w-full !justify-start !rounded !border-none',
                   }"
+                  @click="handleClikMenuItem(item.action)"
                 >
                   <svg class="size-5">
                     <use :href="item.icon"></use>

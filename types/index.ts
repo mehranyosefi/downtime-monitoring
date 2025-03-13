@@ -288,13 +288,16 @@ export const monitorTypes = [
   },
 ];
 
-export const userMenuItems: { label: string; icon: string }[] = [
-  {
-    label: "general.account general.details",
-    icon: "/img/icons.svg#user",
-  },
-  {
-    label: "general.logout",
-    icon: "/img/icons.svg#outline-logout",
-  },
-];
+export const userMenuItems: { label: string; icon: string; action: string }[] =
+  [
+    {
+      label: "general.account general.details",
+      icon: "/img/icons.svg#user",
+      action: "",
+    },
+    {
+      label: "general.logout",
+      icon: "/img/icons.svg#outline-logout",
+      action: "user.logOut()",
+    },
+  ];
