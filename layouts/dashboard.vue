@@ -79,7 +79,7 @@ function handleClikMenuItem(action: string | null) {
     <ClientOnly>
       <DashboardSideBar
         :items="sideBarItems"
-        class="xs:flex flex-col xs:w-16 lg:w-52"
+        class="xs:flex flex-col xs:w-16 lg:px-2 lg:w-52"
       >
         <template #prepend>
           <nuxt-link

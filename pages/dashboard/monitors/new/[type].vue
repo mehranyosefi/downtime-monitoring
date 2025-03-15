@@ -4,7 +4,7 @@ import {
   LazyMonitorMaintenance,
   LazyMonitorNotifications,
 } from "#components";
-import { addMonitorTabs, monitorTypes } from "~/types";
+import { addMonitorTabs } from "~/types";
 const { locale } = useI18n();
 const appStore = useAppStore();
 const localePath = useLocalePath();
@@ -22,12 +22,6 @@ const tab = computed(() => {
   }
   return LazyMonitorDetails;
 });
-const selectedType = ref();
-function setType() {
-  const type = route.params.type;
-  selectedType.value = monitorTypes.find(({ path }) => path === type);
-}
-setType();
 </script>
 <template>
   <div>
@@ -101,95 +95,7 @@ setType();
         <div class="lg:col-span-10 mt-5">
           <PrimeCard>
             <template #content>
-              <div>
-                <label for="mobitor-type">Monitor type</label>
-                <PrimeSelect
-                  v-model="selectedType"
-                  :options="monitorTypes"
-                  optionLabel="name"
-                  placeholder="Select a Type"
-                  class="w-full mt-2"
-                  :pt="{
-                    root: '!w-full',
-                    option: 'p-0!',
-                    listContainer: 'min-h-64!',
-                    overlay: '!max-w-0 ',
-                  }"
-                  id="mobitor-type"
-                >
-                  <template #value="slotProps">
-                    <div
-                      v-if="slotProps.value"
-                      class="flex items-center gap-x-2"
-                    >
-                      <svg class="size-14 text-green-500 dark:text-primary-500">
-                        <use class="size-14" :href="slotProps.value.icon"></use>
-                      </svg>
-                      <div>
-                        <h2
-                          class="font-bold text-xl text-gray-900 dark:text-gray-100"
-                          v-text="slotProps.value.label"
-                        ></h2>
-                        <p
-                          class="text-sm dark:text-gray-300"
-                          v-text="slotProps.value.description"
-                        ></p>
-                      </div>
-                    </div>
-                    <span v-else>
-                      {{ slotProps.placeholder }}
-                    </span>
-                  </template>
-                  <template #option="slotProps">
-                    <nuxt-link
-                      :to="`${localePath('dashboard-monitors-new')}${
-                        slotProps.option.path
-                      }`"
-                      class="flex items-center w-full p-3 gap-x-2"
-                    >
-                      <svg
-                        class="size-14 min-w-14 text-green-500 dark:text-primary-500 inline-block"
-                      >
-                        <use :href="slotProps.option.icon"></use>
-                      </svg>
-                      <div class="w-full">
-                        <h3
-                          class="font-bold text-xl text-gray-900 dark:text-gray-100"
-                          v-text="slotProps.option.label"
-                        ></h3>
-                        <p
-                          class="text-sm text-gray-700 dark:text-gray-300 text-ellipsis overflow-hidden w-[calc(100%-3.5rem)]"
-                          v-text="slotProps.option.description"
-                        ></p>
-                      </div>
-                    </nuxt-link>
-                  </template>
-                  <template #dropdownicon>
-                    <svg class="size-7">
-                      <use
-                        class="size-7"
-                        href="/img/icons.svg#arrow-down-rounded"
-                      ></use>
-                    </svg>
-                  </template>
-                  <!-- <template #header>
-                  <div class="font-medium p-3">Available Countries</div>
-                </template> -->
-                  <!-- <template #footer>
-                  <div class="p-3">
-                    <PrimeButton
-                      label="Add New"
-                      fluid
-                      severity="secondary"
-                      text
-                      size="small"
-                      icon="pi pi-plus"
-                    />
-                  </div>
-                </template> -->
-                </PrimeSelect>
-              </div>
-              <component class="page-animation" :is="tab"></component>
+              <component class="page-animation" :is="tab"> </component>
             </template>
           </PrimeCard>
         </div>

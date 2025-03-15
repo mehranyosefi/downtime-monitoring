@@ -86,14 +86,14 @@ function toggleMonitorMenu(e) {
         <h2 class="text-2xl font-semibold">
           <span v-text="t('monitors.title')"></span>
         </h2>
-        <p class="my-2 text-xl" v-text="t('monitors.description')"></p>
-        <p class="my-3 text-xl" v-text="t('monitors.description-second')"></p>
+        <p class="my-4 text-xl" v-text="t('monitors.description')"></p>
+        <p class="my-5 text-xl" v-text="t('monitors.description-second')"></p>
       </div>
     </div>
     <PrimeButton
       severity="success"
       :pt="{
-        root: 'mx-auto! rounded-md! p-0!',
+        root: 'mx-auto!  p-0!',
       }"
       name="create"
     >
