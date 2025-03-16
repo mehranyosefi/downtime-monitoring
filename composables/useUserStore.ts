@@ -23,6 +23,7 @@ export const useUserStore = defineStore("user", () => {
   const toast = useToast();
   const router = useRouter();
   const localePath = useLocalePath();
+  const { t } = useI18n();
   //getters
   const loggedIn = computed(() => state.sessions !== null);
 
@@ -43,18 +44,18 @@ export const useUserStore = defineStore("user", () => {
     if (status.value === "error") {
       toast.add({
         severity: "error",
-        summary: error.value?.data.error,
+        summary: t(error.value?.data.error),
         life: 3000,
       });
     } else if (status.value === "success") {
       setUser(data.value.user as object);
       setSessions({
-        access_token: data.value.token,
+        access_token: data.value?.token,
         refresh_token: "",
       });
       toast.add({
         severity: "success",
-        summary: data.value.message,
+        summary: t(data.value?.message),
         life: 3000,
       });
       router.push(localePath("/"));
@@ -69,14 +70,14 @@ export const useUserStore = defineStore("user", () => {
     if (status.value === "error") {
       toast.add({
         severity: "error",
-        summary: error.value?.data.message,
+        summary: t(error.value?.data.message),
         life: 3000,
       });
     } else if (status.value === "success") {
       setUser(data.value.user as object);
       toast.add({
         severity: "success",
-        summary: data.value.message,
+        summary: t(data.value?.message),
         life: 3000,
       });
       router.push(localePath("login"));
@@ -88,14 +89,14 @@ export const useUserStore = defineStore("user", () => {
       if (status.value === "error") {
         toast.add({
           severity: "error",
-          summary: error.value?.data.message,
+          summary: t(error.value?.data.message),
           life: 3000,
         });
       } else if (status.value === "success") {
         setSessions(null);
         toast.add({
           severity: "success",
-          summary: data.value.message,
+          summary: t(data.value?.message),
           life: 3000,
         });
         router.push(localePath("index"));
@@ -107,7 +108,7 @@ export const useUserStore = defineStore("user", () => {
     if (status.value === "error") {
       toast.add({
         severity: "error",
-        summary: error.value?.data.message,
+        summary: t(error.value?.data.message),
         life: 3000,
       });
     } else if (status.value === "success") {
@@ -136,7 +137,7 @@ export const useUserStore = defineStore("user", () => {
     } else if (status.value === "success") {
       toast.add({
         severity: "success",
-        summary: data.value.message,
+        summary: t(data.value?.message),
         life: 15000,
       });
       router.push(localePath("login"));

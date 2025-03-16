@@ -17,7 +17,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <span class="text-red-300">f</span>
+    <span class="text-red-300">{{ t("general.one") }}</span>
     <PrimeToast />
   </div>
 </template>

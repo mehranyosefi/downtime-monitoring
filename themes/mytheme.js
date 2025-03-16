@@ -359,6 +359,30 @@ const MyPreset = definePreset(Aura, {
         },
       },
     },
+    checkbox: {
+      colorScheme: {
+        light: {
+          checkedBackground: "{green.500}",
+          checkedHoverBackground: "{green.600}",
+          iconCheckedColor: "{white}",
+          iconCheckedHoverColor: "{white}",
+          hoverBorderColor: "{green.600}",
+          focusBorderColor: "{green.600}",
+          checkedBorderColor: "{green.600}",
+          checkedHoverBorderColor: "{green.600}",
+        },
+        dark: {
+          checkedBackground: "{blue.500}",
+          checkedHoverBackground: "{blue.600}",
+          iconCheckedColor: "{white}",
+          iconCheckedHoverColor: "{white}",
+          hoverBorderColor: "{blue.600}",
+          focusBorderColor: "{blue.600}",
+          checkedBorderColor: "{blue.600}",
+          checkedHoverBorderColor: "{blue.600}",
+        },
+      },
+    },
   },
 });
 

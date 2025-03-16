@@ -92,6 +92,7 @@ export const headerMegaMenu: MegaMenuInterface[] = [
   new MegaMenu("general.statusPage", "/status-page"),
   new MegaMenu("general.pricing", "/pricing"),
 ];
+
 export const headerMegaMenuTeamItems: MegaMenuInterface[] = [
   new MegaMenu("general.teams", undefined, [
     {
@@ -235,6 +236,7 @@ export const dashboardMenu = [
     icon: "/img/icons.svg#wrench",
   },
 ];
+
 export const monitorItems = [
   {
     label: "general.single general.monitor",
@@ -247,6 +249,7 @@ export const monitorItems = [
     icon: "/img/icons.svg#magic",
   },
 ];
+
 export const addMonitorTabs = [
   {
     label: "general.monitor general.details",
@@ -301,3 +304,16 @@ export const userMenuItems: { label: string; icon: string; action: string }[] =
       action: "user.logOut()",
     },
   ];
+
+export interface NewMonitorDataType {
+  type: string;
+  address: string;
+  notifyType: string[];
+  monitorIterval: string;
+}
+
+// export const notifyTypeItems = [
+//   {
+//     label: 'general.email',
+//   }
+// ]

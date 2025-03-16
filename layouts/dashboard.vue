@@ -76,82 +76,80 @@ function handleClikMenuItem(action: string | null) {
       </main>
     </div>
 
-    <ClientOnly>
-      <DashboardSideBar
-        :items="sideBarItems"
-        class="xs:flex flex-col xs:w-16 lg:px-2 lg:w-52"
-      >
-        <template #prepend>
-          <nuxt-link
-            :to="localePath('dashboard-monitors')"
-            class="hidden xs:block text-center my-5"
+    <DashboardSideBar
+      :items="sideBarItems"
+      class="xs:flex flex-col xs:w-16 lg:px-2 lg:w-52"
+    >
+      <template #prepend>
+        <nuxt-link
+          :to="localePath('dashboard-monitors')"
+          class="hidden xs:block text-center my-5"
+        >
+          <div class="circle-shadow mx-auto lg:hidden"></div>
+          <div class="max-lg:hidden">
+            <div
+              class="w-3 h-3 rounded-full bg-green-500 dark:bg-primary-500 inline-block"
+            ></div>
+            <h1
+              v-text="t('general.UptimeRobot')"
+              class="inline-block! mx-[3px] text-2xl"
+            ></h1>
+          </div>
+        </nuxt-link>
+      </template>
+      <template #append>
+        <div class="mt-auto mb-20 hidden xs:block">
+          <PrimeButton
+            severity="secondary"
+            :class="{ '!bg-gray-200 dark:!bg-gray-800': userMenuActive }"
+            :pt="{
+              root: '!rounded-md !border-none w-full !py-4 !items-center',
+            }"
+            @click="toggle"
           >
-            <div class="circle-shadow mx-auto lg:hidden"></div>
-            <div class="max-lg:hidden">
-              <div
-                class="w-3 h-3 rounded-full bg-green-500 dark:bg-primary-500 inline-block"
-              ></div>
-              <h1
-                v-text="t('general.UptimeRobot')"
-                class="inline-block! mx-[3px] text-2xl"
-              ></h1>
-            </div>
-          </nuxt-link>
-        </template>
-        <template #append>
-          <div class="mt-auto mb-20 hidden xs:block">
-            <PrimeButton
-              severity="secondary"
-              :class="{ '!bg-gray-200 dark:!bg-gray-800': userMenuActive }"
-              :pt="{
-                root: '!rounded-md !border-none w-full !py-4 !items-center',
-              }"
-              @click="toggle"
-            >
-              <span v-text="user.state.user?.fullName"></span>
-              <svg class="size-7">
-                <use href="/img/icons.svg#dots-solid"></use>
-              </svg>
-            </PrimeButton>
-            <PrimeMenu
-              ref="menu_user"
-              :model="userMenuItems"
-              :popup="true"
-              :pt="{
-                root: '!min-w-auto !w-42 ltr:!left-16 ltr:lg:!left-52 rtl:!right-16 rtl:lg:!right-52',
-                itemIcon: '!bg-gray-500',
-              }"
-              @hide="userMenuActive = false"
-              :dir="useApp.dir"
-            >
-              <template #item="{ item, props }">
-                <PrimeButton
-                  severity="secondary"
-                  outlined
-                  :pt="{
-                    root: 'w-full !justify-start !rounded !border-none',
-                  }"
-                  @click="handleClikMenuItem(item.action)"
-                >
-                  <svg class="size-5">
-                    <use :href="item.icon"></use>
-                  </svg>
-                  <span
-                    v-text="
+            <span v-text="user.state.user?.fullName"></span>
+            <svg class="size-7">
+              <use href="/img/icons.svg#dots-solid"></use>
+            </svg>
+          </PrimeButton>
+          <PrimeMenu
+            ref="menu_user"
+            :model="userMenuItems"
+            :popup="true"
+            :pt="{
+              root: '!min-w-auto !w-42 ltr:!left-16 ltr:lg:!left-52 rtl:!right-16 rtl:lg:!right-52',
+              itemIcon: '!bg-gray-500',
+            }"
+            @hide="userMenuActive = false"
+            :dir="useApp.dir"
+          >
+            <template #item="{ item, props }">
+              <PrimeButton
+                severity="secondary"
+                outlined
+                :pt="{
+                  root: 'w-full !justify-start !rounded !border-none',
+                }"
+                @click="handleClikMenuItem(item.action)"
+              >
+                <svg class="size-5">
+                  <use :href="item.icon"></use>
+                </svg>
+                <span
+                  v-text="
                       `${t(item.label!.split(' ')[0])} ${
                         item.label!.includes(' ')
                           ? t(item.label!.split(' ')[1])
                           : ''
                       }`
                     "
-                  ></span>
-                </PrimeButton>
-              </template>
-            </PrimeMenu>
-          </div>
-        </template>
-      </DashboardSideBar>
-    </ClientOnly>
+                ></span>
+              </PrimeButton>
+            </template>
+          </PrimeMenu>
+        </div>
+      </template>
+    </DashboardSideBar>
     <UiChat
       class="chat"
       :active="conversation"
@@ -159,11 +157,10 @@ function handleClikMenuItem(action: string | null) {
     />
   </div>
 </template>
-<!-- 
 <style scoped>
 @reference "~/assets/styles/main.css";
 
 .chat :deep(.activator) {
   @apply max-md:bottom-26;
 }
-</style> -->
+</style -->

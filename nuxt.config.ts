@@ -34,14 +34,14 @@ export default defineNuxtConfig({
         iso: "fa-IR",
         countryName: "Iran",
         logo: "/img/logo_country/iran.svg",
-        file: { path: "./i18n/locales/fa.ts", cache: true },
+        // file: { path: "./i18n/locales/fa/index.ts", cache: true },
       },
       {
         code: "en",
         iso: "en-US",
         countryName: "England",
         logo: "/img/logo_country/england.svg",
-        file: { path: "./i18n/locales/en.ts", cache: true },
+        // file: { path: "./i18n/locales/en/index.ts", cache: true },
       },
     ],
     lazy: true,
@@ -77,11 +77,6 @@ export default defineNuxtConfig({
       prefix: "Prime",
     },
   },
-  // postcss: {
-  //   plugins: {
-  //     "@tailwindcss/postcss": {},
-  //   },
-  // },
   nitro: {
     prerender: {
       failOnError: false,

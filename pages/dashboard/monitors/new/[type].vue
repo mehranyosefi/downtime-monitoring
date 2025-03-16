@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {
-  LazyMonitorDetails,
-  LazyMonitorMaintenance,
-  LazyMonitorNotifications,
+  LazyDashboardMonitorDetails,
+  LazyDashboardMonitorMaintenance,
+  LazyDashboardMonitorNotifications,
 } from "#components";
 import { addMonitorTabs } from "~/types";
 const { locale } = useI18n();
@@ -17,10 +17,10 @@ const route = useRoute();
 const tab = computed(() => {
   const query = route.query;
   if (query.hasOwnProperty("tab")) {
-    if (query.tab === "notifications") return LazyMonitorNotifications;
-    else return LazyMonitorMaintenance;
+    if (query.tab === "notifications") return LazyDashboardMonitorNotifications;
+    else return LazyDashboardMonitorMaintenance;
   }
-  return LazyMonitorDetails;
+  return LazyDashboardMonitorDetails;
 });
 </script>
 <template>
