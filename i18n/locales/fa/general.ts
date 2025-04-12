@@ -103,6 +103,7 @@ export default {
     interval: "فاصله",
     minutes: "دقیقه",
     minute: "دقیقه",
+    language: "زبان",
   },
   phrases: {
     placeholder: {

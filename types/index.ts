@@ -291,19 +291,40 @@ export const monitorTypes = [
   },
 ];
 
-export const userMenuItems: { label: string; icon: string; action: string }[] =
-  [
-    {
-      label: "general.account general.details",
-      icon: "/img/icons.svg#user",
-      action: "",
-    },
-    {
-      label: "general.logout",
-      icon: "/img/icons.svg#outline-logout",
-      action: "user.logOut()",
-    },
-  ];
+export const userMenuItems: {
+  label: string;
+  icon: string;
+  action: string | null;
+  items?: any[];
+}[] = [
+  {
+    label: "general.language",
+    icon: "/img/icons.svg#outline-logout",
+    action: null,
+    items: [
+      {
+        label: "en-US",
+        icon: null,
+        command: () => eval("setLocale('en')"),
+      },
+      {
+        label: "fa-IR",
+        icon: null,
+        command: () => eval("setLocale('fa')"),
+      },
+    ],
+  },
+  {
+    label: "general.account general.details",
+    icon: "/img/icons.svg#user",
+    action: "",
+  },
+  {
+    label: "general.logout",
+    icon: "/img/icons.svg#outline-logout",
+    action: "user.logOut()",
+  },
+];
 
 export interface NewMonitorDataType {
   type: string;

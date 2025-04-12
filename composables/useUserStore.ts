@@ -23,6 +23,7 @@ export const useUserStore = defineStore("user", () => {
   const toast = useToast();
   const router = useRouter();
   const localePath = useLocalePath();
+  const useApp = useAppStore();
   const { t } = useI18n();
   //getters
   const loggedIn = computed(() => state.sessions !== null);
@@ -54,7 +55,7 @@ export const useUserStore = defineStore("user", () => {
         refresh_token: "",
       });
       toast.add({
-        severity: "success",
+        severity: useApp.isDarkTheme ? "info" : "success",
         summary: t(data.value?.message),
         life: 3000,
       });
@@ -76,7 +77,7 @@ export const useUserStore = defineStore("user", () => {
     } else if (status.value === "success") {
       setUser(data.value.user as object);
       toast.add({
-        severity: "success",
+        severity: useApp.isDarkTheme ? "info" : "success",
         summary: t(data.value?.message),
         life: 3000,
       });
@@ -95,7 +96,7 @@ export const useUserStore = defineStore("user", () => {
       } else if (status.value === "success") {
         setSessions(null);
         toast.add({
-          severity: "success",
+          severity: useApp.isDarkTheme ? "info" : "success",
           summary: t(data.value?.message),
           life: 3000,
         });
@@ -113,7 +114,7 @@ export const useUserStore = defineStore("user", () => {
       });
     } else if (status.value === "success") {
       toast.add({
-        severity: "success",
+        severity: useApp.isDarkTheme ? "info" : "success",
         summary: data.value?.message,
         life: 15000,
       });
@@ -136,7 +137,7 @@ export const useUserStore = defineStore("user", () => {
       });
     } else if (status.value === "success") {
       toast.add({
-        severity: "success",
+        severity: useApp.isDarkTheme ? "info" : "success",
         summary: t(data.value?.message),
         life: 15000,
       });

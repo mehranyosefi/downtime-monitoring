@@ -11,6 +11,7 @@ useHead({
   ],
 });
 const useApp = useAppStore();
+const useUser = useUserStore();
 const { isOnTablet, isOnMobile } = useWindowProperty();
 const products = reactive([
   {
@@ -118,7 +119,11 @@ const animationNameCompute = (key: number): string => {
                 name="start"
               >
                 <NuxtLink
-                  to="/start"
+                  :to="
+                    useUser.loggedIn
+                      ? localePath('dashboard')
+                      : localePath('register')
+                  "
                   class="font-semibold"
                   v-text="t('index.startMonitoring')"
                 ></NuxtLink>

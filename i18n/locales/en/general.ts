@@ -102,6 +102,7 @@ export const general = {
     interval: "interval",
     minutes: "minutes",
     minute: "minute",
+    language: "language",
   },
   phrases: {
     placeholder: {

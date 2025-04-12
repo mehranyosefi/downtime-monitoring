@@ -1,10 +1,44 @@
 <script lang="ts" setup>
-import { dashboardMenu, userMenuItems } from "~/types";
+import { dashboardMenu } from "~/types";
 
-const { locale, t } = useI18n();
+const { locale, t, setLocale } = useI18n();
 const useApp = useAppStore();
 const user = useUserStore();
 const localePath = useLocalePath();
+const userMenuItems: {
+  label: string;
+  icon: string;
+  action: string | null;
+  items?: any[];
+}[] = [
+  {
+    label: "general.language",
+    icon: "/img/icons.svg#languages",
+    action: null,
+    items: [
+      {
+        label: "en-US",
+        icon: null,
+        command: () => setLocale("en"),
+      },
+      {
+        label: "fa-IR",
+        icon: null,
+        command: () => setLocale("fa"),
+      },
+    ],
+  },
+  {
+    label: "general.account general.details",
+    icon: "/img/icons.svg#user",
+    action: "",
+  },
+  {
+    label: "general.logout",
+    icon: "/img/icons.svg#outline-logout",
+    action: "user.logOut()",
+  },
+];
 
 useHead({
   titleTemplate: `${t("general.UptimeRobot")} - %s`,
@@ -128,7 +162,7 @@ function handleClikMenuItem(action: string | null) {
               <use href="/img/icons.svg#dots-solid"></use>
             </svg>
           </PrimeButton>
-          <PrimeMenu
+          <PrimeTieredMenu
             ref="menu_user"
             :model="userMenuItems"
             :popup="true"
@@ -139,7 +173,29 @@ function handleClikMenuItem(action: string | null) {
             @hide="userMenuActive = false"
             :dir="useApp.dir"
           >
-            <template #item="{ item, props }">
+            <template #start>
+              <PrimeToggleSwitch
+                v-model="useApp.isDarkTheme"
+                aria-label="switch-theme"
+                :pt="{
+                  root: 'rounded-2xl!',
+                  handle: 'rounded-2xl!',
+                  input: 'rounded-2xl!',
+                  slider: 'rounded-sm!',
+                }"
+              >
+                <template #handle="{ checked }">
+                  <i
+                    :class="{
+                      checked: useApp.isDarkTheme,
+                      'content-(--content-sun)': !checked,
+                      'content-(--content-moon)': checked,
+                    }"
+                  />
+                </template>
+              </PrimeToggleSwitch>
+            </template>
+            <template #item="{ item, props, hasSubmenu }">
               <PrimeButton
                 severity="secondary"
                 outlined
@@ -171,9 +227,16 @@ function handleClikMenuItem(action: string | null) {
                       }`
                     "
                 ></span>
+                <svg v-if="hasSubmenu" class="size-5">
+                  <use
+                    :href="`/img/icons.svg#${
+                      locale === 'en' ? 'right' : 'left'
+                    }-rounded`"
+                  ></use>
+                </svg>
               </PrimeButton>
             </template>
-          </PrimeMenu>
+          </PrimeTieredMenu>
         </div>
       </template>
     </DashboardSideBar>

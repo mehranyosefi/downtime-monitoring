@@ -20,7 +20,9 @@ function toggleMonitorMenu(e) {
         <PrimeButton
           severity="success"
           :pt="{
-            root: 'items-center! rounded-l-xl!',
+            root: `items-center! ${
+              locale === 'en' ? 'rounded-l-xl!' : 'rounded-r-xl!'
+            }`,
           }"
           @click="router.push(localePath('/dashboard/monitors/new/http'))"
         >
@@ -38,7 +40,7 @@ function toggleMonitorMenu(e) {
         ></PrimeDivider>
         <PrimeButton
           :pt="{
-            root: 'rounded-r-xl!',
+            root: ` ${locale === 'en' ? 'rounded-r-xl!' : 'rounded-l-xl!'}`,
           }"
           severity="success"
           @click="toggleMonitorMenu"
