@@ -17,7 +17,7 @@ const dockPosition = computed(() => {
 
 <template>
   <nav
-    class="fixed bottom-0 ltr:left-0 rtl:right-0 xs:h-screen shadow-2xl w-full"
+    class="fixed bottom-0 ltr:left-0 rtl:right-0 xs:h-screen shadow-2xl w-full bg-gray-100 dark:bg-gray-900"
     :dir="appStore.dir"
   >
     <slot name="prepend"></slot>

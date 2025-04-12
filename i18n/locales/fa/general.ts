@@ -39,6 +39,7 @@ export default {
     UptimeRobot: "ربات زمان کار",
     monitoring: "نظارت",
     create: "ایجاد کنید",
+    creating: "ایجاد",
     now: "اکنون",
     for: "برای",
     every: "هر",
@@ -99,6 +100,9 @@ export default {
     type: "نوع",
     sms: "اس ام اس",
     voice_call: "تماس صوتی",
+    interval: "فاصله",
+    minutes: "دقیقه",
+    minute: "دقیقه",
   },
   phrases: {
     placeholder: {
@@ -149,6 +153,7 @@ export default {
       invalidRepeatPassword: "تکرار رمزعبور مطابقت ندارد",
       urlToMonitor: "آدرس جهت نظارت",
       howNotifyYou: "چگونه به شما اطلاع خواهیم داد؟",
+      monitorInterval: "نظارت شما بررسی خواهد شد هر",
     },
   },
   signup: {

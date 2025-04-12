@@ -22,6 +22,7 @@ const tab = computed(() => {
   }
   return LazyDashboardMonitorDetails;
 });
+const dynamicComponent = ref<string>("dynamicComponent");
 </script>
 <template>
   <div>
@@ -93,13 +94,22 @@ const tab = computed(() => {
           </nuxt-link>
         </div>
         <div class="lg:col-span-10 mt-5">
-          <PrimeCard>
-            <template #content>
-              <component class="page-animation" :is="tab"> </component>
-            </template>
-          </PrimeCard>
+          <component class="page-animation" :is="tab" ref="dynamicComponent" />
         </div>
       </div>
+    </div>
+    <div class="mt-5">
+      <PrimeButton
+        severity="success"
+        :pt="{
+          root: 'items-center! rounded-xl! px-8!',
+        }"
+      >
+        <span
+          class="capitalize"
+          v-text="`${t('general.creating')} ${t('general.monitor')}`"
+        ></span>
+      </PrimeButton>
     </div>
   </div>
 </template>

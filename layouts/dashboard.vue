@@ -27,16 +27,32 @@ withDefaults(
 );
 
 const useWindow = useWindowProperty();
-const sideBarItems = computed(() => {
-  if (useWindow.isOnMobile.value) {
-    return dashboardMenu.slice(0, 4);
-  } else {
-    return dashboardMenu.filter((item) => item.path);
-  }
-});
+const sideBarItems = ref(dashboardMenu.slice(0, 4));
+
+// const sideBarItems = computed(() => {
+//   if (useWindow.isOnMobile.value) {
+//     return dashboardMenu.slice(0, 4);
+//   } else {
+//     return dashboardMenu.filter((item) => item.path);
+//   }
+// });
 const conversation = shallowRef<boolean>(false);
 const userMenuActive = shallowRef<boolean>(false);
 const menu_user = useTemplateRef("menu_user");
+
+onMounted(() => {
+  watch(
+    () => useWindow.isOnMobile.value,
+    () => {
+      if (useWindow.isOnMobile.value) {
+        sideBarItems.value = dashboardMenu.slice(0, 4);
+      } else {
+        sideBarItems.value = dashboardMenu.filter((item) => item.path);
+      }
+    },
+    { immediate: true }
+  );
+});
 
 const toggle = (event: Event) => {
   menu_user.value?.toggle(event);
@@ -136,11 +152,22 @@ function handleClikMenuItem(action: string | null) {
                   <use :href="item.icon"></use>
                 </svg>
                 <span
+                  v-if="locale === 'en'"
                   v-text="
                       `${t(item.label!.split(' ')[0])} ${
                         item.label!.includes(' ')
                           ? t(item.label!.split(' ')[1])
                           : ''
+                      }`
+                    "
+                ></span>
+                <span
+                  v-else
+                  v-text="
+                      `${
+                        item.label!.includes(' ')
+                          ? t(item.label!.split(' ')[1]) + ' '+ t(item.label!.split(' ')[0])
+                          : t(item.label!.split(' ')[0])
                       }`
                     "
                 ></span>
@@ -157,10 +184,11 @@ function handleClikMenuItem(action: string | null) {
     />
   </div>
 </template>
+
 <style scoped>
 @reference "~/assets/styles/main.css";
 
 .chat :deep(.activator) {
   @apply max-md:bottom-26;
 }
-</style -->
+</style>

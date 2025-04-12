@@ -372,6 +372,7 @@ const MyPreset = definePreset(Aura, {
           checkedHoverBorderColor: "{green.600}",
         },
         dark: {
+          background: "{gray.800}",
           checkedBackground: "{blue.500}",
           checkedHoverBackground: "{blue.600}",
           iconCheckedColor: "{white}",
@@ -380,6 +381,40 @@ const MyPreset = definePreset(Aura, {
           focusBorderColor: "{blue.600}",
           checkedBorderColor: "{blue.600}",
           checkedHoverBorderColor: "{blue.600}",
+        },
+      },
+    },
+    slider: {
+      colorScheme: {
+        trackBorderRadius: "{borderRadius}",
+        light: {
+          range: {
+            background: "{green.500}",
+          },
+          handle: {
+            background: "{green.500}",
+            hoverBackground: "{green.600}",
+            content: {
+              width: "12px",
+              height: "12px",
+            },
+            focusRingColor: "{green.500}",
+          },
+        },
+        dark: {
+          range: {
+            background: "{primary.500}",
+          },
+          handle: {
+            background: "{primary.500}",
+            hoverBackground: "{primary.600}",
+            content: {
+              width: "12px",
+              height: "12px",
+              background: "{gray.800}",
+            },
+            focusRingColor: "{primary.500}",
+          },
         },
       },
     },

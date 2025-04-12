@@ -20,7 +20,7 @@ function toggleMonitorMenu(e) {
         <PrimeButton
           severity="success"
           :pt="{
-            root: 'items-center!',
+            root: 'items-center! rounded-l-xl!',
           }"
           @click="router.push(localePath('/dashboard/monitors/new/http'))"
         >
@@ -36,7 +36,13 @@ function toggleMonitorMenu(e) {
           layout="vertical"
           class="divider__button w-[1px] mx-0!"
         ></PrimeDivider>
-        <PrimeButton severity="success" @click="toggleMonitorMenu">
+        <PrimeButton
+          :pt="{
+            root: 'rounded-r-xl!',
+          }"
+          severity="success"
+          @click="toggleMonitorMenu"
+        >
           <template #icon>
             <svg class="size-6">
               <use
@@ -93,7 +99,7 @@ function toggleMonitorMenu(e) {
     <PrimeButton
       severity="success"
       :pt="{
-        root: 'mx-auto!  p-0!',
+        root: 'mx-auto! rounded-xl! p-0!',
       }"
       name="create"
     >

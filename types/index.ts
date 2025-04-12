@@ -309,7 +309,7 @@ export interface NewMonitorDataType {
   type: string;
   address: string;
   notifyType: string[];
-  monitorIterval: string;
+  monitorIterval: number;
 }
 
 // export const notifyTypeItems = [

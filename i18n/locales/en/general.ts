@@ -38,6 +38,7 @@ export const general = {
     UptimeRobot: "UptimeRobot",
     monitoring: "monitoring",
     create: "Create",
+    creating: "create",
     now: "now",
     for: "for",
     every: "every",
@@ -98,6 +99,9 @@ export const general = {
     type: "type",
     sms: "sms",
     voice_call: "voice call",
+    interval: "interval",
+    minutes: "minutes",
+    minute: "minute",
   },
   phrases: {
     placeholder: {
@@ -148,6 +152,7 @@ export const general = {
       invalidRepeatPassword: "repeat password dont match",
       urlToMonitor: "URL to monitor",
       howNotifyYou: "How will we notify you?",
+      monitorInterval: "Your monitor will be checked every",
     },
   },
   signup: {
