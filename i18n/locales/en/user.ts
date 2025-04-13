@@ -1,4 +1,4 @@
 export const user = {
-  name: "نام",
-  fullName: "نام و نام خانوادگی",
+  name: "name",
+  fullName: "fullName",
 };
